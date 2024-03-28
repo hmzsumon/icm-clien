@@ -4,7 +4,7 @@ import { FacebookProvider, CustomChat } from 'react-facebook';
 
 const FacebookMsg = () => {
 	return (
-		<FacebookProvider appId='25022142210767444' chatSupport>
+		<FacebookProvider appId='394322920048471' chatSupport>
 			<CustomChat pageId='218924607964834' minimized={true} />
 		</FacebookProvider>
 	);
