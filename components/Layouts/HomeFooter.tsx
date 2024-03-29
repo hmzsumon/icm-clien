@@ -16,11 +16,11 @@ const HomeFooter = () => {
 							className='object-contain w-40 h-6'
 						/>
 						<p className=' text-xs text-[#777777] leading-4 tracking-tight'>
-							IC Markets Global mission is to create the best trading experience
-							for retail and institutional clients alike, allowing traders to
-							focus more on their trading. Built by traders for traders IC
-							Markets Global is dedicated to offering superior spreads,
-							execution and service
+							IC Markets Partner mission is to create the best trading
+							experience for retail and institutional clients alike, allowing
+							traders to focus more on their trading. Built by traders for
+							traders IC Markets Partner is dedicated to offering superior
+							spreads, execution and service
 						</p>
 					</div>
 					<div></div>
