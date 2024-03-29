@@ -971,18 +971,6 @@ const countries = [
 		name: 'Zimbabwe',
 		code: 'ZW',
 	},
-	{
-		name: 'Aland Islands',
-		code: 'AX',
-	},
-	{
-		name: 'Bonaire, Sint Eustatius and Saba',
-		code: 'BQ',
-	},
-	{
-		name: 'Curacao',
-		code: 'CW',
-	},
 ];
 
 export default countries;

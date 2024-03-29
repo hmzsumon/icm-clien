@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
 	Button,
 	Card,
@@ -30,6 +31,19 @@ const PersonalDetails = () => {
 	const [mobile, setMobile] = useState('');
 	const [mobileError, setMobileError] = useState(false);
 
+	const [partnerCode, setPartnerCode] = useState<string>('');
+	const [edit, setEdit] = useState(true);
+
+	const searchParams = useSearchParams();
+	const partner_code = searchParams.get('partner_code');
+
+	useEffect(() => {
+		if (partner_code) {
+			setPartnerCode(partner_code);
+			setEdit(false);
+		}
+	}, [partner_code]);
+
 	// useEffect to set the active step
 	useEffect(() => {
 		dispatch(setActiveStep(1));
@@ -40,12 +54,12 @@ const PersonalDetails = () => {
 		e.preventDefault();
 		if (nameError || name === '' || emailError || email === '' || mobileError)
 			return;
-		dispatch(setPersonalData({ country, name, email, mobile }));
+		dispatch(setPersonalData({ country, name, email, mobile, partnerCode }));
 		dispatch(setCompletedStep(1));
 		dispatch(handleNext());
 	};
 	return (
-		<div className=' '>
+		<div className='mb-4 '>
 			<h1 className='text-xl font-bold mb-4 ml-1'>
 				Fill in your personal details
 			</h1>
@@ -170,6 +184,25 @@ const PersonalDetails = () => {
 						/>
 					</div>
 					{/* End mobile */}
+
+					{/* Start Partner code */}
+
+					<div>
+						<div className='mb-2 block'>
+							<Label htmlFor='partnerCode' value='Partner code (Optional)' />
+						</div>
+						<TextInput
+							id='partnerCode'
+							type='text'
+							placeholder='Enter your partner code'
+							required
+							value={partnerCode}
+							onChange={(e) => setPartnerCode(e.target.value)}
+							disabled={edit ? false : true}
+						/>
+					</div>
+
+					{/* End Partner code */}
 
 					<Button
 						type='submit'

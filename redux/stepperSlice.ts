@@ -46,6 +46,7 @@ const initialState = {
 		name: '',
 		else: '',
 		mobile: '',
+		partnerCode: '',
 	},
 	moreAboutData: {
 		date_of_birth: '',
