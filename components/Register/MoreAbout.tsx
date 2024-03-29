@@ -38,8 +38,13 @@ const MoreAbout = () => {
 
 	// handle date of birth change
 	const handleDobChange = (date: Date) => {
-		setDateOfBirth(date.toISOString());
-		setDobError(dateOfBirth === '');
+		console.log(date);
+		if (date) {
+			setDobError(false);
+			setDateOfBirth(date.toISOString().substring(0, 10));
+		} else {
+			setDobError(true);
+		}
 	};
 
 	// handle address change
