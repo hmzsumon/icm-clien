@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { DiGoogleAnalytics } from 'react-icons/di';
 import { FaAngleLeft, FaAngleRight, FaBars } from 'react-icons/fa';
@@ -64,12 +65,7 @@ const linkItems = [
 		link: '/support',
 		icon: <SiWebstorm />,
 	},
-	{
-		id: 9,
-		name: 'FAQ',
-		link: '/faq',
-		icon: <FaAngleRight />,
-	},
+
 	{
 		id: 10,
 		name: 'Partner',
@@ -85,6 +81,7 @@ const linkItems = [
 ];
 
 const SmallDeviceSidebar = () => {
+	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleSidebar = () => {
 		setIsOpen(!isOpen);
@@ -139,17 +136,24 @@ const SmallDeviceSidebar = () => {
 					{linkItems.map((item) => (
 						<label
 							key={item.id}
-							className='text-xl'
 							aria-label='close sidebar'
 							htmlFor='sideBarSmallDevice'
 						>
 							<Link
 								href={item.link}
-								className='flex flex-row items-center gap-3 p-2 text-white'
+								className={`flex flex-row items-center gap-4 p-2 text-white font-medium  hover:bg-green-500 hover:text-white ${
+									pathname === item.link
+										? 'bg-green-500 text-white'
+										: 'text-gray-300'
+								}`}
 								onClick={closeSidebar}
 							>
-								{item.icon}
-								<span>{item.name}</span>
+								<span className='text-lg text-white font-semibold '>
+									{item.icon}
+								</span>
+								<span className='text-sm text-white font-bold '>
+									{item.name}
+								</span>
 							</Link>
 						</label>
 					))}
@@ -417,13 +421,6 @@ const SmallDeviceSidebar = () => {
 							</div>
 						</label>
 					</li> */}
-
-					{/* Logout Button */}
-					<li className='px-2'>
-						<button className='btn bg-green-500 text-white text-xl font-bold hover:bg-green-600'>
-							Logout
-						</button>
-					</li>
 				</ul>
 			</div>
 		</div>

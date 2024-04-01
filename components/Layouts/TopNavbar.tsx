@@ -34,56 +34,60 @@ const TopNavBar = () => {
 	return (
 		<div className='text-center bg-[#0f171c] text-white fixed top-0 w-full'>
 			<div className=' px-2 lg:px-6 mx-auto'>
-				<div className='navbar p-0'>
-					{/*Start Small Device drawer content here */}
-					<SmallDeviceSidebar />
-					{/*End Small Device drawer content here */}
+				<div className='navbar p-0 '>
+					<div className='mr-16 '>
+						{/*Start Small Device drawer content here */}
+						<SmallDeviceSidebar />
+						{/*End Small Device drawer content here */}
+					</div>
 
-					{/* Nav bar Big Device All Contents */}
-					<Link
-						className='md:flex hidden items-center gap-2 lg:navbar-start navbar-center'
-						href='/'
-					>
-						<Image
-							className='w-[200px]'
-							src='/logo.png'
-							alt=''
-							width={200}
-							height={100}
-							quality={100}
-						/>
-					</Link>
+					<div className='navbar-end w-full flex items-center justify-between gap-4 py-4'>
+						<Link
+							className='md:flex hidden items-center gap-2 lg:navbar-start navbar-center'
+							href='/'
+						>
+							<Image
+								className='w-[200px]'
+								src='/logo.png'
+								alt=''
+								width={200}
+								height={100}
+								quality={100}
+							/>
+						</Link>
 
-					<Link
-						className='flex lg:hidden items-center gap-2 lg:navbar-start navbar-center'
-						href='/'
-					>
-						<Image
-							className='w-[200]'
-							src='/logo2.png'
-							alt=''
-							width={150}
-							height={50}
-							quality={100}
-						/>
-					</Link>
+						<Link
+							className='flex lg:hidden items-center gap-2 lg:navbar-start navbar-center'
+							href='/'
+						>
+							<Image
+								className='w-[200]'
+								src='/logo2.png'
+								alt=''
+								width={150}
+								height={50}
+								quality={100}
+							/>
+						</Link>
+					</div>
 
 					{/*Start Wallet Info  */}
 					<WalletInfo />
 					{/*End Wallet Info  */}
 
-					{/*Start Notification Nav Item  */}
-					<div className=' navbar-end'>
-						<Notification />
+					<div className='navbar-end w-full  items-center flex justify-end  gap-4 '>
+						{' '}
+						{/*Start Notification Nav Item  */}
+						<div className=' '>
+							<Notification />
+						</div>
+						{/*End Notification Nav Item  */}
+						{/*Start Profile Nav Item  */}
+						<div className=''>
+							<Profile />
+						</div>
+						{/*End Profile Nav Item  */}
 					</div>
-
-					{/*End Notification Nav Item  */}
-
-					{/*Start Profile Nav Item  */}
-					<div className=' navbar-end'>
-						<Profile />
-					</div>
-					{/*End Profile Nav Item  */}
 				</div>
 			</div>
 		</div>
