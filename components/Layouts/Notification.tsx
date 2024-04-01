@@ -4,7 +4,7 @@ import { IoMdNotifications } from 'react-icons/io';
 
 const Notification = () => {
 	return (
-		<div className='drawer z-50 drawer-end  flex items-center justify-center '>
+		<div className='drawer z-50 drawer-end w-[fit-content]  flex items-center justify-center '>
 			<input id='my-drawer-4' type='checkbox' className='drawer-toggle' />
 			<div className='drawer-content'>
 				{/* Page content here */}
@@ -14,7 +14,7 @@ const Notification = () => {
 			</div>
 
 			<div className='drawer-side'>
-				<ul className='menu p-4  w-full md:w-80 min-h-full bg-base-200 text-base-content'>
+				<ul className='menu p-4 bg-icm-black-2   w-full md:w-80 min-h-full  text-base-content'>
 					<li className='border-b border-slate-700 '>
 						{' '}
 						<label

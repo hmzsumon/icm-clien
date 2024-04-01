@@ -33,7 +33,7 @@ import Profile from './Profile';
 const TopNavBar = () => {
 	return (
 		<div className='text-center bg-[#0f171c] text-white fixed top-0 w-full'>
-			<div className='container px-5 lg:px-0 mx-auto'>
+			<div className=' px-2 lg:px-6 mx-auto'>
 				<div className='navbar p-0'>
 					{/*Start Small Device drawer content here */}
 					<SmallDeviceSidebar />
@@ -59,28 +59,31 @@ const TopNavBar = () => {
 						href='/'
 					>
 						<Image
-							className='w-[fit-content]'
+							className='w-[200]'
 							src='/logo2.png'
 							alt=''
-							width={100}
+							width={150}
 							height={50}
 							quality={100}
 						/>
 					</Link>
 
-					<div className='navbar-end '>
-						{/*Start Wallet Info  */}
-						<WalletInfo />
-						{/*End Wallet Info  */}
+					{/*Start Wallet Info  */}
+					<WalletInfo />
+					{/*End Wallet Info  */}
 
-						{/*Start Notification Nav Item  */}
+					{/*Start Notification Nav Item  */}
+					<div className=' navbar-end'>
 						<Notification />
-						{/*End Notification Nav Item  */}
-
-						{/*Start Profile Nav Item  */}
-						<Profile />
-						{/*End Profile Nav Item  */}
 					</div>
+
+					{/*End Notification Nav Item  */}
+
+					{/*Start Profile Nav Item  */}
+					<div className=' navbar-end'>
+						<Profile />
+					</div>
+					{/*End Profile Nav Item  */}
 				</div>
 			</div>
 		</div>

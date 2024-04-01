@@ -11,7 +11,7 @@ const AuthLayout = ({
 	return (
 		<div>
 			<TopNavBar />
-			<div className=' grid md:grid-cols-6 pt-20'>
+			<div className=' grid md:grid-cols-6 pt-16 md:pt-20'>
 				<div className=' col-span-1'>
 					<SideNavBar />
 				</div>
