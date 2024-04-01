@@ -41,7 +41,7 @@ const TopNavBar = () => {
 
 					{/* Nav bar Big Device All Contents */}
 					<Link
-						className='flex items-center gap-2 lg:navbar-start navbar-center'
+						className='md:flex hidden items-center gap-2 lg:navbar-start navbar-center'
 						href='/'
 					>
 						<Image
@@ -50,6 +50,20 @@ const TopNavBar = () => {
 							alt=''
 							width={200}
 							height={100}
+							quality={100}
+						/>
+					</Link>
+
+					<Link
+						className='flex lg:hidden items-center gap-2 lg:navbar-start navbar-center'
+						href='/'
+					>
+						<Image
+							className='w-[fit-content]'
+							src='/logo2.png'
+							alt=''
+							width={100}
+							height={50}
 							quality={100}
 						/>
 					</Link>

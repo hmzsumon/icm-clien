@@ -9,7 +9,7 @@ const Notification = () => {
 			<div className='drawer-content'>
 				{/* Page content here */}
 				<label htmlFor='my-drawer-4' className='text-2xl '>
-					<IoMdNotifications />
+					<IoMdNotifications className='text-3xl text-white cursor-pointer' />
 				</label>
 			</div>
 

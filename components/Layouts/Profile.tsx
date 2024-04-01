@@ -3,13 +3,13 @@ import { RxAvatar } from 'react-icons/rx';
 
 const Profile = () => {
 	return (
-		<div className='dropdown  hidden lg:block'>
+		<div className='dropdown '>
 			<div
 				tabIndex={0}
 				role='button'
-				className='focus:bg-[#363d42] focus:text-[#FFCF01] rounded-none flex items-center gap-3 p-5 top-nav-item text-[1.5rem]'
+				className='focus:bg-[#363d42] focus:text-[#FFCF01] rounded-none flex items-center gap-3 p-5 top-nav-item cursor-pointer'
 			>
-				<RxAvatar />
+				<RxAvatar className='text-3xl' />
 			</div>
 			<ul
 				tabIndex={0}

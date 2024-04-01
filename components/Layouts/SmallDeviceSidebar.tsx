@@ -94,7 +94,7 @@ const SmallDeviceSidebar = () => {
 		setIsOpen(false);
 	};
 	return (
-		<div className='drawer lg:hidden navbar-start drawer-start'>
+		<div className='drawer  w-[fit-content] mr-6 lg:hidden navbar-start drawer-start'>
 			<input
 				id='sideBarSmallDevice'
 				type='checkbox'
