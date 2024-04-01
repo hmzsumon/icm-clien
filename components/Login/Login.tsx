@@ -1,5 +1,4 @@
 'use client';
-
 import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';

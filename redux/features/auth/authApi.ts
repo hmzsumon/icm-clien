@@ -41,26 +41,6 @@ export const authApi = apiSlice.injectEndpoints({
 			invalidatesTags: ['User'],
 		}),
 
-		// create password
-		createPassword: builder.mutation<IUser, any>({
-			query: (body) => ({
-				url: '/create-password',
-				method: 'POST',
-				body,
-			}),
-			invalidatesTags: ['User'],
-		}),
-
-		// change password
-		changePassword: builder.mutation<IUser, any>({
-			query: (body) => ({
-				url: '/change-password',
-				method: 'PUT',
-				body,
-			}),
-			invalidatesTags: ['User'],
-		}),
-
 		// login user
 		loginUser: builder.mutation<IUser, any>({
 			query: (body) => ({
@@ -110,25 +90,10 @@ export const authApi = apiSlice.injectEndpoints({
 			},
 		}),
 
-		// get my team
-		getMyTeam: builder.query<any, void>({
-			query: (id) => `/my-team/${id}`,
-			providesTags: ['User'],
-		}),
-
 		// resend verification email
 		resendVerificationEmail: builder.mutation<IUser, any>({
 			query: (body) => ({
 				url: '/resend-email-verification',
-				method: 'POST',
-				body,
-			}),
-		}),
-
-		// registration done
-		registrationDone: builder.mutation<IUser, any>({
-			query: (body) => ({
-				url: '/register-done',
 				method: 'POST',
 				body,
 			}),
@@ -141,12 +106,6 @@ export const authApi = apiSlice.injectEndpoints({
 				method: 'POST',
 				body,
 			}),
-		}),
-
-		// get logged in user level_1 mambers
-		getLoggedInUserLevel1Members: builder.query<any, void>({
-			query: (id) => `/get-level-1-members/${id}`,
-			providesTags: ['User'],
 		}),
 
 		// change email
@@ -176,16 +135,6 @@ export const authApi = apiSlice.injectEndpoints({
 			}),
 		}),
 
-		// add phone number
-		addPhoneNumber: builder.mutation<IUser, any>({
-			query: (body) => ({
-				url: '/add-phone-number',
-				method: 'PUT',
-				body,
-			}),
-			invalidatesTags: ['User'],
-		}),
-
 		// get all transactions
 		getAllTransactions: builder.query<any, void>({
 			query: () => '/getMyTransactions',
@@ -201,21 +150,6 @@ export const authApi = apiSlice.injectEndpoints({
 			query: () => `/13-level-tree-node`,
 		}),
 
-		// activate user
-		activateUser: builder.mutation<IUser, any>({
-			query: (body) => ({
-				url: '/activate-user',
-				method: 'PUT',
-				body,
-			}),
-			invalidatesTags: ['User'],
-		}),
-
-		// get after joining user
-		getAfterJoiningUser: builder.query<any, any>({
-			query: () => `/my-after-joining-users`,
-		}),
-
 		// find user by email or username
 		findUserByEmailOrUsername: builder.mutation<any, any>({
 			query: (emailOrUserName) => ({
@@ -224,28 +158,21 @@ export const authApi = apiSlice.injectEndpoints({
 			}),
 		}),
 
-		// get user_demo_count
-		getUserDemoCount: builder.query<any, any>({
-			query: () => `/user-demo-count`,
-		}),
-
-		// claim rank bonus
-		claimRankBonus: builder.mutation<any, any>({
-			query: () => ({
-				url: `/claim-rank-bonus`,
-				method: 'PUT',
+		// get user by partner id
+		getUserByPartnerId: builder.query<any, any>({
+			query: (partnerId) => ({
+				url: `/get-user-by-partner-id/${partnerId}`,
+				method: 'GET',
 			}),
-			invalidatesTags: ['User'],
 		}),
 
-		// reactivation user
-		reactivationUser: builder.mutation<any, any>({
+		// check email exist or not post request
+		checkEmailExistOrNot: builder.mutation<any, any>({
 			query: (body) => ({
-				url: `/reactivate-user`,
-				method: 'PUT',
+				url: `/check-email-exist`,
+				method: 'POST',
 				body,
 			}),
-			invalidatesTags: ['User'],
 		}),
 	}),
 });
@@ -254,26 +181,17 @@ export const {
 	useGetUsersQuery,
 	useRegisterUserMutation,
 	useVerifyEmailMutation,
-	useCreatePasswordMutation,
-	useChangePasswordMutation,
 	useLoginUserMutation,
 	useLogoutUserMutation,
-	useGetMyTeamQuery,
 	useResendVerificationEmailMutation,
-	useRegistrationDoneMutation,
 	useCheckUserByEmailMutation,
 	useLoadUserQuery,
-	useGetLoggedInUserLevel1MembersQuery,
 	useChangeEmailMutation,
 	useVerifyCodeForChangeEmailMutation,
-	useAddPhoneNumberMutation,
 	useGetAllTransactionsQuery,
 	useGetMembersByLevelQuery,
 	useGet13LevelTreeQuery,
-	useActivateUserMutation,
-	useGetAfterJoiningUserQuery,
 	useFindUserByEmailOrUsernameMutation,
-	useGetUserDemoCountQuery,
-	useClaimRankBonusMutation,
-	useReactivationUserMutation,
+	useGetUserByPartnerIdQuery,
+	useCheckEmailExistOrNotMutation,
 } = authApi;

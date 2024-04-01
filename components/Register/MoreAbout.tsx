@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { formatDate } from '@/lib/functions';
 import {
 	Button,
 	Card,
@@ -41,7 +42,14 @@ const MoreAbout = () => {
 		console.log(date);
 		if (date) {
 			setDobError(false);
-			setDateOfBirth(date.toISOString().substring(0, 10));
+			// Clone the date object to avoid mutating the original date
+			const newDate = new Date(date);
+
+			// Add one day to the date
+			newDate.setDate(newDate.getDate() + 1);
+
+			// Set the modified date as the DateOfBirth state
+			setDateOfBirth(newDate.toISOString().substring(0, 10));
 		} else {
 			setDobError(true);
 		}

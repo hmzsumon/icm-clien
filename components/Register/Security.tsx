@@ -89,7 +89,13 @@ const Security = () => {
 	// handle set passCode and validate 6 digit passcode
 	const handlePassCode = (e: any) => {
 		const pass = e.target.value;
-		setPassCode(pass);
+		// Ensure only digits are entered
+		if (/^\d{0,6}$/.test(pass)) {
+			setPassCode(pass);
+			setPassCodeError(false);
+		} else {
+			setPassCodeError(true);
+		}
 	};
 
 	return (
@@ -241,7 +247,7 @@ const Security = () => {
 						<div className='mb-2 block'>
 							<Label
 								htmlFor='passcode'
-								value='Passcode'
+								value={'Enter a 6 digit pass code'}
 								color={passCodeError ? 'failure' : ''}
 							/>
 						</div>

@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { fetchBaseQueryError } from '@/redux/services/helpers';
 import {
 	setActiveStep,
 	setCompletedStep,
@@ -9,12 +12,28 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Card, Checkbox, Label } from 'flowbite-react';
 import { formatDate } from '@/lib/functions';
+import {
+	useGetUserByPartnerIdQuery,
+	useRegisterUserMutation,
+} from '@/redux/features/auth/authApi';
 
 const Review = () => {
+	const [registerUser, { isSuccess, isLoading, isError, error }] =
+		useRegisterUserMutation();
 	const dispatch = useDispatch();
 	const { personalData, moreAboutData, securityData } = useSelector(
 		(state: any) => state.stepper
 	);
+
+	const { data, isLoading: isLoadingUser } = useGetUserByPartnerIdQuery(
+		personalData?.partnerCode
+	);
+	const { user } = data || {};
+
+	const [confirmDetails, setConfirmDetails] = useState(false);
+	const [confirmDetailsError, setConfirmDetailsError] = useState(false);
+	const [agreeToTerms, setAgreeToTerms] = useState(false);
+	const [agreeToTermsError, setAgreeToTermsError] = useState(false);
 
 	// useEffect to set the active step
 	useEffect(() => {
@@ -23,12 +42,30 @@ const Review = () => {
 
 	// next handler
 	const nextHandler = () => {
+		if (!confirmDetails) {
+			setConfirmDetailsError(true);
+			return;
+		}
+		if (!agreeToTerms) {
+			setAgreeToTermsError(true);
+			return;
+		}
 		const data = { ...personalData, ...moreAboutData, ...securityData };
-		console.log(data);
+		// console.log(data);
 
-		dispatch(setCompletedStep(4));
-		dispatch(handleNext());
+		registerUser(data);
 	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			toast.success('Account created successfully');
+			dispatch(setCompletedStep(4));
+			dispatch(handleNext());
+		}
+		if (isError) {
+			toast.error((error as fetchBaseQueryError).data?.message);
+		}
+	}, [isSuccess, isError, error]);
 	return (
 		<div className='my-10'>
 			<h1 className='text-2xl font-bold tracking-tight text-gray-800 my-2'>
@@ -97,21 +134,64 @@ const Review = () => {
 							<p className='text-gray-600  '>Postal / Zip Code</p>
 							<p className='text-gray-800 font-bold '>{moreAboutData.zip}</p>
 						</div>
+
+						<div>
+							<p className='text-gray-600  '>Refer By:</p>
+							<p className='text-gray-800 font-bold '>
+								{isLoadingUser ? (
+									<PulseLoader size={8} color={'#36d7b7'} />
+								) : (
+									user?.name
+								)}
+							</p>
+						</div>
 					</div>
 				</Card>
 				{/* End More Details */}
 
 				<div className='flex items-center gap-2'>
-					<Checkbox id='remember' />
-					<Label htmlFor='remember'>
+					<Checkbox
+						id='confirm_details'
+						onChange={() => {
+							setConfirmDetails(!confirmDetails);
+							setConfirmDetailsError(false);
+						}}
+						checked={confirmDetails}
+					/>
+					<Label
+						htmlFor='confirm_details'
+						color={confirmDetailsError ? 'failure' : ''}
+					>
 						I confirm that the details above are correct.
 					</Label>
 				</div>
+				{confirmDetailsError && (
+					<p className='text-red-500 text-xs ml-4 font-bold'>
+						You must confirm that the details above are correct!
+					</p>
+				)}
 
 				<div className='flex items-center gap-2'>
-					<Checkbox id='remember' />
-					<Label htmlFor='remember'>I agree to the terms and conditions</Label>
+					<Checkbox
+						id='agree_to_terms'
+						onChange={() => {
+							setAgreeToTerms(!agreeToTerms);
+							setAgreeToTermsError(false);
+						}}
+						checked={agreeToTerms}
+					/>
+					<Label
+						htmlFor='agree_to_terms'
+						color={agreeToTermsError ? 'failure' : ''}
+					>
+						I agree to the terms and conditions
+					</Label>
 				</div>
+				{agreeToTermsError && (
+					<p className='text-red-500 text-xs ml-4 font-bold '>
+						You must agree to the terms and conditions!
+					</p>
+				)}
 
 				{/* Buttons */}
 				<div className=' grid grid-cols-2 gap-4'>

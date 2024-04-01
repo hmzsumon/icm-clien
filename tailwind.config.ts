@@ -16,10 +16,10 @@ const config: Config = {
 			},
 			colors: {
 				'icm-green': '#34E834',
-				'another-color': '#34E834',
+				'icm-black-2': '#1D232A',
 			},
 		},
 	},
-	plugins: [require('flowbite/plugin')],
+	plugins: [require('flowbite/plugin'), require('daisyui')],
 };
 export default config;

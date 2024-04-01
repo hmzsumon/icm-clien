@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import { useSearchParams } from 'next/navigation';
 import {
 	Button,
@@ -19,20 +21,35 @@ import {
 	setPersonalData,
 } from '@/redux/stepperSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useCheckEmailExistOrNotMutation } from '@/redux/features/auth/authApi';
 
 const PersonalDetails = () => {
 	const dispatch = useDispatch();
+
+	const [checkEmailExistOrNot, { data, isSuccess, isLoading, isError, error }] =
+		useCheckEmailExistOrNotMutation();
+	const { isExist } = data || {};
+
+	useEffect(() => {
+		if (isExist) {
+			setEmailError(true);
+			setEmailErrorText('Email already exist');
+		}
+	}, [isExist]);
 
 	const [country, setCountry] = useState('');
 	const [name, setName] = useState('');
 	const [nameError, setNameError] = useState(false);
 	const [email, setEmail] = useState('');
 	const [emailError, setEmailError] = useState(false);
-	const [mobile, setMobile] = useState('');
-	const [mobileError, setMobileError] = useState(false);
-
+	const [emailErrorText, setEmailErrorText] = useState(
+		'Please enter a valid email address'
+	);
+	const [code, setCode] = useState<string>('us');
 	const [partnerCode, setPartnerCode] = useState<string>('');
 	const [edit, setEdit] = useState(true);
+	const [phone, setPhone] = useState<string>('');
+	const [phoneError, setPhoneError] = useState<boolean>(false);
 
 	const searchParams = useSearchParams();
 	const partner_code = searchParams.get('partner_code');
@@ -49,15 +66,64 @@ const PersonalDetails = () => {
 		dispatch(setActiveStep(1));
 	}, [dispatch]);
 
+	const handlePhoneNumberChange = (value: string) => {
+		if (value) {
+			setPhoneError(false);
+		}
+		setPhone(value);
+	};
+
+	// handle country change
+	const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setCountry(e.target.value);
+
+		// set code based on selected country
+		const selectedCountry = countries.find(
+			(countryItem) => countryItem.name === e.target.value
+		);
+		console.log(selectedCountry);
+		if (selectedCountry) {
+			setCode(selectedCountry.code.toLocaleLowerCase());
+		}
+	};
+
+	// handle email change
+	const handleEmailCheck = () => {
+		const data = {
+			email,
+		};
+		if (email) {
+			checkEmailExistOrNot(data);
+		}
+	};
+
 	// next handler
 	const nextHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (nameError || name === '' || emailError || email === '' || mobileError)
+		if (
+			nameError ||
+			name === '' ||
+			emailError ||
+			email === '' ||
+			phoneError ||
+			phone === ''
+		)
 			return;
-		dispatch(setPersonalData({ country, name, email, mobile, partnerCode }));
+		dispatch(
+			setPersonalData({
+				country,
+				name,
+				email,
+				mobile: phone,
+				partnerCode: partnerCode ? partnerCode : '202000',
+			})
+		);
 		dispatch(setCompletedStep(1));
 		dispatch(handleNext());
 	};
+
+	// error handler
+
 	return (
 		<div className='mb-4 '>
 			<h1 className='text-xl font-bold mb-4 ml-1'>
@@ -74,7 +140,7 @@ const PersonalDetails = () => {
 						<Select
 							id='countries'
 							value={country}
-							onChange={(e) => setCountry(e.target.value)}
+							onChange={(e) => handleCountryChange(e)}
 							required
 						>
 							<option value='' disabled>
@@ -117,8 +183,6 @@ const PersonalDetails = () => {
 					{/* End Name */}
 
 					{/* Start Email */}
-
-					{/* Start Email */}
 					<div>
 						<div className='mb-2 block'>
 							<Label
@@ -135,18 +199,17 @@ const PersonalDetails = () => {
 							color={emailError ? 'failure' : ''}
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							onBlur={() =>
+							onBlur={() => {
+								handleEmailCheck();
 								setEmailError(
 									(email.length > 0 && !email.includes('@')) ||
 										email.length === 0
-								)
-							}
+								);
+							}}
 							helperText={
 								<>
 									{emailError && (
-										<span className='text-xs'>
-											Please enter a valid email address
-										</span>
+										<span className='text-xs'>{emailErrorText}</span>
 									)}
 								</>
 							}
@@ -154,36 +217,39 @@ const PersonalDetails = () => {
 					</div>
 					{/* End Email */}
 
-					{/* Start mobile */}
+					{/* Start Phone*/}
+
 					<div>
 						<div className='mb-2 block'>
-							<Label
-								htmlFor='mobile'
-								value='Your mobile number'
-								color={mobileError ? 'failure' : ''}
-							/>
+							<Label htmlFor='phone' value='Your phone number ' />
 						</div>
-						<TextInput
-							id='mobile'
-							type='text'
-							placeholder='Enter your mobile number'
-							required
-							color={mobileError ? 'failure' : ''}
-							value={mobile}
-							onChange={(e) => setMobile(e.target.value)}
-							onBlur={() => setMobileError(mobile.length < 10)}
-							helperText={
-								<>
-									{mobileError && (
-										<span className='text-xs'>
-											Please enter a valid mobile number
-										</span>
-									)}
-								</>
-							}
+						<PhoneInput
+							placeholder='Enter phone number'
+							value={phone}
+							onChange={(phoneNumber) => handlePhoneNumberChange(phoneNumber)}
+							country={code}
+							dropdownStyle={{
+								backgroundColor: '#05003A',
+								color: 'gray',
+							}}
+							inputStyle={{
+								backgroundColor: 'transparent',
+								color: ` ${phoneError ? 'red' : 'gray'}`,
+								width: '100%',
+								height: '42px',
+								border: ` ${phoneError ? '1px solid red' : '1px solid gray'}`,
+								borderRadius: '5px',
+							}}
+							buttonStyle={{
+								backgroundColor: 'transparent',
+								borderColor: ` ${phoneError ? 'red' : 'gray'}`,
+							}}
+							countryCodeEditable={false}
+							disableDropdown={true}
 						/>
 					</div>
-					{/* End mobile */}
+
+					{/* End Phone*/}
 
 					{/* Start Partner code */}
 
@@ -195,7 +261,6 @@ const PersonalDetails = () => {
 							id='partnerCode'
 							type='text'
 							placeholder='Enter your partner code'
-							required
 							value={partnerCode}
 							onChange={(e) => setPartnerCode(e.target.value)}
 							disabled={edit ? false : true}
