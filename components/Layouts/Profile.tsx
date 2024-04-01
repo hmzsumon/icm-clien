@@ -3,7 +3,7 @@ import { RxAvatar } from 'react-icons/rx';
 
 const Profile = () => {
 	return (
-		<div className='dropdown dropdown-bottom py-4 flex justify-end'>
+		<div className='dropdown dropdown-bottom  flex justify-end'>
 			<div
 				tabIndex={0}
 				role='button'
@@ -13,7 +13,7 @@ const Profile = () => {
 			</div>
 			<ul
 				tabIndex={0}
-				className='dropdown-bg bg-icm-black-2 dropdown-content rounded-none right-0 w-[300px] h-[fit-content] z-[1] mt-0'
+				className=' bg-icm-black-2 dropdown-content rounded-b-lg -right-2 md:-right-6 w-[300px] h-[fit-content] z-[1] mt-4 md:mt-6'
 			>
 				<div className='space-y-3'>
 					<div className='text-center py-5 space-y-3'>
