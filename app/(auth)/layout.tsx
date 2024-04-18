@@ -15,7 +15,7 @@ const AuthLayout = ({
 				<div className=' col-span-1'>
 					<SideNavBar />
 				</div>
-				<div className='px-2 md:col-span-5 bg-zinc-300 w-full'>{children}</div>
+				<div className=' md:col-span-5 bg-white w-full'>{children}</div>
 			</div>
 			<HomeFooter />
 		</div>

@@ -1,5 +1,5 @@
 import { apiSlice } from '../api/apiSlice';
-import { setUser, logoutUser } from './authSlice';
+import { setUser, logoutUser, loadUser } from './authSlice';
 export interface IUser {
 	user: any;
 	token: string;
@@ -61,12 +61,12 @@ export const authApi = apiSlice.injectEndpoints({
 
 		// get user by token._id from cookie
 		loadUser: builder.query<any, void>({
-			query: (id) => `/load-user`,
+			query: () => `/load-user`,
 			providesTags: ['User'],
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				try {
 					const result = await queryFulfilled;
-					dispatch(setUser(result.data));
+					dispatch(loadUser(result.data));
 				} catch (error) {
 					// diclear error type
 					error as any;
@@ -78,7 +78,7 @@ export const authApi = apiSlice.injectEndpoints({
 		logoutUser: builder.mutation({
 			query: () => ({
 				url: `/logout`,
-				method: 'PUT',
+				method: 'POST',
 			}),
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				try {

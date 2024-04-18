@@ -1,20 +1,50 @@
 'use client';
+import { toast } from 'react-toastify';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { fetchBaseQueryError } from '@/redux/services/helpers';
 import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Link from 'next/link';
+import { useLoginUserMutation } from '@/redux/features/auth/authApi';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+	const [loginUser, { isLoading, isError, error, isSuccess }] =
+		useLoginUserMutation();
 	const [email, setEmail] = useState('');
 	const [emailError, setEmailError] = useState(false);
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
+	const router = useRouter();
+	// handle login
+	const handleLogin = async (e: any) => {
+		e.preventDefault();
+		if (email.length > 0 && !email.includes('@')) {
+			setEmailError(true);
+			toast.error('Please enter a valid email address');
+			return;
+		}
+		loginUser({ email, password });
+	};
+
+	// useEffect to handle success
+	useEffect(() => {
+		if (isSuccess) {
+			toast.success('Login successful');
+			router.push('/dashboard');
+		}
+
+		if (isError) {
+			toast.error((error as fetchBaseQueryError).data?.message);
+		}
+	}, [isSuccess, isError, error]);
 
 	return (
 		<>
 			<h1 className='text-xl font-bold mb-4'>Please Login to your account.</h1>
-			<Card className='max-w-md w-full '>
-				<form className='flex flex-col gap-4'>
+			<Card className='max-w-md w-full bg-black border-none'>
+				<form className='flex flex-col gap-4' onSubmit={handleLogin}>
 					{/* Start Email */}
 					<div>
 						<div className='mb-2 block'>
@@ -51,7 +81,11 @@ const Login = () => {
 					{/* End Email */}
 					<div>
 						<div className='mb-2 block'>
-							<Label htmlFor='password1' value='Your password' />
+							<Label
+								htmlFor='password1'
+								value='Your password'
+								color={emailError ? 'failure' : ''}
+							/>
 						</div>
 						<div className='mb-2 block relative'>
 							<TextInput
@@ -86,7 +120,16 @@ const Login = () => {
 							</Link>
 						</p>
 					</div>
-					<Button type='submit'>Submit</Button>
+					<Button
+						type='submit'
+						className='bg-green-500 hover:bg-icm-green text-white'
+					>
+						{isLoading ? (
+							<PulseLoader color='#fff' size={8} margin={2} />
+						) : (
+							<span>Login</span>
+						)}
+					</Button>
 				</form>
 			</Card>
 		</>

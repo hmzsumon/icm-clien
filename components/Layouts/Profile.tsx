@@ -1,7 +1,34 @@
-import React from 'react';
+'use client';
+import { toast } from 'react-toastify';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { fetchBaseQueryError } from '@/redux/services/helpers';
+import { useLogoutUserMutation } from '@/redux/features/auth/authApi';
+import React, { useEffect } from 'react';
 import { RxAvatar } from 'react-icons/rx';
+import { useRouter } from 'next/navigation';
 
 const Profile = () => {
+	const router = useRouter();
+	const [logout, { data, isLoading, isSuccess, isError, error }] =
+		useLogoutUserMutation();
+
+	// handle logout
+	const handleLogout = async () => {
+		logout(undefined);
+	};
+
+	// useEffect to handle success
+	useEffect(() => {
+		if (isSuccess) {
+			toast.success('Logout successful');
+			router.push('/');
+		}
+
+		if (isError) {
+			toast.error((error as fetchBaseQueryError).data?.message);
+		}
+	}, [isSuccess, isError, error]);
+
 	return (
 		<div className='dropdown dropdown-bottom  flex justify-end'>
 			<div
@@ -41,12 +68,12 @@ const Profile = () => {
 						</li>
 						<div className='h-[0.5px] bg-slate-500 w-full my-5'></div>
 						<li>
-							<a
-								className='w-full block pl-5 text-[14px]  hover:bg-[#0F171C] py-2 hover:text-[#FFCF01]'
-								href=''
+							<button
+								className='w-full block pl-5 text-[14px]  hover:bg-[#0F171C] py-2 hover:text-icm-green'
+								onClick={handleLogout}
 							>
 								Sign Out
-							</a>
+							</button>
 						</li>
 					</ul>
 				</div>

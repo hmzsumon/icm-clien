@@ -1,6 +1,10 @@
+import { useLoadUserQuery } from '@/redux/features/auth/authApi';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const WalletInfo = () => {
+	useLoadUserQuery();
+	const { user } = useSelector((state: any) => state.auth);
 	return (
 		<div className='dropdown hidden lg:block  w-full'>
 			<div
@@ -8,7 +12,11 @@ const WalletInfo = () => {
 				role='button'
 				className='focus:bg-[#363d42] focus:text-[#FFCF01] rounded-none flex items-center gap-3 p-5 top-nav-item text-[1.5rem]'
 			>
-				0.00 USD
+				{Number(user?.m_balance).toLocaleString(undefined, {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}{' '}
+				USDT
 			</div>
 			<ul
 				tabIndex={0}
@@ -17,7 +25,9 @@ const WalletInfo = () => {
 				<div className='my-3'>
 					<p className='text-sm text-nowrap text-white'>Trading account</p>
 					<p className='text-[8px] text-slate-300'>#145683519</p>
-					<p className='text-white uppercase text-lg font-semibold'>0.00 USD</p>
+					<p className='text-white uppercase text-lg font-semibold'>
+						0.00 USDT
+					</p>
 				</div>
 				<div className='flex items-center gap-5 mt-3 mb-3'>
 					<button className='rounded py-2 px-16 primary-border primary-color'>
@@ -31,7 +41,9 @@ const WalletInfo = () => {
 				<div className='my-3'>
 					<p className='text-sm text-nowrap text-white'>Investment wallet</p>
 					<p className='text-[8px] text-slate-300'>#301158329</p>
-					<p className='text-white uppercase text-lg font-semibold'>0.00 USD</p>
+					<p className='text-white uppercase text-lg font-semibold'>
+						0.00 USDT
+					</p>
 				</div>
 			</ul>
 		</div>

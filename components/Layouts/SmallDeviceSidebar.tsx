@@ -36,6 +36,12 @@ const linkItems = [
 		icon: <PiPlugsLight />,
 	},
 	{
+		id: 12,
+		name: 'Transactions',
+		link: '/transactions',
+		icon: <GiTimeTrap />,
+	},
+	{
 		id: 4,
 		name: 'Security',
 		link: '/security',

@@ -10,6 +10,8 @@ import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { TiSocialInstagram } from 'react-icons/ti';
 import { DiGoogleAnalytics } from 'react-icons/di';
 import { IoSettingsSharp } from 'react-icons/io5';
+import { ImUserPlus } from 'react-icons/im';
+import { FaHandshakeSimple } from 'react-icons/fa6';
 
 const sideNavItems = [
 	{
@@ -27,20 +29,20 @@ const sideNavItems = [
 	{
 		id: 3,
 		name: 'Withdraw',
-		link: '/withdrawal',
+		link: '/withdraw',
 		icon: <RiShareForward2Fill />,
 	},
 	{
 		id: 4,
-		name: 'Transaction History',
-		link: '/transactionHistory',
+		name: 'Transactions',
+		link: '/transactions',
 		icon: <GiTimeTrap />,
 	},
 	{
 		id: 5,
-		name: 'Analytics',
-		link: '/analytics',
-		icon: <TbDeviceDesktopAnalytics />,
+		name: 'Partnership',
+		link: '/partnership',
+		icon: <FaHandshakeSimple />,
 	},
 	{
 		id: 6,

@@ -21,14 +21,17 @@ export const authSlice = createSlice({
 			state.isAuthenticated = true;
 			Cookies.set('icm-token', action.payload.token, { expires: 1 });
 		},
+		loadUser: (state, action) => {
+			state.user = action.payload.user;
+		},
 		logoutUser: (state) => {
 			state.user = null;
 			state.token = null;
 			state.isAuthenticated = false;
-			Cookies.remove('token');
+			Cookies.remove('icm-token');
 		},
 	},
 });
 
-export const { setBtnLogin, setUser, logoutUser } = authSlice.actions;
+export const { setBtnLogin, setUser, logoutUser, loadUser } = authSlice.actions;
 export default authSlice.reducer;

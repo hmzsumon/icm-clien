@@ -37,3 +37,11 @@ export const maskPhoneNumber = (phoneNumber: string) => {
 		.replace(/./g, '*'); // Mask the middle digits
 	return firstThreeDigits + maskedDigits + lastTwoDigits;
 };
+
+// balance formatter
+export const formatBalance = (balance: number = 0): string => {
+	return balance.toLocaleString(undefined, {
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2,
+	});
+};
