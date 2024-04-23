@@ -48,7 +48,7 @@ const TopNavBar = () => {
 						>
 							<Image
 								className='w-[200px]'
-								src='/logo.png'
+								src='/logo3.png'
 								alt=''
 								width={200}
 								height={100}
@@ -62,7 +62,7 @@ const TopNavBar = () => {
 						>
 							<Image
 								className='w-[200]'
-								src='/logo2.png'
+								src='/logo3.png'
 								alt=''
 								width={150}
 								height={50}

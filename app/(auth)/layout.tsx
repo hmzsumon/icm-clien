@@ -1,4 +1,5 @@
 import HomeFooter from '@/components/Layouts/HomeFooter';
+import HomeFooter2 from '@/components/Layouts/HomeFooter2';
 import SideNavBar from '@/components/Layouts/SideNavbar';
 import TopNavBar from '@/components/Layouts/TopNavbar';
 import React from 'react';
@@ -18,7 +19,7 @@ const AuthLayout = ({
 
 				<div className=' md:col-span-7 bg-white w-full'>{children}</div>
 			</div>
-			<HomeFooter />
+			<HomeFooter2 />
 		</div>
 	);
 };

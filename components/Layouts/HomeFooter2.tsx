@@ -2,28 +2,24 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const HomeFooter = () => {
+const HomeFooter2 = () => {
 	return (
 		<div className=' pt-10 bg-[#0F171C]  text-white pb-4 w-full z-10  px-4'>
 			<div className=' md:w-8/12 w-full mx-auto'>
 				<div className=' grid md:grid-cols-4 gap-2'>
 					<div>
 						<Image
-							src='/logo.png'
+							src='/logo3.png'
 							alt='IC market Logo'
 							width={300}
 							height={100}
 							className='object-contain w-40 h-6'
 						/>
 						<p className=' text-xs text-[#777777] leading-4 tracking-tight'>
-							IC Markets Partner mission is to create the best trading
-							experience for retail and institutional clients alike, allowing
-							traders to focus more on their trading. Built by traders for
-							traders IC Markets Partner is dedicated to offering superior
-							spreads, execution and service
+							Personal Investment Project.
 						</p>
 					</div>
-					<div></div>
+					{/* <div></div>
 					<div></div>
 					<div>
 						<h1 className='text-sm font-bold'>About IC Markets Partner?</h1>
@@ -54,9 +50,9 @@ const HomeFooter = () => {
 								</Link>
 							</li>
 						</ul>
-					</div>
+					</div> */}
 				</div>
-				<hr className='border-t border-gray-700 my-6 w-full' />
+				{/* <hr className='border-t border-gray-700 my-6 w-full' />
 				<div className=' space-y-2'>
 					<p className='text-xs text-[#777777]'>
 						IC Markets Partner is the trading name of Raw Trading Ltd, which is
@@ -70,11 +66,11 @@ const HomeFooter = () => {
 					>
 						Legal Documents
 					</Link>
-				</div>
+				</div> */}
 				<hr className='border-t border-gray-700 mt-6 mb-2 w-full' />
 				<div>
 					<p className='text-xs text-white'>
-						© 2024 Raw Trading Ltd | All rights reserved
+						© 2024 IC Markets Partner | All rights reserved
 					</p>
 				</div>
 			</div>
@@ -82,4 +78,4 @@ const HomeFooter = () => {
 	);
 };
 
-export default HomeFooter;
+export default HomeFooter2;

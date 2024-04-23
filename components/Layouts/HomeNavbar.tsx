@@ -10,7 +10,7 @@ const HomeNavbar = () => {
 		<Navbar fluid className='bg-gray-950 p-4 sticky top-0 z-50'>
 			<Navbar.Brand>
 				<Image
-					src='/logo.png'
+					src='/logo2.png'
 					alt='IC market Logo'
 					width={400}
 					height={100}
