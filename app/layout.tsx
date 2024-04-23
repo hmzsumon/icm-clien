@@ -4,7 +4,7 @@ import './globals.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StoreProvider from './StoreProvider';
-import FacebookMsg from '@/components/FacebookMsg';
+// import FacebookMsg from '@/components/FacebookMsg';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
 			<body className={inter.className} suppressHydrationWarning={true}>
 				<StoreProvider>{children}</StoreProvider>
 				<ToastContainer />
-				{process.env.NODE_ENV === 'production' && <FacebookMsg />}
+				{/* {process.env.NODE_ENV === 'production' && <FacebookMsg />} */}
 			</body>
 		</html>
 	);
