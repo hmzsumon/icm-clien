@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const HomeFooter = () => {
 	return (
-		<div className=' pt-10 bg-black text-white pb-4 w-full  px-4'>
+		<div className=' pt-10  text-white pb-4 w-full z-10  px-4'>
 			<div className=' md:w-8/12 w-full mx-auto'>
 				<div className=' grid md:grid-cols-4 gap-2'>
 					<div>

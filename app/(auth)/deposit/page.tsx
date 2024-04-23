@@ -1,4 +1,5 @@
 'use client';
+import { Button } from 'flowbite-react';
 import Link from 'next/link';
 import React from 'react';
 import { CiUnlock } from 'react-icons/ci';
@@ -15,6 +16,110 @@ import {
 } from 'react-icons/tb';
 import { Tooltip } from 'react-tooltip';
 
+const depositMethods = [
+	{
+		id: 20,
+		title: 'Tron (TRX)',
+		isActive: true,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 10,000,000',
+		icon: null,
+		img: '/assets/icons/tron-trx.webp',
+	},
+	{
+		id: 1,
+		title: 'BinancePay',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 20,000',
+		icon: <SiBinance />,
+		img: null,
+	},
+	{
+		id: 2,
+		title: 'Tether (USDT TRC20)',
+		isActive: true,
+		processingTime: 1,
+		fee: 0,
+		limit: '10 - 10,000,000',
+		icon: <SiTether />,
+	},
+	{
+		id: 3,
+		title: 'Bank Card',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 10,000',
+		icon: <FaRegCreditCard />,
+	},
+	{
+		id: 4,
+		title: 'Neteller',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 50,000',
+		icon: <TbBrandNetflix />,
+	},
+	{
+		id: 5,
+		title: 'Perfect Money',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 100,000',
+		icon: <FcMoneyTransfer />,
+	},
+	{
+		id: 6,
+		title: 'Skrill',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 100,000',
+		icon: <TbLetterS />,
+	},
+	{
+		id: 7,
+		title: 'SticPay',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 100,000',
+		icon: <TbCircleLetterS />,
+	},
+	{
+		id: 8,
+		title: 'Tether (USDT ERC20)',
+		isActive: false,
+		processingTime: 1,
+		fee: 0,
+		limit: '10 - 100,000,000',
+		icon: <TbBrandTether />,
+	},
+	{
+		id: 9,
+		title: 'USD Coin (USDT ERC20)',
+		isActive: false,
+		processingTime: 1,
+		fee: 0,
+		limit: '10 - 100,000,000',
+		icon: <IoLogoUsd />,
+	},
+	{
+		id: 10,
+		title: 'USD Coin (USDT ERC20)',
+		isActive: false,
+		processingTime: 1,
+		fee: 0,
+		limit: '10 - 100,000,000',
+		icon: <IoLogoUsd />,
+	},
+];
+
 const Deposit = () => {
 	return (
 		<div className=' px-4 py-6'>
@@ -23,346 +128,80 @@ const Deposit = () => {
 				Verification required
 			</h3>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<SiBinance />
-								</span>
-								<h3 className='text-lg font-medium'>BinancePay</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
+				{depositMethods.map((method) => {
+					return (
+						<div key={method.id}>
+							<div className='border rounded-lg w-full duration-300 verification-card '>
+								<div className='p-4 border-b flex items-center justify-between'>
+									<div className='flex items-center gap-2'>
+										{method.img ? (
+											<img
+												src={method.img}
+												alt={method.title}
+												className='w-8 h-8 rounded-full'
+											/>
+										) : (
+											<span className='text-3xl'>{method.icon}</span>
+										)}
+
+										<h3 className='text-lg font-medium'>{method.title}</h3>
+									</div>
+									{method.isActive ? (
+										<div className='relative'>
+											<div
+												className=''
+												data-tooltip-id='unavialble'
+												data-tooltip-content='You need complete the verification'
+												data-tooltip-place='bottom'
+												data-tooltip-class-name='custom-tooltip'
+											>
+												<p className='flex items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-sm text-black'>
+													<span>
+														<CiUnlock />
+													</span>
+													<span>Recomended</span>
+													<Tooltip id='unavialble' />
+												</p>
+											</div>
+										</div>
+									) : (
+										<div className='relative'>
+											<div
+												className=''
+												data-tooltip-id='unavialble'
+												data-tooltip-content='You need complete the verification'
+												data-tooltip-place='bottom'
+												data-tooltip-class-name='custom-tooltip'
+											>
+												<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
+													<span>
+														<IoMdLock />
+													</span>
+													<span>Unavialble</span>
+													<Tooltip id='unavialble' />
+												</p>
+											</div>
+										</div>
+									)}
+								</div>
+								<div className='p-4 text-sm font-light'>
+									<p>Processing time instant - {method.processingTime}</p>
+									<p>Fee {method.fee}%</p>
+									<p>Limits {method.limit} USD</p>
+								</div>
+								<div className=' p-4'>
+									<Button
+										gradientMonochrome='success'
+										className='w-full'
+										disabled={!method.isActive}
+									>
+										Pay Now
+									</Button>
 								</div>
 							</div>
 						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 20,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<SiTether />
-								</span>
-								<h3 className='text-lg font-medium'>Tether (USDT TRC20)</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-sm text-black'>
-										<span>
-											<CiUnlock />
-										</span>
-										<span>Recomended</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 1 day</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 10,000,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<FaRegCreditCard />
-								</span>
-								<h3 className='text-lg font-medium'>Bank Card</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 10,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<TbBrandNetflix />
-								</span>
-								<h3 className='text-lg font-medium'>Neteller</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 50,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<FcMoneyTransfer />
-								</span>
-								<h3 className='text-lg font-medium'>Perfect Money</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<TbLetterS />
-								</span>
-								<h3 className='text-lg font-medium'>Skrill</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<TbCircleLetterS />
-								</span>
-								<h3 className='text-lg font-medium'>SticPay</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 30 minutes</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<TbBrandTether />
-								</span>
-								<h3 className='text-lg font-medium'>Tether (USDT ERC20)</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 1 day</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<IoLogoUsd />
-								</span>
-								<h3 className='text-lg font-medium'>USD Coin (USDT ERC20)</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 1 day</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000,000 USD</p>
-						</div>
-					</div>
-				</Link>
-				<Link href={`/ps`}>
-					<div className='border rounded-lg w-full duration-300 verification-card '>
-						<div className='p-4 border-b flex items-center justify-between'>
-							<div className='flex items-center gap-2'>
-								<span className='text-3xl'>
-									<IoLogoUsd />
-								</span>
-								<h3 className='text-lg font-medium'>USD Coin (USDT ERC20)</h3>
-							</div>
-							<div className='relative'>
-								<div
-									className=''
-									data-tooltip-id='unavialble'
-									data-tooltip-content='You need complete the verification'
-									data-tooltip-place='bottom'
-									data-tooltip-class-name='custom-tooltip'
-								>
-									<p className='flex items-center gap-1 rounded-xl secondary-bg px-2 py-1 text-sm text-[#745500]'>
-										<span>
-											<IoMdLock />
-										</span>
-										<span>Unavialble</span>
-										<Tooltip id='unavialble' />
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='p-4 text-sm font-light'>
-							<p>Processing time instant - 1 day</p>
-							<p>Fee 0%</p>
-							<p>Limits 10 - 100,000,000 USD</p>
-						</div>
-					</div>
-				</Link>
+					);
+				})}
 			</div>
 		</div>
 	);

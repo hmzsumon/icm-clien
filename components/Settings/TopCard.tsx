@@ -1,0 +1,66 @@
+import { FaDollarSign, FaRegCircleQuestion } from 'react-icons/fa6';
+import { Card } from 'flowbite-react';
+import { RxAvatar } from 'react-icons/rx';
+import { Tooltip } from 'react-tooltip';
+
+const TopCard = () => {
+	return (
+		<div className=' '>
+			<div className='grid grid-cols-1 md:grid-cols-2 gap-5 py-2 '>
+				{/* Verification */}
+				<Card className=''>
+					<div className='flex justify-between items-center'>
+						<div className='flex items-center gap-3'>
+							<span className='text-2xl p-2  border-4 rounded-full text-black'>
+								<RxAvatar />
+							</span>
+							<div className='space-y-1'>
+								<p className='text-[12px] font-medium text-primary'>
+									Verification status
+								</p>
+								<p className='text-[#C0424D] text-lg font-semibold'>
+									Not verified
+								</p>
+								<p className='text-[12px]'>0/3 steps complete</p>
+							</div>
+						</div>
+						<button className='rounded py-2 px-4 text-[14px] border-slate-400 border text-slate-700 duration-300 hover:bg-[#EBEDEE]'>
+							Complete Now
+						</button>
+					</div>
+				</Card>
+				{/* balance */}
+				<Card>
+					<div className='flex justify-between items-center'>
+						<div className='flex items-center gap-3'>
+							<span className='text-2xl p-2  border-4 rounded-full text-black'>
+								<FaDollarSign />
+							</span>
+							<div className='space-y-1'>
+								<p
+									data-tooltip-id='unavialble'
+									data-tooltip-content='This is the maximum amount you can currently deposit. Once you reach the limit, you will not be able to deposit or receive internal transfers. Withdrawals will remain available.'
+									data-tooltip-place='bottom'
+									data-tooltip-class-name='custom-tooltip'
+									className='text-[12px] font-medium text-primary w-[fit-content] flex items-center gap-1 cursor-default select-none'
+								>
+									Withdraw limit
+									<span>
+										<FaRegCircleQuestion />
+									</span>
+									<Tooltip id='unavialble' />
+								</p>
+								<p className='text-lg font-semibold'>20,000 USD</p>
+								<p className='text-[12px]'>
+									Verify your account to unlock limits
+								</p>
+							</div>
+						</div>
+					</div>
+				</Card>
+			</div>
+		</div>
+	);
+};
+
+export default TopCard;

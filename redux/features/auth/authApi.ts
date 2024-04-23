@@ -174,6 +174,14 @@ export const authApi = apiSlice.injectEndpoints({
 				body,
 			}),
 		}),
+
+		// my address
+		myAddress: builder.query<any, any>({
+			query: () => ({
+				url: `/my-address`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -194,4 +202,5 @@ export const {
 	useFindUserByEmailOrUsernameMutation,
 	useGetUserByPartnerIdQuery,
 	useCheckEmailExistOrNotMutation,
+	useMyAddressQuery,
 } = authApi;

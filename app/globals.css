@@ -198,3 +198,89 @@ body .analyst ul::-webkit-scrollbar-thumb {
 	/* Add other styles as needed */
 }
 /*End Registration Banner */
+
+/*Star Tree View CSS */
+.tree {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* .node {
+	background-image: url('/user.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 200px;
+} */
+
+/* .node:not(.node--root) .node_element::before {
+	content: '';
+	width: 1px;
+	height: 20px;
+	background-color: rgb(1, 179, 1);
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -20px;
+	margin: auto;
+}
+
+.left-node::before {
+	content: '';
+	width: 100%;
+	height: 1px;
+	background-color: rgb(1, 179, 1);
+	display: block;
+	position: absolute;
+	left: 50%;
+	right: 0;
+	top: -21px;
+	margin: auto;
+}
+.right-node::before {
+	content: '';
+	width: 100%;
+	height: 1px;
+	background-color: rgb(1, 179, 1);
+	display: block;
+	position: absolute;
+	left: -96%;
+	right: 0;
+	top: -21px;
+	margin: auto;
+}
+
+.node_element {
+	height: 40px;
+	background-color: rgb(1, 179, 1);
+	border-radius: 16px;
+	color: white;
+	min-width: 60px;
+	padding: 4px 8px;
+	font-size: 12px;
+	line-height: 32px;
+	text-align: center;
+}
+
+.node_bottom-line {
+	height: 20px;
+	width: 1px;
+	background-color: rgb(1, 179, 1);
+}
+
+.node_children_top_line {
+	height: 1px;
+	width: 118px;
+	background-color: rgb(1, 179, 1);
+}
+
+.node_children {
+	display: flex;
+	justify-content: space-between;
+	width: fit-content;
+	padding: 20px;
+	border-top: 1px solid rgb(1, 179, 1);
+	background-color: red;
+} */

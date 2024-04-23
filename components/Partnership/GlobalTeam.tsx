@@ -27,7 +27,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>
@@ -53,7 +53,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>
@@ -79,7 +79,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>
@@ -106,7 +106,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>
@@ -134,7 +134,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>
@@ -162,7 +162,7 @@ const GlobalTeam = () => {
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								100$
 							</p>
 						</div>
 					</Accordion.Title>

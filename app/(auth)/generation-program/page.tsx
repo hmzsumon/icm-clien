@@ -1,34 +1,47 @@
 'use client';
 import Generations from '@/components/Partnership/Generations';
 import GenerationSellsInfo from '@/components/Partnership/GenerationSellsInfo';
-import PartnerLinkCard from '@/components/Partnership/PartnerLinkCard';
-import Partners from '@/components/Partnership/Partners';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiCopy } from 'react-icons/fi';
 import { IoIosLink } from 'react-icons/io';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { RiArrowRightUpLine } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
+import { RWebShare } from 'react-web-share';
 
 const GenerationProgram = () => {
+	const { user } = useSelector((state: any) => state.auth);
+	// get host
+	const host = window.location.host;
+	// create referral link wit user customer_id
+	let referralLink = '';
+	if (process.env.NODE_ENV === 'development') {
+		referralLink = `http://${host}/register?partner_code=${user?.partner_id}`;
+	} else {
+		referralLink = `https://${host}/register?partner_code=${user?.partner_id}`;
+	}
 	return (
 		<div className=''>
 			<div className=' w-full custom-shadow'>
 				<div className='program-banner p-10 bg-no-repeat bg-top bg-cover text-white '>
 					<div className='w-full md:w-2/3'>
-						<h3 className='text-3xl font-bold'>
-							All-new: Rebates are now 3 times faster*
+						<h3 className='text-xl md:text-2xl font-bold leading-normal tracking-wide'>
+							Ensure income and your financial growth by generation.
 						</h3>
-						<p className='w-full md:w-2/3 text-xl mt-5'>
-							Boot client loyalty with stable auto-payouts and maximize your
-							commission
+						<p className='w-full text-sm mt-5 leading-normal tracking-wide'>
+							At this advanced stage, you’re not just earning; you’re making
+							your money work for you. Investment is the key, and with smart
+							choices, you’re seeing substantial growth. It’s about refinement
+							and sophistication in your financial tactics.
 						</p>
-						<button className='px-6 py-3 my-5 primary-bg hover:bg-[#FFDA39] rounded font-semibold text-primary duration-300'>
-							Check it out
-						</button>
+						<RWebShare data={{ url: referralLink }}>
+							<button className='px-6 py-3 my-5 bg-icm-green hover:bg-green-400 rounded font-bold text-gray-700 duration-300'>
+								Invite Friends
+							</button>
+						</RWebShare>
 						<p className='text-slate-300'>
-							*Average rebateexecution speed is faster of as October 2023
-							whencompared to prior month. Speed is subjecct to change..
+							Elevate Your Earnings, Step by Step.
 						</p>
 					</div>
 				</div>

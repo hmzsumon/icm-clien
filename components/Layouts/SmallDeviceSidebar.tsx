@@ -15,6 +15,7 @@ import { RiShareForward2Fill } from 'react-icons/ri';
 import { SiWebstorm } from 'react-icons/si';
 import { TbDeviceDesktopAnalytics, TbLayoutGridAdd } from 'react-icons/tb';
 import { TiSocialInstagram } from 'react-icons/ti';
+import navItems from '@/lib/navItems';
 
 const linkItems = [
 	{
@@ -102,7 +103,7 @@ const SmallDeviceSidebar = () => {
 				id='sideBarSmallDevice'
 				type='checkbox'
 				className='drawer-toggle'
-				checked={isOpen}
+				defaultChecked={isOpen}
 			/>
 			<div className='drawer-content'>
 				{/* Page content here */}
@@ -139,7 +140,7 @@ const SmallDeviceSidebar = () => {
 						</label>
 					</li>
 
-					{linkItems.map((item) => (
+					{navItems.map((item) => (
 						<label
 							key={item.id}
 							aria-label='close sidebar'
@@ -155,7 +156,7 @@ const SmallDeviceSidebar = () => {
 								onClick={closeSidebar}
 							>
 								<span className='text-lg text-white font-semibold '>
-									{item.icon}
+									{<item.icon />}
 								</span>
 								<span className='text-sm text-white font-bold '>
 									{item.name}

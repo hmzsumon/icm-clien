@@ -7,20 +7,7 @@ import { IoIosLink } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { RWebShare } from 'react-web-share';
 
-const PartnerLinkCard = () => {
-	const { user } = useSelector((state: any) => state.auth);
-	// get host
-	const host = window.location.host;
-	// create referral link wit user customer_id
-	let referralLink = '';
-	if (process.env.NODE_ENV === 'development') {
-		referralLink = `http://${host}/register?partner_code=${user?.partner_id}`;
-	} else {
-		referralLink = `https://${host}/register?partner_code=${user?.partner_id}`;
-	}
-	// short referral link
-	const shortReferralLink = referralLink.slice(0, 50) + '...';
-
+const PartnerLinkCard = ({ partnerId, referralLink }: any) => {
 	const [showLink, setShowLink] = useState(1);
 	return (
 		<div className='bg-white p-5 border rounded mt-5'>
@@ -57,10 +44,9 @@ const PartnerLinkCard = () => {
 			{showLink == 2 && (
 				<div className='my-5 border-b border-info flex items-center justify-between'>
 					<p className=' border-dotted text-info  text-sm'>
-						Your Partner Code:{' '}
-						<span className=' font-bold'>{user?.partner_id}</span>
+						Your Partner Code: <span className=' font-bold'>{partnerId}</span>
 					</p>
-					<CopyToClipboard text={user?.partner_id} />
+					<CopyToClipboard text={partnerId} />
 				</div>
 			)}
 			<div className='flex items-center grid-cols-8 gap-4 mt-4 '>
