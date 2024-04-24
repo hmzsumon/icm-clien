@@ -19,7 +19,7 @@ const AuthLayout = ({
 
 				<div className=' md:col-span-7 bg-white w-full'>{children}</div>
 			</div>
-			<HomeFooter2 />
+			<HomeFooter />
 		</div>
 	);
 };

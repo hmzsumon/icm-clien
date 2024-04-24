@@ -182,6 +182,24 @@ export const authApi = apiSlice.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+
+		// security verify
+		securityVerify: builder.mutation<any, any>({
+			query: (body) => ({
+				url: `/security-verify`,
+				method: 'POST',
+				body,
+			}),
+		}),
+
+		// reset password
+		resetPassword: builder.mutation<any, any>({
+			query: (body) => ({
+				url: `/reset-password`,
+				method: 'POST',
+				body,
+			}),
+		}),
 	}),
 });
 
@@ -203,4 +221,6 @@ export const {
 	useGetUserByPartnerIdQuery,
 	useCheckEmailExistOrNotMutation,
 	useMyAddressQuery,
+	useSecurityVerifyMutation,
+	useResetPasswordMutation,
 } = authApi;

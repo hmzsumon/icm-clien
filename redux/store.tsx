@@ -17,6 +17,7 @@ import miningReducer from './features/mining/miningSlice';
 import depositMethodReducer from './depositMethodSlice';
 import signUpData from './signupDataSlice';
 import stepperSlice from './stepperSlice';
+import resetPassSlice from './resetPassSlice';
 
 const persistConfig = {
 	key: 'root',
@@ -31,6 +32,7 @@ export const rootReducer = combineReducers({
 	depositMethod: depositMethodReducer,
 	signUpData,
 	stepper: stepperSlice,
+	resetPass: resetPassSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

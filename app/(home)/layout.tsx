@@ -13,7 +13,7 @@ const HomeLayout = ({
 		<div>
 			<HomeNavbar />
 			{children}
-			<HomeFooter2 />
+			<HomeFooter />
 		</div>
 	);
 };
