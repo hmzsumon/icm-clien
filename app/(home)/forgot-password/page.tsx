@@ -116,9 +116,9 @@ const ForgotPassword = () => {
 	return (
 		<div className=' bg-white p-4 '>
 			{send ? (
-				<Card className='max-w-sm mx-auto'>
+				<Card className='max-w-sm mx-auto bg-gray-900'>
 					<div>
-						<h2 className=' text-gray-700 font-medium text-center'>
+						<h2 className=' text-gray-100 font-medium text-center'>
 							We have sent a verification code to{' '}
 							<span className='font-semibold text-icm-green'>{email}</span>
 						</h2>
@@ -126,7 +126,11 @@ const ForgotPassword = () => {
 					<form className='flex flex-col gap-4' onSubmit={handleVerify}>
 						<div>
 							<div className='mb-2 block'>
-								<Label htmlFor='password1' value='Your Code' />
+								<Label
+									htmlFor='password1'
+									value='Your Code'
+									className=' text-gray-100'
+								/>
 							</div>
 							<TextInput
 								id='text1'
@@ -155,16 +159,20 @@ const ForgotPassword = () => {
 					</form>
 				</Card>
 			) : (
-				<Card className='max-w-sm mx-auto'>
+				<Card className='max-w-sm mx-auto bg-gray-900'>
 					<div>
-						<h2 className=' text-gray-700 font-medium text-center'>
+						<h2 className=' text-gray-100 font-medium text-center'>
 							Forgot your password?
 						</h2>
 					</div>
 					<form className='flex flex-col gap-4' onSubmit={handleResend}>
 						<div>
-							<div className='mb-2 block'>
-								<Label htmlFor='email1' value='Enter Your email' />
+							<div className='mb-2 block '>
+								<Label
+									htmlFor='email1'
+									value='Enter Your email'
+									className='text-gray-100'
+								/>
 							</div>
 							<TextInput
 								id='email1'
