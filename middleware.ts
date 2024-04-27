@@ -41,5 +41,10 @@ export const config = {
 		'/withdraw/withdraw-methods',
 		'/team/my-team',
 		'/profile',
+		'/partner-program',
+		'/generation-program',
+		'/global-program',
+		'/investment',
+		'/partnership',
 	],
 };

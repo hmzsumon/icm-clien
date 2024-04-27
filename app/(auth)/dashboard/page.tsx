@@ -49,7 +49,7 @@ const Dashboard = () => {
 									</Button>
 								</Link>
 
-								<Link href='/deposit'>
+								<Link href='/withdraw'>
 									<Button
 										gradientDuoTone='purpleToBlue'
 										className=' w-full flex items-center gap-2'
@@ -62,7 +62,7 @@ const Dashboard = () => {
 									</Button>
 								</Link>
 
-								<Link href='/deposit'>
+								<Link href='/investment'>
 									<Button
 										gradientDuoTone='purpleToBlue'
 										className=' w-full flex items-center gap-2 '
@@ -81,19 +81,19 @@ const Dashboard = () => {
 				{/*End Balance Card */}
 				<div className=' my-6 grid md:grid-cols-2 gap-4'>
 					<ItemCard
-						icon={<FaFilterCircleDollar />}
-						title='Active Package'
+						icon={<GiReceiveMoney />}
+						title='Total Earn'
 						balance={user?.active_package}
 					/>
+
 					<ItemCard
 						icon={<FaWallet />}
 						title='Package Balance'
 						balance={user?.active_package}
 					/>
-
 					<ItemCard
-						icon={<GiReceiveMoney />}
-						title='Daily Earn'
+						icon={<FaFilterCircleDollar />}
+						title='Active Package'
 						balance={user?.active_package}
 					/>
 

@@ -37,13 +37,16 @@ const Login = () => {
 
 		if (isError) {
 			toast.error((error as fetchBaseQueryError).data?.message);
+			if ((error as fetchBaseQueryError).status === 421) {
+				router.push('/verify-email?email=' + email);
+			}
 		}
 	}, [isSuccess, isError, error]);
 
 	return (
 		<>
 			<h1 className='text-xl font-bold mb-4'>Please Login to your account.</h1>
-			<Card className='max-w-md w-full bg-black border-none'>
+			<Card className='max-w-md w-full bg-black border-none text-white'>
 				<form className='flex flex-col gap-4' onSubmit={handleLogin}>
 					{/* Start Email */}
 					<div>
