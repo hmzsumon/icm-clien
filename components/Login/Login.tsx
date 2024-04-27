@@ -49,7 +49,7 @@ const Login = () => {
 			<Card className='max-w-md w-full bg-black border-none text-white'>
 				<form className='flex flex-col gap-4' onSubmit={handleLogin}>
 					{/* Start Email */}
-					<div>
+					<div className=' block '>
 						<div className='mb-2 block'>
 							<Label
 								htmlFor='email1'
@@ -58,7 +58,6 @@ const Login = () => {
 							/>
 						</div>
 						<TextInput
-							className=' bg-transparent '
 							id='email1'
 							type='email'
 							placeholder='Enter your email address'
@@ -78,7 +77,6 @@ const Login = () => {
 									)}
 								</>
 							}
-							style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
 						/>
 					</div>
 					{/* End Email */}
@@ -97,11 +95,12 @@ const Login = () => {
 								required
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
+								placeholder='Enter your password'
 							/>
 							<button
 								type='button'
 								onClick={() => setShowPassword(!showPassword)}
-								className='absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5'
+								className='absolute inset-y-0 text-gray-800 right-0 pr-3 flex items-center text-sm leading-5'
 							>
 								{showPassword ? <FaEyeSlash /> : <FaEye />}
 							</button>
