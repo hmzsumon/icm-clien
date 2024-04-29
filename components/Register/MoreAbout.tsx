@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { formatDate } from '@/lib/functions';
+import { createUTCDateOfBirth, formatDate } from '@/lib/functions';
 import {
 	Button,
 	Card,
@@ -18,10 +18,15 @@ import {
 	setMoreAboutData,
 } from '@/redux/stepperSlice';
 import { useDispatch } from 'react-redux';
+import CustomSelect from '../CustomSelect';
 
 const MoreAbout = () => {
 	const dispatch = useDispatch();
 	const [dateOfBirth, setDateOfBirth] = useState('');
+	const [dobDay, setDobDay] = useState<string>('');
+	const [dobMonth, setDobMonth] = useState<string>('');
+	const [dobYear, setDobYear] = useState<string>('');
+
 	const [dobError, setDobError] = useState(false);
 	const [address, setAddress] = useState('');
 	const [addressError, setAddressError] = useState(false);
@@ -31,6 +36,18 @@ const MoreAbout = () => {
 	const [stateError, setStateError] = useState(false);
 	const [zip, setZip] = useState('');
 	const [zipError, setZipError] = useState(false);
+
+	const handleDobDayChange = (value: string) => {
+		setDobDay(value);
+	};
+
+	const handleDobMonthChange = (value: string) => {
+		setDobMonth(value);
+	};
+
+	const handleDobYearChange = (value: string) => {
+		setDobYear(value);
+	};
 
 	// useEffect to set the active step
 	useEffect(() => {
@@ -64,6 +81,8 @@ const MoreAbout = () => {
 	// next handler
 	const nextHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		// create date of birth utc string
+		const dateOfBirth = createUTCDateOfBirth(dobDay, dobMonth, dobYear);
 		if (
 			dobError ||
 			dateOfBirth === '' ||
@@ -92,35 +111,57 @@ const MoreAbout = () => {
 			<div>
 				<Card className='w-[23rem]'>
 					<form className='flex flex-col gap-4' onSubmit={nextHandler}>
-						{/* DOB */}
-
-						<div className='max-w-md'>
-							<div className='mb-2 block'>
-								<Label
-									htmlFor='countries'
-									value='Date of Birth'
-									color={dobError ? 'failure' : ''}
-								/>
+						{/* Start DOB */}
+						<div className=''>
+							<label className='block mb-2'>Date of Birth:</label>
+							<div className=' grid grid-cols-7 gap-2'>
+								<div className=' col-span-2'>
+									<CustomSelect
+										options={[...Array(31)].map((_, i) => ({
+											label: (i + 1).toString(),
+											value: (i + 1).toString(),
+										}))}
+										value={dobDay}
+										onChange={handleDobDayChange}
+										title='Day'
+										defaultValue='Day'
+									/>
+								</div>
+								<div className=' col-span-3'>
+									<CustomSelect
+										options={[
+											'January',
+											'February',
+											'March',
+											'April',
+											'May',
+											'June',
+											'July',
+											'August',
+											'September',
+											'October',
+											'November',
+											'December',
+										].map((month) => ({ label: month, value: month }))}
+										value={dobMonth}
+										onChange={handleDobMonthChange}
+										title='Month'
+										defaultValue='Month'
+									/>
+								</div>
+								<div className=' col-span-2'>
+									<CustomSelect
+										options={[...Array(105)].map((_, i) => ({
+											label: (i + 1920).toString(),
+											value: (i + 1920).toString(),
+										}))}
+										value={dobYear}
+										onChange={handleDobYearChange}
+										title='Year'
+										defaultValue='Year'
+									/>
+								</div>
 							</div>
-
-							<Datepicker
-								id='dob'
-								placeholder='Select your date of birth'
-								required
-								color={dobError ? 'failure' : ''}
-								// value={dateOfBirth}
-								onSelectedDateChanged={(date) => handleDobChange(date)}
-								onBlur={() => setDobError(dateOfBirth === '')}
-								helperText={
-									<>
-										{dobError && (
-											<span className='text-xs'>
-												Please select your date of birth
-											</span>
-										)}
-									</>
-								}
-							/>
 						</div>
 						{/* End DOB */}
 

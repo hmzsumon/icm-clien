@@ -18,6 +18,7 @@ import depositMethodReducer from './depositMethodSlice';
 import signUpData from './signupDataSlice';
 import stepperSlice from './stepperSlice';
 import resetPassSlice from './resetPassSlice';
+import verificationSlice from './verificationSlice';
 
 const persistConfig = {
 	key: 'root',
@@ -33,6 +34,7 @@ export const rootReducer = combineReducers({
 	signUpData,
 	stepper: stepperSlice,
 	resetPass: resetPassSlice,
+	verification: verificationSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

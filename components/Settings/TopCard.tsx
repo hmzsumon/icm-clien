@@ -2,8 +2,11 @@ import { FaDollarSign, FaRegCircleQuestion } from 'react-icons/fa6';
 import { Card } from 'flowbite-react';
 import { RxAvatar } from 'react-icons/rx';
 import { Tooltip } from 'react-tooltip';
+import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const TopCard = () => {
+	const { user } = useSelector((state: any) => state.auth);
 	return (
 		<div className=' '>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-5 py-2 '>
@@ -21,12 +24,20 @@ const TopCard = () => {
 								<p className='text-[#C0424D] text-lg font-semibold'>
 									Not verified
 								</p>
-								<p className='text-[12px]'>0/3 steps complete</p>
+								<p className='text-[12px]'>0/1 steps complete</p>
 							</div>
 						</div>
-						<button className='rounded py-2 px-4 text-[14px] border-slate-400 border text-slate-700 duration-300 hover:bg-[#EBEDEE]'>
-							Complete Now
-						</button>
+						{user?.kyc_step === 4 ? (
+							<button className='rounded py-2 px-4 text-sm font-semibold  bg-orange-400 text-slate-700 duration-300 hover:bg-orange-300'>
+								Under Review
+							</button>
+						) : (
+							<Link href='/verification'>
+								<button className='rounded py-2 px-4 text-sm font-semibold bg-green-500  text-slate-700 duration-300 hover:bg-icm-green'>
+									Complete Now
+								</button>
+							</Link>
+						)}
 					</div>
 				</Card>
 				{/* balance */}

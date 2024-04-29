@@ -45,3 +45,32 @@ export const formatBalance = (balance: number = 10): string => {
 		maximumFractionDigits: 2,
 	});
 };
+
+export const createUTCDateOfBirth = (
+	day: string,
+	monthName: string,
+	year: string
+): string => {
+	const monthNames: string[] = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+
+	const month: number = monthNames.indexOf(monthName);
+	if (month === -1) {
+		throw new Error('Invalid month name');
+	}
+
+	const dob: Date = new Date(Date.UTC(Number(year), month, Number(day)));
+	return dob.toUTCString();
+};
