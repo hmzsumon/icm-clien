@@ -1,5 +1,6 @@
 'use client';
 import { Button } from 'flowbite-react';
+import { link } from 'fs';
 import Link from 'next/link';
 import React from 'react';
 import { CiUnlock } from 'react-icons/ci';
@@ -18,34 +19,38 @@ import { Tooltip } from 'react-tooltip';
 
 const depositMethods = [
 	{
-		id: 20,
-		title: 'Tron (TRX)',
-		isActive: true,
-		processingTime: 30,
-		fee: 0,
-		limit: '10 - 10,000,000',
-		icon: null,
-		img: '/assets/icons/tron-trx.webp',
-	},
-	{
 		id: 1,
-		title: 'BinancePay',
-		isActive: false,
+		title: 'Binance',
+		isActive: true,
 		processingTime: 30,
 		fee: 0,
 		limit: '10 - 20,000',
 		icon: <SiBinance />,
 		img: null,
+		link: '/deposit/binance-pay',
 	},
 	{
 		id: 2,
 		title: 'Tether (USDT TRC20)',
-		isActive: true,
+		isActive: false,
 		processingTime: 1,
 		fee: 0,
 		limit: '10 - 10,000,000',
 		icon: <SiTether />,
+		link: '/deposit/tether-trc20',
 	},
+	{
+		id: 20,
+		title: 'Tron (TRX)',
+		isActive: false,
+		processingTime: 30,
+		fee: 0,
+		limit: '10 - 10,000,000',
+		icon: null,
+		img: '/assets/icons/tron-trx.webp',
+		link: '/deposit/tron-trx',
+	},
+
 	{
 		id: 3,
 		title: 'Bank Card',
@@ -54,6 +59,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 10,000',
 		icon: <FaRegCreditCard />,
+		link: '/deposit/bank-card',
 	},
 	{
 		id: 4,
@@ -63,6 +69,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 50,000',
 		icon: <TbBrandNetflix />,
+		link: '/deposit/neteller',
 	},
 	{
 		id: 5,
@@ -72,6 +79,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000',
 		icon: <FcMoneyTransfer />,
+		link: '/deposit/perfect-money',
 	},
 	{
 		id: 6,
@@ -81,6 +89,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000',
 		icon: <TbLetterS />,
+		link: '/deposit/skrill',
 	},
 	{
 		id: 7,
@@ -90,6 +99,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000',
 		icon: <TbCircleLetterS />,
+		link: '/deposit/sticpay',
 	},
 	{
 		id: 8,
@@ -99,6 +109,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000,000',
 		icon: <TbBrandTether />,
+		link: '/deposit/tether-erc20',
 	},
 	{
 		id: 9,
@@ -108,6 +119,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000,000',
 		icon: <IoLogoUsd />,
+		link: '/deposit/usd-coin',
 	},
 	{
 		id: 10,
@@ -117,6 +129,7 @@ const depositMethods = [
 		fee: 0,
 		limit: '10 - 100,000,000',
 		icon: <IoLogoUsd />,
+		link: '/deposit/usd-coin',
 	},
 ];
 
@@ -190,13 +203,15 @@ const Deposit = () => {
 									<p>Limits {method.limit} USD</p>
 								</div>
 								<div className=' p-4'>
-									<Button
-										gradientMonochrome='success'
-										className='w-full'
-										disabled={!method.isActive}
-									>
-										Pay Now
-									</Button>
+									<Link href={method.link}>
+										<Button
+											gradientMonochrome='success'
+											className='w-full'
+											disabled={!method.isActive}
+										>
+											Pay Now
+										</Button>
+									</Link>
 								</div>
 							</div>
 						</div>

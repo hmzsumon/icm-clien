@@ -28,6 +28,16 @@ export const depositApi = apiSlice.injectEndpoints({
 		getActiveDepositMethod: builder.query<any, any>({
 			query: () => '/deposit-method/active',
 		}),
+
+		// deposit with binance
+		depositWithBinance: builder.mutation<any, any>({
+			query: (body) => ({
+				url: '/binance-payment',
+				method: 'POST',
+				body,
+			}),
+			invalidatesTags: ['User'],
+		}),
 	}),
 });
 
@@ -36,4 +46,5 @@ export const {
 	useGetMyDepositsQuery,
 	useGetDepositQuery,
 	useGetActiveDepositMethodQuery,
+	useDepositWithBinanceMutation,
 } = depositApi;
