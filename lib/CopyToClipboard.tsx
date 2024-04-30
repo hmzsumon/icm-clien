@@ -31,7 +31,7 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ text, size }) => {
 	}, [isCopied]);
 
 	return (
-		<div>
+		<div className=' relative'>
 			<button onClick={copyToClipboard}>
 				<RiFileCopyFill
 					className={` inline-block ml-2 ${
@@ -41,6 +41,11 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = ({ text, size }) => {
 					} `}
 				/>
 			</button>
+			{isCopied && (
+				<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 p-2 rounded-md shadow-md'>
+					<span className='text-white text-xs'>Copied!</span>
+				</div>
+			)}
 		</div>
 	);
 };
