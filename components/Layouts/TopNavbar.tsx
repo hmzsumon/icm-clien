@@ -29,6 +29,7 @@ import SmallDeviceSidebar from './SmallDeviceSidebar';
 import WalletInfo from './WalletInfo';
 import Notification from './Notification';
 import Profile from './Profile';
+import SmallDeviceDrawer from './SmallDeviceDrawer';
 
 const TopNavBar = () => {
 	return (
@@ -37,7 +38,7 @@ const TopNavBar = () => {
 				<div className='navbar p-0 '>
 					<div className='mr-16 md:mr-0 '>
 						{/*Start Small Device drawer content here */}
-						<SmallDeviceSidebar />
+						<SmallDeviceDrawer />
 						{/*End Small Device drawer content here */}
 					</div>
 

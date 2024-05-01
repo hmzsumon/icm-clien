@@ -1,5 +1,6 @@
 import { withUt } from 'uploadthing/tw';
 import type { Config } from 'tailwindcss';
+import flowbite from 'flowbite-react/tailwind';
 
 const config: Config = {
 	content: [
@@ -7,6 +8,7 @@ const config: Config = {
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 		'node_modules/flowbite-react/lib/esm/**/*.js',
+		flowbite.content(),
 	],
 	theme: {
 		extend: {
@@ -21,6 +23,6 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require('daisyui'), require('flowbite/plugin')],
+	plugins: [require('daisyui'), flowbite.plugin()],
 };
 export default withUt(config);
