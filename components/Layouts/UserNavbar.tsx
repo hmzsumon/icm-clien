@@ -90,7 +90,7 @@ const UserNavbar = () => {
 							alt='User settings'
 							img='https://i.ibb.co/0XyYZ6j/user.png'
 							rounded
-							className='bg-gray-200 w-11 h-11 rounded-full object-cover ring-2 ring-lime-500 p-1'
+							className='bg-gray-200 w-10 h-10 rounded-full object-cover ring-2 ring-lime-500 p-1'
 						/>
 					}
 				>

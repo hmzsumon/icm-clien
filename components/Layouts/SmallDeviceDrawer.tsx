@@ -27,7 +27,7 @@ const SmallDeviceDrawer = () => {
 		<>
 			<div className='flex  items-center justify-center md:hidden'>
 				<span onClick={() => setIsOpen(true)}>
-					<FaBars className=' text-3xl' />
+					<FaBars className=' text-3xl text-white' />
 				</span>
 			</div>
 			<Drawer
