@@ -31,65 +31,77 @@ const BinancePayment = () => {
 		}
 	}, [isSuccess, isError, error]);
 	return (
-		<div className=' p-4'>
-			<h2 className=' text-center text-2xl text-gray-700 font-semibold mb-4'>
-				Binance Payment
-			</h2>
-			<div className=' space-y-2 '>
-				<h1 className=' text-center font-bold text-gray-700'>Deposit USDT</h1>
-				<div className=' md:w-fit mx-auto '>
-					<Image
-						src='/binance_qr.png'
-						width={200}
-						height={200}
-						alt='Binance'
-						className='mx-auto'
-					/>
-				</div>
+		<div>
+			{isLoading ? (
 				<div>
-					<Card className='w-full mx-auto'>
-						<div>
-							<h3 className=' text-gray-600'>Network</h3>
-							<h2 className=' text-gray-700 font-semibold'>Tron (TRC20)</h2>
+					<div className='flex items-center justify-center h-96'>
+						<Image src='/loading.gif' width={200} height={200} alt='loading' />
+					</div>
+				</div>
+			) : (
+				<div className=' p-4'>
+					<h2 className=' text-center text-2xl text-gray-700 font-semibold mb-4'>
+						Binance Payment
+					</h2>
+					<div className=' space-y-2 '>
+						<h1 className=' text-center font-bold text-gray-700'>
+							Deposit USDT
+						</h1>
+						<div className=' md:w-fit mx-auto '>
+							<Image
+								src='/binance_qr.png'
+								width={200}
+								height={200}
+								alt='Binance'
+								className='mx-auto'
+							/>
 						</div>
-						<hr className='my-2 border-gray-300 border-b-1' />
-						<div className=' w-full'>
-							<h3 className=' text-gray-600'>Deposit Address</h3>
-							<div className=' flex items-center'>
-								<h2 className=' text-gray-700 font-semibold text-xs '>
-									{depositAddress}
-								</h2>
-								<CopyToClipboard text={depositAddress} />
-							</div>
+						<div>
+							<Card className='w-full mx-auto'>
+								<div>
+									<h3 className=' text-gray-600'>Network</h3>
+									<h2 className=' text-gray-700 font-semibold'>Tron (TRC20)</h2>
+								</div>
+								<hr className='my-2 border-gray-300 border-b-1' />
+								<div className=' w-full'>
+									<h3 className=' text-gray-600'>Deposit Address</h3>
+									<div className=' flex items-center'>
+										<h2 className=' text-gray-700 font-semibold text-xs '>
+											{depositAddress}
+										</h2>
+										<CopyToClipboard text={depositAddress} />
+									</div>
+								</div>
+
+								<div>
+									<div className=' '>
+										<label className='block mb-1 text-gray-600'>
+											Transaction ID (txId):
+										</label>
+										<input
+											type='text'
+											className='border border-gray-300 rounded px-3 py-2 w-full'
+											value={txId}
+											onChange={(e) => setIxId(e.target.value)}
+										/>
+									</div>
+								</div>
+							</Card>
 						</div>
 
-						<div>
-							<div className=' '>
-								<label className='block mb-1 text-gray-600'>
-									Transaction ID (txId):
-								</label>
-								<input
-									type='text'
-									className='border border-gray-300 rounded px-3 py-2 w-full'
-									value={txId}
-									onChange={(e) => setIxId(e.target.value)}
-								/>
-							</div>
+						<div className=''>
+							<button
+								type='submit'
+								className='bg-icm-green text-white px-4 py-2 rounded flex items-center justify-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
+								disabled={!txId}
+								onClick={handleConfirm}
+							>
+								Confirm
+							</button>
 						</div>
-					</Card>
+					</div>
 				</div>
-
-				<div className=''>
-					<button
-						type='submit'
-						className='bg-icm-green text-white px-4 py-2 rounded flex items-center justify-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
-						disabled={!txId}
-						onClick={handleConfirm}
-					>
-						Confirm
-					</button>
-				</div>
-			</div>
+			)}
 		</div>
 	);
 };
