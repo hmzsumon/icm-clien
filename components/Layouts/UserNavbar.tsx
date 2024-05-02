@@ -31,8 +31,8 @@ const UserNavbar = () => {
 	// handle logout
 	const handleLogout = async () => {
 		logout(undefined);
-		Cookies.remove('icm-token');
 		router.push('/');
+		Cookies.remove('icm-token');
 	};
 
 	// useEffect to handle success
