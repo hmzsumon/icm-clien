@@ -7,6 +7,7 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '@/public/logo.png';
+import UserImg from '@/public/user.png';
 import SmallDeviceDrawer from './SmallDeviceDrawer';
 import { useSelector } from 'react-redux';
 import { FcMoneyTransfer } from 'react-icons/fc';
@@ -87,8 +88,9 @@ const UserNavbar = () => {
 					label={
 						<Avatar
 							alt='User settings'
-							img='https://flowbite.com/docs/images/people/profile-picture-5.jpg'
+							img='https://i.ibb.co/0XyYZ6j/user.png'
 							rounded
+							className='bg-gray-200 w-11 h-11 rounded-full object-cover ring-2 ring-lime-500 p-1'
 						/>
 					}
 				>
