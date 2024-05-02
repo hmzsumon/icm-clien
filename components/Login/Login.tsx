@@ -50,7 +50,7 @@ const Login = () => {
 				<form className='flex flex-col gap-4' onSubmit={handleLogin}>
 					{/* Start Email */}
 					<div className=' block '>
-						<div className='mb-2 block'>
+						<div className='mb-2 block text-white'>
 							<Label
 								htmlFor='email1'
 								value='Your email'
@@ -82,7 +82,7 @@ const Login = () => {
 					</div>
 					{/* End Email */}
 					<div>
-						<div className='mb-2 block'>
+						<div className='mb-2 block text-white'>
 							<Label
 								htmlFor='password1'
 								value='Your password'
@@ -101,20 +101,20 @@ const Login = () => {
 							<button
 								type='button'
 								onClick={() => setShowPassword(!showPassword)}
-								className='absolute inset-y-0 text-gray-800 right-0 pr-3 flex items-center text-sm leading-5'
+								className='absolute inset-y-0 text-gray-500 right-0 pr-3 flex items-center text-sm leading-5'
 							>
 								{showPassword ? <FaEyeSlash /> : <FaEye />}
 							</button>
 						</div>
 					</div>
 					<div className='flex items-center text-xs  justify-between gap-2'>
-						<p className='text-primary-500 hover:text-blue-700 font-bold cursor-pointer hover:underline '>
+						<p className='text-primary-500 text-white hover:text-blue-700 font-bold cursor-pointer hover:underline '>
 							<Link href='/forgot-password'>
 								<span className='text-primary-500'>Forgot password?</span>
 							</Link>
 						</p>
 
-						<p>
+						<p className='text-white'>
 							Don't have an account?{' '}
 							<Link href='/register'>
 								<span className='text-sm text-primary-500 hover:underline hover:text-blue-700 '>

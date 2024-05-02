@@ -50,7 +50,7 @@ const Notification = () => {
 	}, [isSuccess, notifications]);
 
 	useEffect(() => {
-		if (!isOpen) {
+		if (!isOpen && notifications?.length > 0) {
 			updateNotificationStatus(undefined);
 		}
 	}, [isOpen]);

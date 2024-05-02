@@ -14,10 +14,14 @@ import { FcMoneyTransfer } from 'react-icons/fc';
 import Notification from './Notification';
 import CopyToClipboard from '@/lib/CopyToClipboard';
 import { useRouter } from 'next/navigation';
-import { useLogoutUserMutation } from '@/redux/features/auth/authApi';
+import {
+	useLoadUserQuery,
+	useLogoutUserMutation,
+} from '@/redux/features/auth/authApi';
 import { useEffect } from 'react';
 
 const UserNavbar = () => {
+	useLoadUserQuery();
 	const router = useRouter();
 	const [logout, { data, isLoading, isSuccess, isError, error }] =
 		useLogoutUserMutation();
