@@ -1,15 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const baseUrl =
-	process.env.NODE_ENV === 'development'
-		? 'http://localhost:8000/api/v1'
-		: 'https://icm-api-7808882a0bab.herokuapp.com/api/v1';
+import baseUrl from '@/config/baseUrl';
 
-console.log('baseUrl', baseUrl);
+const url = `${baseUrl}/api/v1`;
+console.log('url', url);
 export const apiSlice = createApi({
 	reducerPath: 'api',
 
 	baseQuery: fetchBaseQuery({
-		baseUrl: baseUrl,
+		baseUrl: url,
 		// Introduce an artificial delay using `setTimeout`
 		prepareHeaders: async (headers, { getState, endpoint }: any) => {
 			const token = getState()?.auth?.token;

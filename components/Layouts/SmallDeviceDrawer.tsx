@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Drawer, Sidebar, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa6';
 import {
 	HiChartPie,
@@ -19,13 +19,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const SmallDeviceDrawer = () => {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClose = () => setIsOpen(false);
 
 	return (
 		<>
-			<div className='flex  items-center justify-center'>
+			<div className='flex  items-center justify-center md:hidden'>
 				<span onClick={() => setIsOpen(true)}>
 					<FaBars className=' text-3xl' />
 				</span>

@@ -63,7 +63,7 @@ const TopNavBar = () => {
 						>
 							<Image
 								className='w-[200]'
-								src='/logo2.png'
+								src='/logo.png'
 								alt=''
 								width={150}
 								height={50}

@@ -73,6 +73,13 @@ const Profile = () => {
 								<CopyToClipboard text={user?.partner_id} />
 							</span>
 						</li>
+						<li className=' grid grid-cols-9 gap-3'>
+							<span className=' col-span-3'>Balance</span>
+							<span className=' col-span-1'>:</span>
+							<span className=' flex text-left col-span-5 text-[#73787C] font-semibold '>
+								{user?.m_balance} USDT
+							</span>
+						</li>
 					</div>
 					{/* End Upper Section */}
 					<div className='h-[0.5px] bg-slate-500 w-full my-3'></div>

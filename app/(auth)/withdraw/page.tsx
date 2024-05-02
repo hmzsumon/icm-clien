@@ -14,7 +14,7 @@ import { CiUnlock } from 'react-icons/ci';
 
 const Withdraw = () => {
 	return (
-		<div className=' z-0'>
+		<div className=' z-0 p-4'>
 			<h1 className='text-2xl text-gray-800 font-semibold  my-4'>Withdraw</h1>
 			<div className='bg-white w-full p-5 md:p-10 primary-shadow'>
 				<h3 className='text-[1.25rem] text-slate-800 font-semibold py-3'>

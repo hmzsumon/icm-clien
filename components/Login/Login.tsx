@@ -46,7 +46,7 @@ const Login = () => {
 	return (
 		<>
 			<h1 className='text-xl font-bold mb-4'>Please Login to your account.</h1>
-			<Card className='max-w-md w-full bg-gray-900 border-none text-white'>
+			<Card className='max-w-md w-full bg-gray-900 border-none '>
 				<form className='flex flex-col gap-4' onSubmit={handleLogin}>
 					{/* Start Email */}
 					<div className=' block '>
@@ -58,7 +58,8 @@ const Login = () => {
 							/>
 						</div>
 						<TextInput
-							id='email1'
+							className='bg-transparent  '
+							id='email'
 							type='email'
 							placeholder='Enter your email address'
 							required

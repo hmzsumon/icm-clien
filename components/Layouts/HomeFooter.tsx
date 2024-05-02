@@ -13,7 +13,7 @@ const HomeFooter = () => {
 							alt='IC market Logo'
 							width={300}
 							height={100}
-							className='object-contain w-40 h-6'
+							className='object-contain w-40 h-6 my-4'
 						/>
 						<p className=' text-xs text-[#777777] leading-4 tracking-tight'>
 							IC Markets Partner mission is to create the best trading

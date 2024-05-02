@@ -3,17 +3,17 @@ import { apiSlice } from '../api/apiSlice';
 export const notificationApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getNotifications: builder.query({
-			query: () => '/user-notifications',
-			providesTags: ['Notification'],
+			query: () => '/notifications',
+			providesTags: ['Notification', 'Notifications'],
 		}),
 
 		// updateNotification
 		updateNotification: builder.mutation({
-			query: () => ({
-				url: `/update/notifications`,
+			query: ({ id }) => ({
+				url: `/notification/${id}`,
 				method: 'PUT',
 			}),
-			invalidatesTags: ['Notification'],
+			invalidatesTags: ['Notification', 'Notifications'],
 		}),
 
 		// logged in user notifications
@@ -21,11 +21,21 @@ export const notificationApi = apiSlice.injectEndpoints({
 			query: () => '/my-notifications',
 			providesTags: ['Notification'],
 		}),
+
+		// update notification is_read status
+		updateNotificationStatus: builder.mutation({
+			query: () => ({
+				url: `/update-all-notifications`,
+				method: 'PUT',
+			}),
+			invalidatesTags: ['Notification'],
+		}),
 	}),
 });
 
 export const {
 	useGetNotificationsQuery,
-	useUpdateNotificationMutation,
 	useGetMyNotificationsQuery,
+	useUpdateNotificationMutation,
+	useUpdateNotificationStatusMutation,
 } = notificationApi;

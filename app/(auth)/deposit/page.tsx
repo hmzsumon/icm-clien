@@ -9,12 +9,14 @@ import { FcMoneyTransfer } from 'react-icons/fc';
 import { IoMdLock } from 'react-icons/io';
 import { IoLogoUsd } from 'react-icons/io5';
 import { SiBinance, SiTether } from 'react-icons/si';
+
 import {
 	TbBrandNetflix,
 	TbBrandTether,
 	TbCircleLetterS,
 	TbLetterS,
 } from 'react-icons/tb';
+import { useSelector } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
 
 const depositMethods = [
@@ -134,6 +136,7 @@ const depositMethods = [
 ];
 
 const Deposit = () => {
+	const { user } = useSelector((state: any) => state.auth);
 	return (
 		<div className=' px-4 py-6'>
 			<h3 className='text-xl text-slate-800 font-semibold'>Deposit</h3>
