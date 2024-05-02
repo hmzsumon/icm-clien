@@ -35,10 +35,16 @@ const BinancePayment = () => {
 			<h2 className=' text-center text-2xl text-gray-700 font-semibold mb-4'>
 				Binance Payment
 			</h2>
-			<Card className=' '>
+			<div className=' space-y-2 '>
 				<h1 className=' text-center font-bold text-gray-700'>Deposit USDT</h1>
-				<div className=' md:w-fit mx-auto'>
-					<Image src='/binance_qr.png' width={200} height={200} alt='Binance' />
+				<div className=' md:w-fit mx-auto '>
+					<Image
+						src='/binance_qr.png'
+						width={200}
+						height={200}
+						alt='Binance'
+						className='mx-auto'
+					/>
 				</div>
 				<div>
 					<Card className='w-full mx-auto'>
@@ -73,7 +79,7 @@ const BinancePayment = () => {
 					</Card>
 				</div>
 
-				<div>
+				<div className=''>
 					<button
 						type='submit'
 						className='bg-icm-green text-white px-4 py-2 rounded flex items-center justify-center gap-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
@@ -83,7 +89,7 @@ const BinancePayment = () => {
 						Confirm
 					</button>
 				</div>
-			</Card>
+			</div>
 		</div>
 	);
 };
