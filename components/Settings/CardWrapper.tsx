@@ -8,6 +8,7 @@ import {
 	MdVerified,
 } from 'react-icons/md';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const cardItems = [
 	{
@@ -65,18 +66,20 @@ const CardWrapper = () => {
 			</Card>
 
 			<div className='my-4'>
-				<Card className=''>
-					<div className='flex items-center gap-3 '>
-						<span className='text-2xl border-4 p-2 rounded-full text-black'>
-							{<MdPersonRemoveAlt1 />}
-						</span>
-						<div className='space-y-1'>
-							<p className='text-[12px] font-medium text-primary'>
-								Remove Account
-							</p>
+				<Link href='/settings/remove-account'>
+					<Card className=''>
+						<div className='flex items-center gap-3 '>
+							<span className='text-2xl border-4 p-2 rounded-full text-black'>
+								{<MdPersonRemoveAlt1 />}
+							</span>
+							<div className='space-y-1'>
+								<p className='text-[12px] font-medium text-primary'>
+									Remove Account
+								</p>
+							</div>
 						</div>
-					</div>
-				</Card>
+					</Card>
+				</Link>
 			</div>
 		</div>
 	);

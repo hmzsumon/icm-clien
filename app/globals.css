@@ -197,6 +197,22 @@ body .analyst ul::-webkit-scrollbar-thumb {
 	background-repeat: no-repeat;
 	/* Add other styles as needed */
 }
+
+.privacy-banner-bg {
+	background-image: url(/assets/policy.webp);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/* Add other styles as needed */
+}
+
+.legal-banner-bg {
+	background-image: url(/assets/legal-documents-banner.webp);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/* Add other styles as needed */
+}
 /*End Registration Banner */
 
 /*Star Tree View CSS */

@@ -41,7 +41,12 @@ const HomeFooter = () => {
 							</li>
 							<li className=' hover:text-icm-green'>
 								<Link href='/'>
-									<span>Why IC Markets money</span>
+									<span>Why ICM Money</span>
+								</Link>
+							</li>
+							<li className=' hover:text-icm-green'>
+								<Link href='/privacy-policy'>
+									<span>Privacy Policy</span>
 								</Link>
 							</li>
 							<li className=' hover:text-icm-green'>
@@ -50,7 +55,7 @@ const HomeFooter = () => {
 								</Link>
 							</li>
 							<li className=' hover:text-icm-green'>
-								<Link href='/'>
+								<Link href='/legal-documents'>
 									<span>Legal Documents</span>
 								</Link>
 							</li>
@@ -80,7 +85,7 @@ const HomeFooter = () => {
 				<hr className='border-t border-gray-700 mt-6 mb-2 w-full' />
 				<div>
 					<p className='text-xs text-white text-center md:text-left mt-2'>
-						© 2024 ICM Raw Trading Ltd | All rights reserved
+						&copy; 2024 ICM Raw Trading Ltd | All rights reserved
 					</p>
 				</div>
 			</div>
