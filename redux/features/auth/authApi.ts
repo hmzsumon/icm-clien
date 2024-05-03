@@ -138,11 +138,6 @@ export const authApi = apiSlice.injectEndpoints({
 			}),
 		}),
 
-		// get all transactions
-		getAllTransactions: builder.query<any, void>({
-			query: () => '/getMyTransactions',
-		}),
-
 		// get members by level
 		getMembersByLevel: builder.query<any, string>({
 			query: (level) => `/members-by-level/${level}`,
@@ -217,7 +212,6 @@ export const {
 	useLoadUserQuery,
 	useChangeEmailMutation,
 	useVerifyCodeForChangeEmailMutation,
-	useGetAllTransactionsQuery,
 	useGetMembersByLevelQuery,
 	useGet13LevelTreeQuery,
 	useFindUserByEmailOrUsernameMutation,

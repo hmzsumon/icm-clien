@@ -13,6 +13,34 @@ export const formDateWithTimeToLocal = (dt: Date): string => {
 	return new Date(dt).toLocaleString();
 };
 
+// formDate with day month, time
+export const formDateWithDayMonthTime = (dt: Date): string => {
+	const months = [
+		'Jan',
+		'Feb',
+		'Mar',
+		'Apr',
+		'May',
+		'Jun',
+		'Jul',
+		'Aug',
+		'Sep',
+		'Oct',
+		'Nov',
+		'Dec',
+	];
+
+	// Convert dt to a Date object if it's not already
+	const date = new Date(dt);
+
+	const day = String(date.getDate()).padStart(2, '0');
+	const month = months[date.getMonth()];
+	const hours = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+
+	return `${day} ${month}, ${hours}:${minutes}`;
+};
+
 // email masking
 export const maskEmail2 = (email: string): string => {
 	const [name, domain] = email.split('@');
