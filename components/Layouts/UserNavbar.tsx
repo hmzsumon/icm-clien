@@ -62,7 +62,7 @@ const UserNavbar = () => {
 					className='md:flex items-center gap-2 lg:navbar-start navbar-center'
 					href='/'
 				>
-					<Image src={Logo} alt='' quality={100} className='w-44 md:w-96' />
+					<Image src={Logo} alt='' quality={100} className='w-44 md:w-48' />
 				</Link>
 			</Navbar.Brand>
 
@@ -92,9 +92,8 @@ const UserNavbar = () => {
 					label={
 						<Avatar
 							alt='User settings'
-							img='https://i.ibb.co/0XyYZ6j/user.png'
+							img='https://i.ibb.co/1rkfT6y/user-1.png'
 							rounded
-							className='bg-gray-200 w-10 h-10 rounded-full object-cover ring-2 ring-lime-500 p-1'
 						/>
 					}
 				>

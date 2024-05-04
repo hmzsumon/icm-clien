@@ -10,6 +10,7 @@ const config: Config = {
 		'node_modules/flowbite-react/lib/esm/**/*.js',
 		flowbite.content(),
 	],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			backgroundImage: {
@@ -23,6 +24,6 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [require('daisyui'), flowbite.plugin()],
+	plugins: [flowbite.plugin()],
 };
 export default withUt(config);

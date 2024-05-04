@@ -89,7 +89,7 @@ const Notification = () => {
 		};
 	}, []);
 	return (
-		<div className=''>
+		<div className='dark'>
 			<div className='relative'>
 				{/* Page content here */}
 

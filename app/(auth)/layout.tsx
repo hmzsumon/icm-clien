@@ -14,12 +14,12 @@ const AuthLayout = ({
 	return (
 		<div>
 			<UserNavbar />
-			<div className=' grid md:grid-cols-12 pt-16 '>
-				<div className=' md:col-span-2'>
-					<SideNavBar />
+			<div className=' grid md:grid-cols-10 pt-14 '>
+				<div className=' hidden md:block md:col-span-2'>
+					<UserSidebar />
 				</div>
 
-				<div className=' md:col-span-10 bg-white w-full '>{children}</div>
+				<div className=' md:col-span-8 bg-white w-full '>{children}</div>
 			</div>
 			<HomeFooter />
 		</div>
