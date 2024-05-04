@@ -1,7 +1,4 @@
 import HomeFooter from '@/components/Layouts/HomeFooter';
-import HomeFooter2 from '@/components/Layouts/HomeFooter2';
-import SideNavBar from '@/components/Layouts/SideNavbar';
-import TopNavBar from '@/components/Layouts/TopNavbar';
 import UserNavbar from '@/components/Layouts/UserNavbar';
 import UserSidebar from '@/components/Layouts/UserSidebar';
 import React from 'react';
