@@ -3,6 +3,7 @@ import GlobalTeam from '@/components/Partnership/GlobalTeam';
 import PartnerLinkCard from '@/components/Partnership/PartnerLinkCard';
 import Partners from '@/components/Partnership/Partners';
 import TreeView from '@/components/Partnership/TreeView';
+import { useMyWalletQuery } from '@/redux/features/auth/authApi';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiCopy } from 'react-icons/fi';
@@ -11,8 +12,11 @@ import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { RiArrowRightUpLine } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
 import { RWebShare } from 'react-web-share';
-
+import { formatBalance } from '@/lib/functions';
 const GlobalProgram = () => {
+	const { data, isLoading, isError, isSuccess, error } =
+		useMyWalletQuery(undefined);
+	const { wallet } = data || {};
 	const { user } = useSelector((state: any) => state.auth);
 	// get host
 	const host = window.location.host;
@@ -65,9 +69,13 @@ const GlobalProgram = () => {
 							</div>
 							<div className='text-center my-10'>
 								<p className='text-primary text-lg'>
-									<span className='text-2xl font-bold '>0</span>.00 USD
+									Current Balance:{' '}
+									{formatBalance(wallet?.current_global_earing || 0)} USDT
 								</p>
-								<p className='text-secondary'>Total Global Earning 0.00 USD</p>
+								<p className='text-secondary'>
+									Total Global Earning:{' '}
+									{formatBalance(wallet?.total_global_earing || 0)} USDT
+								</p>
 							</div>
 						</div>
 

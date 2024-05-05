@@ -1,58 +1,7 @@
 import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-const data = [
-	{
-		id: 1,
-		name: 'Sumon',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 2,
-		name: 'Rahim',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 3,
-		name: 'Karim',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
 
-	{
-		id: 4,
-		name: 'Jhon',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 5,
-		name: 'Doe',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 6,
-		name: 'Doe',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 7,
-		name: 'Doe',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-	{
-		id: 8,
-		name: 'Doe',
-		email: 'zakaria@gmail.com',
-		package: 'Basic',
-	},
-];
-
-const PartnerTable = () => {
+const PartnerTable = ({ data }: any) => {
 	const columns: GridColDef<any>[] = [
 		{
 			field: 'id',
@@ -66,20 +15,9 @@ const PartnerTable = () => {
 		},
 
 		{
-			field: 'name',
-			headerName: 'Name',
-			width: 130,
-			renderCell: (params: any) => (
-				<div className=''>
-					<p>{params.row.name}</p>
-				</div>
-			),
-		},
-
-		{
 			field: 'email',
 			headerName: 'Email',
-			width: 110,
+			width: 200,
 			renderCell: (params: any) => (
 				<div className=''>
 					<p>{params.row.email}</p>
@@ -92,8 +30,15 @@ const PartnerTable = () => {
 			headerName: 'Package',
 			width: 100,
 			renderCell: (params: any) => (
+				// console.log(params.row.packages),
 				<div className=''>
-					<p>{params.row.package}</p>
+					{params.row.packages.length > 0 ? (
+						params.row.packages.map((packageData: any, i: number) => {
+							return <p key={i}>{packageData}</p>;
+						})
+					) : (
+						<p>No Package</p>
+					)}
 				</div>
 			),
 		},
@@ -103,26 +48,25 @@ const PartnerTable = () => {
 	data &&
 		data.map((record: any) => {
 			return rows.push({
-				id: record.id,
+				id: record.partner_id ? record.partner_id : record._id,
 				name: record.name,
 				email: record.email,
-				package: record.package,
+				packages: record.active_packages,
 			});
 		});
 	return (
-		<div className=' z-10'>
-			<div style={{ height: 300, width: '100%' }}>
-				<DataGrid
-					rows={rows}
-					columns={columns}
-					rowHeight={38}
-					initialState={{
-						pagination: {
-							paginationModel: { pageSize: 5, page: 0 },
-						},
-					}}
-				/>
-			</div>
+		<div>
+			<DataGrid
+				autoHeight
+				rows={rows}
+				columns={columns}
+				// rowHeight={38}
+				// initialState={{
+				// 	pagination: {
+				// 		paginationModel: { pageSize: 5, page: 0 },
+				// 	},
+				// }}
+			/>
 		</div>
 	);
 };

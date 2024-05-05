@@ -1,6 +1,11 @@
 'use client';
 import PartnerLinkCard from '@/components/Partnership/PartnerLinkCard';
 import Partners from '@/components/Partnership/Partners';
+import { formatBalance } from '@/lib/functions';
+import {
+	useGet3LevelTeamQuery,
+	useMyWalletQuery,
+} from '@/redux/features/auth/authApi';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiCopy } from 'react-icons/fi';
@@ -11,6 +16,10 @@ import { useSelector } from 'react-redux';
 import { RWebShare } from 'react-web-share';
 
 const PartnerProgram = () => {
+	const { data, isLoading, isError, isSuccess, error } =
+		useMyWalletQuery(undefined);
+	const { wallet } = data || {};
+	console.log(wallet);
 	const { user } = useSelector((state: any) => state.auth);
 	// get host
 	const host = window.location.host;
@@ -65,9 +74,11 @@ const PartnerProgram = () => {
 							</div>
 							<div className='text-center my-10'>
 								<p className='text-primary text-lg'>
-									<span className='text-2xl font-bold '>0</span>.00 USD
+									<span className='text-2xl font-bold '>
+										{formatBalance(wallet?.total_level_earning || 110)}
+									</span>{' '}
+									USDT
 								</p>
-								<p className='text-secondary'>Total Referral Bonus 0.00 USD</p>
 							</div>
 						</div>
 

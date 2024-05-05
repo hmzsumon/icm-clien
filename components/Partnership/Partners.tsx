@@ -4,7 +4,18 @@ import { Accordion } from 'flowbite-react';
 import { FaHandHoldingUsd, FaUsers } from 'react-icons/fa';
 import { SiLevelsdotfyi } from 'react-icons/si';
 import PartnerTable from './PartnerTable';
+import { useGet3LevelTeamQuery } from '@/redux/features/auth/authApi';
+import { formatBalance } from '@/lib/functions';
 const Partners = () => {
+	const {
+		data: levelData,
+		isLoading: isLevelDataLoading,
+		isError: isErrorLevelData,
+		isSuccess: isSuccessLevelData,
+		error: errorLevelData,
+	} = useGet3LevelTeamQuery(undefined);
+	const { level_01_data, level_02_data, level_03_data } = levelData || {};
+
 	return (
 		<div>
 			<h2 className='text-xl font-bold text-gray-700 my-4'>Your Partners</h2>
@@ -19,17 +30,17 @@ const Partners = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_01_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								{formatBalance(level_01_data?.earning || 0)} USDT
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_01_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -43,17 +54,17 @@ const Partners = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_02_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								{formatBalance(level_02_data?.earning || 0)} USDT
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_02_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -67,17 +78,17 @@ const Partners = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_03_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100 USDT
+								{formatBalance(level_03_data?.earning || 0)} USDT
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_03_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>

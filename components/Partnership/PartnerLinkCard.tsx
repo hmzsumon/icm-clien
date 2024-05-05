@@ -17,8 +17,8 @@ const PartnerLinkCard = ({ partnerId, referralLink }: any) => {
 						onClick={() => setShowLink(1)}
 						className={
 							showLink == 1
-								? 'text-[#0022FF]  bg-[#dadef9] px-3 rounded-badge'
-								: 'text-primary  bg-[#dadef9] px-3 rounded-badge'
+								? 'text-icm-green bg-gray-700 p-2 rounded-md'
+								: 'bg-gray-500 p-2 rounded-md text-white'
 						}
 					>
 						Partner link
@@ -27,8 +27,8 @@ const PartnerLinkCard = ({ partnerId, referralLink }: any) => {
 						onClick={() => setShowLink(2)}
 						className={
 							showLink == 2
-								? 'text-[#0022FF]  bg-[#dadef9] px-3 rounded-badge'
-								: 'text-primary  bg-[#dadef9] px-3 rounded-badge'
+								? 'text-icm-green bg-gray-700 p-2 rounded-md'
+								: 'bg-gray-500 p-2 rounded-md text-white'
 						}
 					>
 						Partner code

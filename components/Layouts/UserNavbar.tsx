@@ -58,12 +58,9 @@ const UserNavbar = () => {
 				{/*End Small Device drawer content here */}
 			</div>
 			<Navbar.Brand>
-				<Link
-					className='md:flex items-center gap-2 lg:navbar-start navbar-center'
-					href='/'
-				>
+				<div className='md:flex items-center gap-2 lg:navbar-start navbar-center'>
 					<Image src={Logo} alt='' quality={100} className='w-44 md:w-48' />
-				</Link>
+				</div>
 			</Navbar.Brand>
 
 			<div className=' hidden md:block'>

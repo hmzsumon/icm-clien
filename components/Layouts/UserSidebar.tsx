@@ -27,25 +27,26 @@ const UserSidebar = ({ handleClose }: any) => {
 					<Link href='/withdraw' onClick={handleClose}>
 						<Sidebar.Item icon={RiShareForward2Fill}>Withdraw</Sidebar.Item>
 					</Link>
-					{/* Start Packages */}
+					{/* Start Investment */}
 					<Sidebar.Collapse icon={FaFilterCircleDollar} label='Investment'>
-						<Link href='/withdraw' onClick={handleClose}>
+						<Link href='/investment' onClick={handleClose}>
 							<Sidebar.Item>Packages</Sidebar.Item>
 						</Link>
-						<Link href='/withdraw' onClick={handleClose}>
+						<Link href='/investment/my-package' onClick={handleClose}>
 							<Sidebar.Item> My Package</Sidebar.Item>
 						</Link>
 					</Sidebar.Collapse>
-					{/* End Packages */}
+					{/* End investment */}
+
 					{/* Start Partnership */}
 					<Sidebar.Collapse icon={FaHandshakeSimple} label='Partnership'>
-						<Link href='/withdraw' onClick={handleClose}>
-							<Sidebar.Item>Referral Program</Sidebar.Item>
+						<Link href='/partner-program' onClick={handleClose}>
+							<Sidebar.Item>Partner Program</Sidebar.Item>
 						</Link>
-						<Link href='/withdraw' onClick={handleClose}>
+						<Link href='/generation-program' onClick={handleClose}>
 							<Sidebar.Item>Generation Program</Sidebar.Item>
 						</Link>
-						<Link href='/withdraw' onClick={handleClose}>
+						<Link href='/global-program' onClick={handleClose}>
 							<Sidebar.Item>Global Program</Sidebar.Item>
 						</Link>
 					</Sidebar.Collapse>

@@ -1,45 +1,12 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const getTreeData = () => {
-	return {
-		main: {
-			element: 'Rahman',
-			id: '200200',
-		},
-		left: {
-			element: 'Asad',
-			id: '200201',
-		},
-		right: {
-			element: 'Sumon',
-			id: '200202',
-		},
-	};
-};
+import { useSelector } from 'react-redux';
+import RingLoader from 'react-spinners/RingLoader';
+import { useGetTreeNodeQuery } from '@/redux/features/auth/authApi';
 
-const renderBinaryTree = (node: any) => {
-	const { left, right, element } = node;
-	return (
-		<div className='node node--root'>
-			<div className='node__element'>{element}</div>
-			{left || right ? (
-				<div className='node node--root'>
-					<div className='node__bottom-line'></div>
-					<div className='node__children'>
-						{left ? <div className='node'>{renderBinaryTree(left)}</div> : null}
-						{right ? (
-							<div className='node'>{renderBinaryTree(right)}</div>
-						) : null}
-					</div>
-				</div>
-			) : null}
-		</div>
-	);
-};
-
-const TreeNode = ({ node }: any) => {
-	const { left, right, main } = node;
+const TreeNode = ({ node, handleSetNodeUserId }: any) => {
+	const { left_node, right_node, main_node } = node || {};
 
 	return (
 		<div className=''>
@@ -51,12 +18,18 @@ const TreeNode = ({ node }: any) => {
 					height={100}
 					className='rounded-sm mx-auto'
 				/>
-				<div>
-					<p className='text-primary'>{main.element}</p>
-					<p>
-						<span className='text-primary'>{main.id}</span>
-					</p>
-				</div>
+				{main_node ? (
+					<div>
+						<p className='text-primary'>{main_node?.name}</p>
+						<p>
+							<span className='text-primary'>{main_node?.partner_id}</span>
+						</p>
+					</div>
+				) : (
+					<div className='text-center bg-icm-green rounded-md py-1 w-fit mx-auto px-8'>
+						<p className='text-primary text-xs font-bold'>Empty</p>
+					</div>
+				)}
 			</div>
 			<div className='children flex gap-x-14 mt-10'>
 				<div className=' node left-node'>
@@ -65,14 +38,23 @@ const TreeNode = ({ node }: any) => {
 						alt='avatar'
 						width={100}
 						height={100}
-						className='rounded-sm'
+						className={`rounded-sm ${
+							left_node ? 'cursor-pointer' : 'cursor-not-allowed'
+						}`}
+						onClick={() => handleSetNodeUserId(left_node?.partner_id)}
 					/>
-					<div className='text-center'>
-						<p className='text-primary'>{left.element}</p>
-						<p>
-							<span className='text-primary'>{left.id}</span>
-						</p>
-					</div>
+					{left_node ? (
+						<div className='text-center'>
+							<p className='text-primary'>{left_node?.name}</p>
+							<p>
+								<span className='text-primary'>{left_node?.partner_id}</span>
+							</p>
+						</div>
+					) : (
+						<div className='text-center bg-icm-green rounded-md py-1'>
+							<p className='text-primary text-xs font-bold'>Empty</p>
+						</div>
+					)}
 				</div>
 				<div className='node right-node'>
 					<Image
@@ -80,14 +62,23 @@ const TreeNode = ({ node }: any) => {
 						alt='avatar'
 						width={100}
 						height={100}
-						className='rounded-sm'
+						className={`rounded-sm ${
+							right_node ? 'cursor-pointer' : 'cursor-not-allowed'
+						}`}
+						onClick={() => handleSetNodeUserId(right_node?.partner_id)}
 					/>
-					<div className='text-center'>
-						<p className='text-primary'>{right.element}</p>
-						<p>
-							<span className='text-primary'>{right.id}</span>
-						</p>
-					</div>
+					{right_node ? (
+						<div className='text-center'>
+							<p className='text-primary'>{right_node?.name}</p>
+							<p>
+								<span className='text-primary'>{right_node?.partner_id}</span>
+							</p>
+						</div>
+					) : (
+						<div className='text-center bg-icm-green rounded-md py-1'>
+							<p className='text-primary text-xs font-bold'>Empty</p>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
@@ -95,18 +86,64 @@ const TreeNode = ({ node }: any) => {
 };
 
 const TreeView = () => {
-	const rootNode = getTreeData();
-	console.log(rootNode);
+	const { user } = useSelector((state: any) => state.auth);
+	const [nodeUserId, setNodeUserId] = useState('');
+	const [getNode, setGetNode] = useState(false);
+	const { data, isLoading, isSuccess, isError, error, refetch } =
+		useGetTreeNodeQuery(nodeUserId, { skip: !getNode });
+	const { treeNode } = data || {};
+
+	// handle set node user id
+	const handleSetNodeUserId = (id: any) => {
+		console.log('id', id);
+		setGetNode(true);
+		setNodeUserId(id);
+	};
+
+	// handle refetch
+	const handleRefetch = () => {
+		setGetNode(true);
+		setNodeUserId(user.partner_id);
+		refetch();
+	};
+
+	// initial set node user id user._id
+	useEffect(() => {
+		if (user) {
+			setGetNode(true);
+			setNodeUserId(user.partner_id);
+		}
+	}, [user]);
+
 	return (
 		<div className='bg-white p-5 border rounded mt-5'>
 			<h1 className='my-10 text-gray-700 font-semibold text-center text-xl'>
 				{' '}
 				Your Global Tree View
 			</h1>
-			<div className=' flex items-center'>
-				<div className='tree mx-auto'>
-					<TreeNode node={rootNode} />
-				</div>
+			<div className=' flex items-center '>
+				{isLoading ? (
+					<div className='flex items-center justify-center h-[50vh] w-full'>
+						<RingLoader color='#34E834' loading={true} size={100} />
+					</div>
+				) : (
+					<div className='tree mx-auto'>
+						<TreeNode
+							node={treeNode}
+							handleSetNodeUserId={handleSetNodeUserId}
+						/>
+
+						<div className=' flex items-center justify-center mt-3'>
+							<button
+								className='bg-icm-green text-white rounded-md px-5 py-1 text-xs font-bold disabled:opacity-50 disabled:cursor-not-allowed'
+								onClick={handleRefetch}
+								disabled={user.partner_id === treeNode?.main_node?.partner_id}
+							>
+								Reload
+							</button>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -23,7 +23,7 @@ export const packageApi = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: data,
 			}),
-			invalidatesTags: ['Package'],
+			invalidatesTags: ['Package', 'User'],
 		}),
 	}),
 });

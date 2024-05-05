@@ -5,7 +5,24 @@ import { FaHandHoldingUsd, FaUsers } from 'react-icons/fa';
 import { SiLevelsdotfyi } from 'react-icons/si';
 import PartnerTable from './PartnerTable';
 import { BiLogoMicrosoftTeams } from 'react-icons/bi';
+import { useGet5LevelTeamQuery } from '@/redux/features/auth/authApi';
+import { formatBalance } from '@/lib/functions';
+
 const Generations = () => {
+	const {
+		data: levelData,
+		isLoading: isLevelDataLoading,
+		isError: isErrorLevelData,
+		isSuccess: isSuccessLevelData,
+		error: errorLevelData,
+	} = useGet5LevelTeamQuery(undefined);
+	const {
+		level_01_data,
+		level_02_data,
+		level_03_data,
+		level_04_data,
+		level_05_data,
+	} = levelData || {};
 	return (
 		<div>
 			<h2 className='text-xl font-bold text-gray-700 my-4'>
@@ -26,17 +43,17 @@ const Generations = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_01_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100$
+								{formatBalance(level_01_data?.earning || 0)}$
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_01_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -55,17 +72,17 @@ const Generations = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_02_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100$
+								{formatBalance(level_02_data?.earning || 0)}$
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_02_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -84,17 +101,17 @@ const Generations = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_03_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100$
+								{formatBalance(level_03_data?.earning || 0)}$
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className='h-auto'>
+							<PartnerTable data={level_03_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -113,17 +130,17 @@ const Generations = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_04_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100$
+								{formatBalance(level_04_data?.earning || 0)}$
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_04_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>
@@ -143,17 +160,17 @@ const Generations = () => {
 
 							<p className=' flex items-center gap-1'>
 								<FaUsers />
-								100
+								{level_05_data?.count || 0}
 							</p>
 							<p className=' flex items-center gap-1'>
 								<FaHandHoldingUsd />
-								100$
+								{formatBalance(level_05_data?.earning || 0)}$
 							</p>
 						</div>
 					</Accordion.Title>
 					<Accordion.Content>
-						<div>
-							<PartnerTable />
+						<div className=' h-auto'>
+							<PartnerTable data={level_05_data?.users} />
 						</div>
 					</Accordion.Content>
 				</Accordion.Panel>

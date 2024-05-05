@@ -198,6 +198,46 @@ export const authApi = apiSlice.injectEndpoints({
 				body,
 			}),
 		}),
+
+		// my wallet
+		myWallet: builder.query<any, any>({
+			query: () => ({
+				url: `/my-wallet`,
+				method: 'GET',
+			}),
+		}),
+
+		// get 3 level team data
+		get3LevelTeam: builder.query<any, any>({
+			query: () => ({
+				url: `/get-3-level-user`,
+				method: 'GET',
+			}),
+		}),
+
+		/// get 5 level team data
+		get5LevelTeam: builder.query<any, any>({
+			query: () => ({
+				url: `/get-5-level-user`,
+				method: 'GET',
+			}),
+		}),
+
+		// get my tree node by partner id
+		getTreeNode: builder.query<any, any>({
+			query: (id) => ({
+				url: `/get-tree-node/${id}`,
+				method: 'GET',
+			}),
+		}),
+
+		// find descendants
+		findDescendants: builder.query<any, any>({
+			query: () => ({
+				url: `/find-descendants`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -220,4 +260,9 @@ export const {
 	useMyAddressQuery,
 	useSecurityVerifyMutation,
 	useResetPasswordMutation,
+	useMyWalletQuery,
+	useGet3LevelTeamQuery,
+	useGet5LevelTeamQuery,
+	useGetTreeNodeQuery,
+	useFindDescendantsQuery,
 } = authApi;
