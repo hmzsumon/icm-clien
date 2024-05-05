@@ -28,13 +28,13 @@ const PartnerTable = ({ data }: any) => {
 		{
 			field: 'package',
 			headerName: 'Package',
-			width: 100,
+			width: 200,
 			renderCell: (params: any) => (
 				// console.log(params.row.packages),
-				<div className=''>
+				<div className=' flex items-center gap-1'>
 					{params.row.packages.length > 0 ? (
 						params.row.packages.map((packageData: any, i: number) => {
-							return <p key={i}>{packageData}</p>;
+							return <p key={i}>{packageData},</p>;
 						})
 					) : (
 						<p>No Package</p>

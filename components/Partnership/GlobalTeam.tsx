@@ -36,17 +36,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										2/{sixLevels[0]?.count}
+										2/{sixLevels?.length > 0 ? sixLevels[0]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{sixLevels[0]?.total_investment * 0.01}$
+										{formatBalance(
+											sixLevels?.length > 0
+												? sixLevels[0]?.total_investment * 0.01
+												: 0
+										)}
+										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[0]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 0 ? sixLevels[0]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>
@@ -62,18 +69,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										4/{sixLevels[1]?.count}
+										4/{sixLevels?.length > 1 ? sixLevels[1]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{formatBalance(sixLevels[1]?.total_investment * 0.009 || 0)}
+										{formatBalance(
+											sixLevels?.length > 1
+												? sixLevels[1]?.total_investment * 0.009
+												: 0
+										)}
 										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[1]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 1 ? sixLevels[1]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>
@@ -89,18 +102,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										8/{sixLevels[2]?.count || 0}
+										8/{sixLevels?.length > 2 ? sixLevels[2]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{formatBalance(sixLevels[2]?.total_investment * 0.008 || 0)}
+										{formatBalance(
+											sixLevels?.length > 2
+												? sixLevels[2]?.total_investment * 0.008
+												: 0
+										)}
 										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[2]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 2 ? sixLevels[2]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>
@@ -117,18 +136,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										16/{sixLevels[3]?.count || 0}
+										16/{sixLevels?.length > 3 ? sixLevels[3]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{formatBalance(sixLevels[3]?.total_investment * 0.007 || 0)}
+										{formatBalance(
+											sixLevels?.length > 3
+												? sixLevels[3]?.total_investment * 0.007
+												: 0
+										)}
 										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[3]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 3 ? sixLevels[3]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>
@@ -146,18 +171,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										32/{sixLevels[4]?.count || 0}
+										32/{sixLevels?.length > 4 ? sixLevels[4]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{formatBalance(sixLevels[4]?.total_investment * 0.006 || 0)}
+										{formatBalance(
+											sixLevels?.length > 4
+												? sixLevels[4]?.total_investment * 0.006
+												: 0
+										)}
 										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[4]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 4 ? sixLevels[4]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>
@@ -175,18 +206,24 @@ const GlobalTeam = () => {
 
 									<p className=' flex items-center gap-1'>
 										<FaUsers />
-										64/{sixLevels[5]?.count || 0}
+										64/{sixLevels?.length > 5 ? sixLevels[5]?.count : 0}
 									</p>
 									<p className=' flex items-center gap-1'>
 										<FaHandHoldingUsd />
-										{formatBalance(sixLevels[5]?.total_investment * 0.005 || 0)}
+										{formatBalance(
+											sixLevels?.length > 5
+												? sixLevels[5]?.total_investment * 0.005
+												: 0
+										)}
 										$
 									</p>
 								</div>
 							</Accordion.Title>
 							<Accordion.Content>
 								<div className=' h-auto'>
-									<PartnerTable data={sixLevels[5]?.users} />
+									<PartnerTable
+										data={sixLevels?.length > 5 ? sixLevels[5]?.users : []}
+									/>
 								</div>
 							</Accordion.Content>
 						</Accordion.Panel>

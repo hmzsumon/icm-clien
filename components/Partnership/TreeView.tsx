@@ -137,7 +137,7 @@ const TreeView = () => {
 							<button
 								className='bg-icm-green text-white rounded-md px-5 py-1 text-xs font-bold disabled:opacity-50 disabled:cursor-not-allowed'
 								onClick={handleRefetch}
-								disabled={user.partner_id === treeNode?.main_node?.partner_id}
+								disabled={user?.partner_id === treeNode?.main_node?.partner_id}
 							>
 								Reload
 							</button>
