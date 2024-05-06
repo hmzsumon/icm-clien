@@ -67,7 +67,7 @@ export const maskPhoneNumber = (phoneNumber: string) => {
 };
 
 // balance formatter
-export const formatBalance = (balance: number = 10): string => {
+export const formatBalance = (balance: number = 0): string => {
 	return balance.toLocaleString(undefined, {
 		minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
