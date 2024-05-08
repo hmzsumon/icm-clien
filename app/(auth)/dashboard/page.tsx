@@ -25,7 +25,7 @@ const Dashboard = () => {
 						<div className='grid grid-cols-2 md:grid-cols-3'>
 							<div className=' md:col-span-1 grid md:flex gap-2 items-center'>
 								<Card className=' w-20 h-20 rounded-full  flex items-center justify-center'>
-									<FaWallet className=' text-3xl' />
+									<FaWallet className=' text-icm-green text-3xl' />
 								</Card>
 								<p className='uppercase md:mb-0 mb-5 text-lg text-slate-600'>
 									<span className='font-semibold text-xl text-black'>

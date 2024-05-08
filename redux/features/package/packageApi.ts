@@ -25,6 +25,19 @@ export const packageApi = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['Package', 'User'],
 		}),
+
+		// get package by id
+		getPackageById: builder.query<any, string>({
+			query: (id) => `/package/${id}`,
+		}),
+
+		// get logged in user userPackages
+		getUserPackages: builder.query<any, any>({
+			query: () => ({
+				url: '/user-packages',
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -32,4 +45,6 @@ export const {
 	useGetAllPackagesQuery,
 	useGetMyPackagesQuery,
 	useCreatePackageMutation,
+	useGetPackageByIdQuery,
+	useGetUserPackagesQuery,
 } = packageApi;

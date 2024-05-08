@@ -1,6 +1,6 @@
 'use client';
 
-import { CustomFlowbiteTheme, Sidebar } from 'flowbite-react';
+import { Button, CustomFlowbiteTheme, Sidebar } from 'flowbite-react';
 import Link from 'next/link';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { PiDownloadSimpleBold } from 'react-icons/pi';
@@ -14,7 +14,7 @@ const UserSidebar = ({ handleClose }: any) => {
 	return (
 		<Sidebar
 			aria-label='Sidebar with multi-level dropdown example'
-			className='dark w-full '
+			className='dark w-full bg-gray-800'
 		>
 			<Sidebar.Items>
 				<Sidebar.ItemGroup>

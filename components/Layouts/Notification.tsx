@@ -132,11 +132,11 @@ const Notification = () => {
 							{notifications?.map((notification: any) => (
 								<li
 									key={notification._id}
-									className='  px-4  py-2 border-b cursor-pointer text-gray-700 hover:bg-gray-100'
+									className='  px-4  py-2 border-b cursor-pointer text-gray-50 hover:bg-gray-600'
 									onClick={() => handleOpenNotification(notification._id)}
 								>
 									<div className='flex items-center justify-between'>
-										<p className='text-gray-800'>{notification.title}</p>
+										<p className='text-gray-50'>{notification.title}</p>
 										<MdKeyboardArrowDown
 											className={` text-2xl ${
 												openNotificationId === notification._id
