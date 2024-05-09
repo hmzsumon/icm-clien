@@ -16,17 +16,14 @@ const HomeFooter = () => {
 							className='object-contain w-40 h-6 my-4'
 						/>
 						<p className=' text-xs text-[#777777] leading-4 tracking-tight text-justify'>
-							IC Markets is one of the most renowned Forex CFD provider,
-							offering trading solutions for active day traders and scalpers as
-							well as traders that are new to the forex market. IC Markets money
-							is an investment platform dedicated to empowering individuals to
-							financial goals through personalized solutions. They offer a range
-							of investment packages with profit multipliers from 3x to 3.5x
-							catering to different objectives. Additionally, they feature an
-							engaging lottery system where users can win exclusive prizes by
-							purchasing tickets. With a focus on secure investments and
-							transparent operations, IC Markets Money aims to provide a
-							trustworthy environment for users to grow their funds.
+							IC Markets money is an investment platform dedicated to empowering
+							individuals to financial goals through personalized solutions.
+							They offer a range of investment packages with profit multipliers
+							from 3x to 3.5x catering to different objectives. Additionally,
+							they feature an engaging lottery system where users can win
+							exclusive prizes by purchasing tickets. With a focus on secure
+							investments and transparent operations, IC Markets Money aims to
+							provide a trustworthy environment for users to grow their funds.
 						</p>
 					</div>
 					<div></div>
@@ -35,12 +32,12 @@ const HomeFooter = () => {
 						<h1 className='text-sm font-bold'>About IC Markets money?</h1>
 						<ul className='text-xs text-[#777777] mt-2 font-semibold space-y-2 '>
 							<li className=' hover:text-icm-green'>
-								<Link href='/'>
+								<Link href='/contact-us'>
 									<span>Help Center</span>
 								</Link>
 							</li>
 							<li className=' hover:text-icm-green'>
-								<Link href='/'>
+								<Link href='/why-icm'>
 									<span>Why ICM Money</span>
 								</Link>
 							</li>
@@ -49,18 +46,18 @@ const HomeFooter = () => {
 									<span>Privacy Policy</span>
 								</Link>
 							</li>
-							<li className=' hover:text-icm-green'>
+							{/* <li className=' hover:text-icm-green'>
 								<Link href='/'>
 									<span>Regulation</span>
 								</Link>
-							</li>
+							</li> */}
 							<li className=' hover:text-icm-green'>
 								<Link href='/legal-documents'>
 									<span>Legal Documents</span>
 								</Link>
 							</li>
 							<li className=' hover:text-icm-green'>
-								<Link href='/'>
+								<Link href='/contact-us'>
 									<span>Contact Us</span>
 								</Link>
 							</li>
@@ -76,7 +73,7 @@ const HomeFooter = () => {
 					</p>
 
 					<Link
-						href='/document'
+						href='/legal-documents'
 						className='text-xs font-bold my-3 text-[#777777] hover:text-icm-green'
 					>
 						Legal Documents

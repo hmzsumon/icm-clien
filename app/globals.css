@@ -213,6 +213,22 @@ body .analyst ul::-webkit-scrollbar-thumb {
 	background-repeat: no-repeat;
 	/* Add other styles as needed */
 }
+
+.contact-us-banner-bg {
+	background-image: url(/assets/contact-us-banner.webp);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/* Add other styles as needed */
+}
+.why-icm-banner-bg {
+	background-image: url(/assets/why-banner.webp);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/* Add other styles as needed */
+}
+
 /*End Registration Banner */
 
 /*Star Tree View CSS */

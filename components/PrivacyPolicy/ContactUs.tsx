@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { FaRegDotCircle } from 'react-icons/fa';
 
 const ContactUs = () => {
@@ -14,10 +15,12 @@ const ContactUs = () => {
 			</div>
 			<hr />
 			<div className=' p-4'>
-				<li className=' list-none flex items-center  gap-2'>
-					<FaRegDotCircle className='inline-block text-icm-green' />
-					<span className='text-gray-700 text-sm font-bold'>Help Center</span>
-				</li>
+				<Link href='/contact-us'>
+					<li className=' list-none flex items-center  gap-2'>
+						<FaRegDotCircle className='inline-block text-icm-green' />
+						<span className='text-gray-700 text-sm font-bold'>Help Center</span>
+					</li>
+				</Link>
 			</div>
 			<hr />
 			<div className=' p-4'>
