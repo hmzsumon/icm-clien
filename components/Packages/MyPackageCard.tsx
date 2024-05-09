@@ -19,16 +19,16 @@ const MyPackageCard: React.FC<MyPackageCardProps> = ({ pac }) => {
 			<div className='w-full mx-auto overflow-hidden bg-white rounded-lg shadow-lg'>
 				<div className='px-6 py-4 bg-gradient-to-r from-green-500 to-icm-green'>
 					<h2 className='text-2xl font-semibold text-white'>{pac?.p_title}</h2>
-					<p className='text-gray-200'>Perfect for professionals</p>
+					<p className='text-gray-200 text-xs'>{pac?.sub_title}</p>
 				</div>
 				<div className='px-6 py-4'>
-					<div className='text-4xl font-bold text-gray-800'>
+					<div className='text-4xl font-bold text-gray-800 text-center'>
 						${pac?.p_price}
 					</div>
 					{/* <p className='text-gray-600'>Billed annually</p> */}
 				</div>
-				<div className='px-6 py-4 flex items-center gap-10'>
-					<ul className='text-gray-600 text-sm'>
+				<div className='px-6 py-4 flex flex-col md:flex-row items-center gap-10'>
+					<ul className='text-gray-600 order-2 md:order-1 text-sm'>
 						<li className='flex items-center'>
 							<svg
 								className='w-4 h-4 mr-2 text-green-500'
@@ -161,7 +161,7 @@ const MyPackageCard: React.FC<MyPackageCardProps> = ({ pac }) => {
 						)}
 					</ul>
 					{/* icon */}
-					<div className=' md:col-span-1 grid md:flex gap-2 items-center'>
+					<div className=' order-1 md:order-2 flex gap-4 items-center'>
 						<Card className=' w-20 h-20 rounded-full  flex items-center justify-center'>
 							<GiReceiveMoney className=' text-icm-green text-3xl' />
 						</Card>

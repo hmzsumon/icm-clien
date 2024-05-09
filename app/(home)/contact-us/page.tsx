@@ -28,12 +28,12 @@ const ContactUs = () => {
 								<li className=' text-center flex flex-col'>
 									<span>
 										General:{' '}
-										<a
+										{/* <a
 											className='text-gray-800 font-bold'
 											href='tel:+234-547-456-3245'
 										>
 											+234-547-456-3245
-										</a>
+										</a> */}
 									</span>
 									<small className=' text-xs'>
 										(International charges may apply)

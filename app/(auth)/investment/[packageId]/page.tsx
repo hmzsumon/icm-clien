@@ -57,6 +57,7 @@ const PackageDetails = ({ params }: any) => {
 	useEffect(() => {
 		if (isCreateSuccess) {
 			toast.success('Package created successfully');
+			router.push('/investment/my-package');
 		}
 		if (isCreatingError) {
 			toast.error((createError as fetchBaseQueryError).data?.message);
@@ -75,7 +76,7 @@ const PackageDetails = ({ params }: any) => {
 		);
 	}
 
-	if (sPackage === null || isError || (isSuccess && !sPackage)) {
+	if (sPackage === null || isError) {
 		content = (
 			<div className='text-center flex items-center justify-center h-[60vh]'>
 				<p className='text-red-500'>An error occurred</p>

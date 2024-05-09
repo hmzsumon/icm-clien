@@ -12,6 +12,7 @@ export interface Package {
 export interface MyPackage {
 	_id: string;
 	p_title: string;
+	sub_title: string;
 	p_price: number;
 	p_return: number;
 	p_duration: string;

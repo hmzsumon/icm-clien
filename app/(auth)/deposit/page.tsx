@@ -1,4 +1,5 @@
 'use client';
+import { useMyWalletQuery } from '@/redux/features/auth/authApi';
 import { Button } from 'flowbite-react';
 import { link } from 'fs';
 import Link from 'next/link';
@@ -137,12 +138,17 @@ const depositMethods = [
 
 const Deposit = () => {
 	const { user } = useSelector((state: any) => state.auth);
+	const { data, isLoading, isError, isSuccess, error } =
+		useMyWalletQuery(undefined);
+	const { wallet } = data || {};
 	return (
 		<div className=' px-4 py-6'>
 			<h3 className='text-xl text-slate-800 font-semibold'>Deposit</h3>
-			<h3 className=' text-slate-800 font-semibold py-3'>
-				Verification required
-			</h3>
+			<div>
+				<h3 className=' text-slate-800 font-semibold py-3'>
+					Verification required
+				</h3>
+			</div>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 				{depositMethods.map((method) => {
 					return (

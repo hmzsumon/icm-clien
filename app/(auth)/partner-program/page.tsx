@@ -19,7 +19,7 @@ const PartnerProgram = () => {
 	const { data, isLoading, isError, isSuccess, error } =
 		useMyWalletQuery(undefined);
 	const { wallet } = data || {};
-	console.log(wallet);
+	// console.log(wallet);
 	const { user } = useSelector((state: any) => state.auth);
 	// get host
 	const host = window.location.host;

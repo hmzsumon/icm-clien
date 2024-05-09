@@ -13,9 +13,13 @@ import { GiReceiveMoney } from 'react-icons/gi';
 import { FaUsers } from 'react-icons/fa';
 import { RiArrowRightUpLine, RiGlobalFill } from 'react-icons/ri';
 import { BiLogoMicrosoftTeams } from 'react-icons/bi';
+import { useMyWalletQuery } from '@/redux/features/auth/authApi';
 
 const Dashboard = () => {
 	const { user } = useSelector((state: any) => state.auth);
+	const { data, isLoading, isError, isSuccess, error } =
+		useMyWalletQuery(undefined);
+	const { wallet } = data || {};
 	return (
 		<div className=' z-0 px-2 '>
 			<div className='py-4  '>
@@ -83,12 +87,12 @@ const Dashboard = () => {
 					<ItemCard
 						icon={<GiReceiveMoney />}
 						title='Total Earn'
-						balance={user?.active_package}
+						balance={wallet?.total_earing}
 					/>
 
 					<ItemCard
 						icon={<FaWallet />}
-						title='Package Balance'
+						title='Total Profit'
 						balance={user?.active_package}
 					/>
 					<ItemCard
