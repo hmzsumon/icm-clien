@@ -18,7 +18,10 @@ export interface MyPackage {
 	is_active: boolean;
 	is_expired: boolean;
 	profit: number;
+
+	to_day_profit: number;
 	active_date: Date;
+	expire_date: any;
 	profit_day: string;
 	weekly: string;
 	return: string;

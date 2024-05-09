@@ -10,7 +10,7 @@ const PricingCard = ({ pac }: any) => {
 			<div className='w-full mx-auto overflow-hidden bg-white rounded-lg shadow-lg'>
 				<div className='px-6 py-4 bg-gradient-to-r from-green-500 to-icm-green'>
 					<h2 className='text-2xl font-semibold text-white'>{pac?.title}</h2>
-					<p className='text-gray-200'>Perfect for professionals</p>
+					<p className='text-gray-200'>{pac?.sub_title}</p>
 				</div>
 				<div className='px-6 py-4'>
 					<div className='text-4xl font-bold text-gray-800'>${pac?.price}</div>

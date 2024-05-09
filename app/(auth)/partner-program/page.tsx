@@ -75,7 +75,7 @@ const PartnerProgram = () => {
 							<div className='text-center my-10'>
 								<p className='text-primary text-lg'>
 									<span className='text-2xl font-bold '>
-										{formatBalance(wallet?.total_level_earning || 110)}
+										{formatBalance(wallet?.total_level_earning || 0)}
 									</span>{' '}
 									USDT
 								</p>

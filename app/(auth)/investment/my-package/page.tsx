@@ -28,10 +28,12 @@ const MyPackage = () => {
 							))}
 						</Card>
 					) : (
-						<div className='text-center bg-icm-green rounded-md py-3 mt-20'>
-							<p className='text-primary text-xs font-bold'>
-								You have no package yet!
-							</p>
+						<div className=' h-[50vh] flex items-center justify-center'>
+							<div className='text-center bg-icm-green rounded-md py-3 px-6 '>
+								<p className='text-primary text-xs font-bold'>
+									You have no package yet!
+								</p>
+							</div>
 						</div>
 					)}
 				</div>
