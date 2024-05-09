@@ -238,6 +238,14 @@ export const authApi = apiSlice.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+
+		// get dashboard data
+		getDashboard: builder.query<any, any>({
+			query: () => ({
+				url: `/dashboard-data`,
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
@@ -265,4 +273,5 @@ export const {
 	useGet5LevelTeamQuery,
 	useGetTreeNodeQuery,
 	useFindDescendantsQuery,
+	useGetDashboardQuery,
 } = authApi;

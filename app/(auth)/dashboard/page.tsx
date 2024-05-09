@@ -13,13 +13,16 @@ import { GiReceiveMoney } from 'react-icons/gi';
 import { FaUsers } from 'react-icons/fa';
 import { RiArrowRightUpLine, RiGlobalFill } from 'react-icons/ri';
 import { BiLogoMicrosoftTeams } from 'react-icons/bi';
-import { useMyWalletQuery } from '@/redux/features/auth/authApi';
+import {
+	useGetDashboardQuery,
+	useMyWalletQuery,
+} from '@/redux/features/auth/authApi';
 
 const Dashboard = () => {
 	const { user } = useSelector((state: any) => state.auth);
 	const { data, isLoading, isError, isSuccess, error } =
-		useMyWalletQuery(undefined);
-	const { wallet } = data || {};
+		useGetDashboardQuery(undefined);
+	const { dashboardData } = data || {};
 	return (
 		<div className=' z-0 px-2 '>
 			<div className='py-4  '>
@@ -87,36 +90,36 @@ const Dashboard = () => {
 					<ItemCard
 						icon={<GiReceiveMoney />}
 						title='Total Earn'
-						balance={wallet?.total_earing}
+						balance={dashboardData?.total_earning}
 					/>
 
 					<ItemCard
 						icon={<FaWallet />}
 						title='Total Profit'
-						balance={user?.active_package}
+						balance={dashboardData?.profit}
 					/>
 					<ItemCard
 						icon={<FaFilterCircleDollar />}
 						title='Active Package'
-						balance={user?.active_package}
+						balance={dashboardData?.total_active_amount}
 					/>
 
 					<ItemCard
 						icon={<FaUsers />}
 						title='Referral Earn'
-						balance={user?.active_package}
+						balance={dashboardData?.referral_earning}
 					/>
 
 					<ItemCard
 						icon={<BiLogoMicrosoftTeams />}
 						title='Generation Earn'
-						balance={user?.active_package}
+						balance={dashboardData?.generation_earning}
 					/>
 
 					<ItemCard
 						icon={<RiGlobalFill />}
 						title='Global Earn'
-						balance={user?.active_package}
+						balance={dashboardData?.global_earning}
 					/>
 				</div>
 			</div>
