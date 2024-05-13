@@ -16,7 +16,7 @@ import WithdrawSecurity from '@/components/Withdraw/WithdrawSecurity';
 const withdrawMethods = [
 	{
 		id: 7,
-		title: 'Tether (USDT TRC20)',
+		title: 'USDT (TRC20)',
 		isActive: true,
 		processingTime: 'instant - 30 minutes',
 		fee: '5%',
@@ -104,7 +104,7 @@ const Withdraw = () => {
 											src={method.icon}
 											alt={method.title}
 										/>
-										<h3 className='text-lg text-black font-medium'>
+										<h3 className='text-sm text-black font-medium'>
 											{method.title}
 										</h3>
 									</span>

@@ -8,9 +8,14 @@ const ContactUsBanner = () => {
 				We are here for you, 24/7.
 			</h2>
 			<div className=' flex items-center justify-center my-2'>
-				<button className='bg-icm-green text-gray-800 font-bold px-4 py-2 rounded-md hover:bg-green-500'>
+				<a
+					href='https://icmmoney.tawk.help'
+					target='_blank'
+					rel='noreferrer'
+					className='bg-icm-green text-gray-800 font-bold px-4 py-2 rounded-md hover:bg-green-500'
+				>
 					Launch Live Chat
-				</button>
+				</a>
 			</div>
 		</div>
 	);

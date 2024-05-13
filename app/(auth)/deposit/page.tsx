@@ -147,9 +147,7 @@ const Deposit = () => {
 			<h3 className='text-xl text-slate-800 font-semibold my-4'>Deposits</h3>
 			{!user?.kyc_verified && (
 				<div className='my-4'>
-					<h3 className=' text-slate-800 font-semibold py-3'>
-						Kyc Verification required
-					</h3>
+					<h3 className=' text-slate-800 font-semibold py-3'>Kyc required</h3>
 					{/* Verification */}
 					<Card className=''>
 						<div className='flex justify-between items-center'>
@@ -159,7 +157,7 @@ const Deposit = () => {
 								</span>
 								<div className='space-y-1'>
 									<p className='text-[12px] font-medium text-primary'>
-										Kyc Verification status
+										Verification status
 									</p>
 									<p className='text-[#C0424D] text-lg font-semibold'>
 										Not verified

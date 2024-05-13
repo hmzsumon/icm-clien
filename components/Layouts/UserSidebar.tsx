@@ -65,7 +65,7 @@ const UserSidebar = ({ handleClose }: any) => {
 					{/* end settings */}
 
 					{/* start support */}
-					<Link href='/support' onClick={handleClose}>
+					<Link href='/contact' onClick={handleClose}>
 						<Sidebar.Item icon={TiSocialInstagram}>Support</Sidebar.Item>
 					</Link>
 					{/* end support */}

@@ -1,9 +1,10 @@
 import ContactUsBanner from '@/components/Contact/ContactUsBanner';
-import React from 'react';
 import { Card } from 'flowbite-react';
+import React from 'react';
 import { BiSolidPhoneCall } from 'react-icons/bi';
 import { MdEmail } from 'react-icons/md';
-const ContactUs = () => {
+
+const Contact = () => {
 	return (
 		<div>
 			<ContactUsBanner />
@@ -82,4 +83,4 @@ const ContactUs = () => {
 	);
 };
 
-export default ContactUs;
+export default Contact;

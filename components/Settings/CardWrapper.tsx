@@ -23,18 +23,18 @@ const cardItems = [
 		Icon: <MdSecurity />,
 		link: '/settings/password-and-security',
 	},
-	{
-		id: 3,
-		title: 'Payment Methods',
-		Icon: <MdOutlinePayment />,
-		link: '/settings/payment-methods',
-	},
-	{
-		id: 4,
-		title: 'Verification',
-		Icon: <MdVerified />,
-		link: '/settings/verification',
-	},
+	// {
+	// 	id: 3,
+	// 	title: 'Payment Methods',
+	// 	Icon: <MdOutlinePayment />,
+	// 	link: '/settings/payment-methods',
+	// },
+	// {
+	// 	id: 4,
+	// 	title: 'Verification',
+	// 	Icon: <MdVerified />,
+	// 	link: '/settings/verification',
+	// },
 ];
 
 const CardWrapper = () => {
