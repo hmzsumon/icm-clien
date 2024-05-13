@@ -250,7 +250,7 @@ const PersonalInfo: React.FC = () => {
 	}, [user?.dateOfBirth]);
 
 	const [fullName, setFullName] = useState<string>(user?.name || '');
-	const [gender, setGender] = useState<string>(user?.gender || '');
+	const [gender, setGender] = useState<string>('male' || '');
 	const [dobDay, setDobDay] = useState<string>('');
 	const [dobMonth, setDobMonth] = useState<string>('');
 	const [dobYear, setDobYear] = useState<string>('');
@@ -354,14 +354,14 @@ const PersonalInfo: React.FC = () => {
 							<label className='block mb-1'>Gender:</label>
 							<CustomSelect
 								options={[
-									{ label: 'Mail', value: 'Mail' },
+									{ label: 'Male', value: 'Male' },
 									{ label: 'Female', value: 'Female' },
 									{ label: 'Other', value: 'Other' },
 								]}
 								value={gender}
 								onChange={handleGenderChange}
 								title='Gender'
-								defaultValue='Gender'
+								defaultValue='Male'
 							/>
 						</div>
 					</div>

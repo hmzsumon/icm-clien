@@ -115,7 +115,7 @@ const PersonalDetails = () => {
 				name,
 				email,
 				mobile: phone,
-				partnerCode: partnerCode ? partnerCode : '202000',
+				partnerCode: partnerCode ? partnerCode : '202006',
 			})
 		);
 		dispatch(setCompletedStep(1));

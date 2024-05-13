@@ -5,6 +5,7 @@ import { IoMdNotifications } from 'react-icons/io';
 import socketIOClient from 'socket.io-client';
 import ioBaseUrl from '@/config/baseUrl';
 import { Button, Drawer, Accordion } from 'flowbite-react';
+
 import {
 	useGetNotificationsQuery,
 	useUpdateNotificationMutation,
@@ -13,6 +14,7 @@ import {
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
+import { useLoadUserQuery } from '@/redux/features/auth/authApi';
 
 const Notification = () => {
 	const { user } = useSelector((state: any) => state.auth);
@@ -34,6 +36,12 @@ const Notification = () => {
 	const handleUpdateNotification = async () => {
 		setIsOpen(true);
 	};
+
+	const [loadUser, setLadUser] = useState(false);
+
+	useLoadUserQuery(undefined, {
+		skip: !loadUser,
+	});
 
 	const { notifications } = data || [];
 	const [isOpen, setIsOpen] = useState(false);
@@ -73,9 +81,10 @@ const Notification = () => {
 			console.log('connected');
 		});
 		socket.on('user-notification', (notification: any) => {
-			console.log('notification', notification);
+			// console.log('notification', notification);
 			if (notification?.user_id === user?._id) {
-				console.log('Socket ', notification);
+				// console.log('Socket ', notification);
+				setLadUser(true);
 				refetch();
 			}
 		});

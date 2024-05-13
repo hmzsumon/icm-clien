@@ -246,6 +246,15 @@ export const authApi = apiSlice.injectEndpoints({
 				method: 'GET',
 			}),
 		}),
+
+		// security verify
+		securityVerify2: builder.mutation<any, any>({
+			query: (body) => ({
+				url: `/security-verification`,
+				method: 'POST',
+				body,
+			}),
+		}),
 	}),
 });
 
@@ -274,4 +283,5 @@ export const {
 	useGetTreeNodeQuery,
 	useFindDescendantsQuery,
 	useGetDashboardQuery,
+	useSecurityVerify2Mutation,
 } = authApi;

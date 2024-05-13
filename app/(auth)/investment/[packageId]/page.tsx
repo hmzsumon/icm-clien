@@ -66,6 +66,7 @@ const PackageDetails = ({ params }: any) => {
 			}
 		}
 	}, [isCreateSuccess, isCreatingError, createError]);
+
 	let content;
 
 	if (isLoading) {
@@ -79,7 +80,7 @@ const PackageDetails = ({ params }: any) => {
 	if (sPackage === null || isError) {
 		content = (
 			<div className='text-center flex items-center justify-center h-[60vh]'>
-				<p className='text-red-500'>An error occurred</p>
+				<Spinner aria-label='Center-aligned spinner example' size='xl' />
 			</div>
 		);
 	}

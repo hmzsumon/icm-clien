@@ -1,6 +1,6 @@
 'use client';
 import { useMyWalletQuery } from '@/redux/features/auth/authApi';
-import { Button } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import { link } from 'fs';
 import Link from 'next/link';
 import React from 'react';
@@ -9,6 +9,7 @@ import { FaRegCreditCard } from 'react-icons/fa';
 import { FcMoneyTransfer } from 'react-icons/fc';
 import { IoMdLock } from 'react-icons/io';
 import { IoLogoUsd } from 'react-icons/io5';
+import { RxAvatar } from 'react-icons/rx';
 import { SiBinance, SiTether } from 'react-icons/si';
 
 import {
@@ -143,12 +144,44 @@ const Deposit = () => {
 	const { wallet } = data || {};
 	return (
 		<div className=' px-4 py-6'>
-			<h3 className='text-xl text-slate-800 font-semibold'>Deposit</h3>
-			<div>
-				<h3 className=' text-slate-800 font-semibold py-3'>
-					Verification required
-				</h3>
-			</div>
+			<h3 className='text-xl text-slate-800 font-semibold my-4'>Deposits</h3>
+			{!user?.kyc_verified && (
+				<div className='my-4'>
+					<h3 className=' text-slate-800 font-semibold py-3'>
+						Kyc Verification required
+					</h3>
+					{/* Verification */}
+					<Card className=''>
+						<div className='flex justify-between items-center'>
+							<div className='flex items-center gap-3'>
+								<span className='text-2xl p-2  border-4 rounded-full text-black'>
+									<RxAvatar />
+								</span>
+								<div className='space-y-1'>
+									<p className='text-[12px] font-medium text-primary'>
+										Kyc Verification status
+									</p>
+									<p className='text-[#C0424D] text-lg font-semibold'>
+										Not verified
+									</p>
+									<p className='text-[12px]'>0/1 steps complete</p>
+								</div>
+							</div>
+							{user?.kyc_step === 4 ? (
+								<button className='rounded py-2 px-4 text-sm font-semibold  bg-orange-400 text-slate-700 duration-300 hover:bg-orange-300'>
+									Under Review
+								</button>
+							) : (
+								<Link href='/verification'>
+									<button className='rounded py-2 px-4 text-sm font-semibold bg-green-500  text-slate-700 duration-300 hover:bg-icm-green'>
+										Complete Now
+									</button>
+								</Link>
+							)}
+						</div>
+					</Card>
+				</div>
+			)}
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 				{depositMethods.map((method) => {
 					return (
@@ -172,7 +205,7 @@ const Deposit = () => {
 										<div className='relative'>
 											<div
 												className=''
-												data-tooltip-id='unavialble'
+												data-tooltip-id='unavailable'
 												data-tooltip-content='You need complete the verification'
 												data-tooltip-place='bottom'
 												data-tooltip-class-name='custom-tooltip'
@@ -181,8 +214,8 @@ const Deposit = () => {
 													<span>
 														<CiUnlock />
 													</span>
-													<span>Recomended</span>
-													<Tooltip id='unavialble' />
+													<span>Recommended</span>
+													<Tooltip id='unavailable' />
 												</p>
 											</div>
 										</div>
@@ -190,7 +223,7 @@ const Deposit = () => {
 										<div className='relative'>
 											<div
 												className=''
-												data-tooltip-id='unavialble'
+												data-tooltip-id='unavailable'
 												data-tooltip-content='You need complete the verification'
 												data-tooltip-place='bottom'
 												data-tooltip-class-name='custom-tooltip'
@@ -199,8 +232,8 @@ const Deposit = () => {
 													<span>
 														<IoMdLock />
 													</span>
-													<span>Unavialble</span>
-													<Tooltip id='unavialble' />
+													<span>Unavailable</span>
+													<Tooltip id='unavailable' />
 												</p>
 											</div>
 										</div>
@@ -216,7 +249,7 @@ const Deposit = () => {
 										<Button
 											gradientMonochrome='success'
 											className='w-full'
-											disabled={!method.isActive}
+											disabled={!method.isActive || !user?.kyc_verified}
 										>
 											Pay Now
 										</Button>

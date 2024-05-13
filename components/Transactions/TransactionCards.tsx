@@ -62,6 +62,11 @@ const TransactionCards = ({ transaction }: any) => {
 						</p>
 					</div>
 				</div>
+				<hr />
+				{/* For description */}
+				<div>
+					<p className=' text-xs font-semibold'>{transaction?.description}</p>
+				</div>
 			</Card>
 		</div>
 	);

@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import StoreProvider from './StoreProvider';
 // import FacebookMsg from '@/components/FacebookMsg';
 import { dark } from '@mui/material/styles/createPalette';
+import TawkTo from '@/lib/TawkTo';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,8 @@ export default function RootLayout({
 			<body className={inter.className} suppressHydrationWarning={true}>
 				<StoreProvider>{children}</StoreProvider>
 				<ToastContainer />
+
+				<TawkTo />
 				{/* {process.env.NODE_ENV === 'production' && <FacebookMsg />} */}
 			</body>
 		</html>

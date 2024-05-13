@@ -21,6 +21,7 @@ const Verify = () => {
 		dispatch(setActiveStep(5));
 	}, [dispatch]);
 
+	// call verify email api
 	const [verifyEmail, { isLoading, isSuccess, isError, error }] =
 		useVerifyEmailMutation();
 

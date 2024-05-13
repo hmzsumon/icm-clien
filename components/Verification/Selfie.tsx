@@ -79,8 +79,9 @@ const Selfie = () => {
 					<div className=' flex justify-end gap-4'>
 						<button
 							type='submit'
-							className='bg-green-500 text-white px-4 py-2 rounded flex items-center justify-center gap-2 w-fit'
+							className='bg-green-500 text-white px-4 py-2 rounded flex items-center justify-center gap-2 w-fit disabled:opacity-50 disabled:cursor-not-allowed'
 							onClick={handleSubmit}
+							disabled={kycLoading || !selfieUrl}
 						>
 							Submit
 						</button>
