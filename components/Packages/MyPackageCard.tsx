@@ -87,7 +87,7 @@ const MyPackageCard: React.FC<MyPackageCardProps> = ({ pac }) => {
 							</svg>
 							<span className=' font-normal leading-tigh700 dark:text-gray-400'>
 								Return - {''}
-								<span className='text-sm font-bold'>${pac?.return}</span>
+								<span className='text-sm font-bold'>{pac?.return}</span>
 							</span>
 						</li>
 						<li className='flex items-center'>

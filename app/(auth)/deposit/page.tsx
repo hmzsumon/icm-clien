@@ -1,5 +1,9 @@
 'use client';
-import { useMyWalletQuery } from '@/redux/features/auth/authApi';
+import TawkTo from '@/lib/TawkTo';
+import {
+	useLoadUserQuery,
+	useMyWalletQuery,
+} from '@/redux/features/auth/authApi';
 import { Button, Card } from 'flowbite-react';
 import { link } from 'fs';
 import Link from 'next/link';
@@ -138,6 +142,8 @@ const depositMethods = [
 ];
 
 const Deposit = () => {
+	// Load user
+	useLoadUserQuery();
 	const { user } = useSelector((state: any) => state.auth);
 	const { data, isLoading, isError, isSuccess, error } =
 		useMyWalletQuery(undefined);
@@ -258,6 +264,7 @@ const Deposit = () => {
 					);
 				})}
 			</div>
+			<TawkTo />
 		</div>
 	);
 };

@@ -1,4 +1,5 @@
 import ContactUsBanner from '@/components/Contact/ContactUsBanner';
+import TawkTo from '@/lib/TawkTo';
 import { Card } from 'flowbite-react';
 import React from 'react';
 import { BiSolidPhoneCall } from 'react-icons/bi';
@@ -79,6 +80,7 @@ const Contact = () => {
 					</div>
 				</div>
 			</div>
+			<TawkTo />
 		</div>
 	);
 };
