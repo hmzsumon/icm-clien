@@ -6,7 +6,7 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 import { PiDownloadSimpleBold } from 'react-icons/pi';
 import { RiShareForward2Fill } from 'react-icons/ri';
 import { FaFilterCircleDollar, FaHandshakeSimple } from 'react-icons/fa6';
-import { GiTimeTrap } from 'react-icons/gi';
+import { GiRank3, GiTimeTrap } from 'react-icons/gi';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { TiSocialInstagram } from 'react-icons/ti';
 
@@ -27,6 +27,11 @@ const UserSidebar = ({ handleClose }: any) => {
 					<Link href='/withdraw' onClick={handleClose}>
 						<Sidebar.Item icon={RiShareForward2Fill}>Withdraw</Sidebar.Item>
 					</Link>
+					{/* Start Rank and reward */}
+					<Link href='/rank-and-reward' onClick={handleClose}>
+						<Sidebar.Item icon={GiRank3}>Rank and Reward</Sidebar.Item>
+					</Link>
+					{/* End Rank and reward */}
 					{/* Start Investment */}
 					<Sidebar.Collapse icon={FaFilterCircleDollar} label='Investment'>
 						<Link href='/investment' onClick={handleClose}>

@@ -1,5 +1,5 @@
 'use client';
-import TawkTo from '@/lib/TawkTo';
+
 import {
 	useLoadUserQuery,
 	useMyWalletQuery,
@@ -264,7 +264,6 @@ const Deposit = () => {
 					);
 				})}
 			</div>
-			<TawkTo />
 		</div>
 	);
 };
