@@ -25,6 +25,10 @@ export default function RootLayout({
 				<ToastContainer />
 
 				{/* {process.env.NODE_ENV === 'production' && <FacebookMsg />} */}
+				<script
+					src='//code.tidio.co/e8ucllwk964tcwjk66nkl4ub60rrvs54.js'
+					async
+				></script>
 			</body>
 		</html>
 	);
