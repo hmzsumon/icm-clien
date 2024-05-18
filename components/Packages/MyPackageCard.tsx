@@ -67,7 +67,7 @@ const MyPackageCard: React.FC<MyPackageCardProps> = ({ pac }) => {
 								></path>
 							</svg>
 							<span className=' font-normal leading-tigh700 dark:text-gray-400'>
-								Weekly - <span className='text-sm font-bold'>Five days</span>
+								Weekly - <span className='text-sm font-bold'>Six days</span>
 							</span>
 						</li>
 						<li className='flex items-center'>
