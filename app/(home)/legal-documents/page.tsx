@@ -50,7 +50,7 @@ const LegalDocuments = () => {
 									</Link>
 								</li>
 
-								<li className=' flex items-center gap-2'>
+								{/* <li className=' flex items-center gap-2'>
 									<FaRegDotCircle className='inline-block  text-icm-green' />
 									<a
 										href='https://pdfhost.io/v/zUt9YF3M~_cukisspolicy'
@@ -59,9 +59,9 @@ const LegalDocuments = () => {
 									>
 										<span>Cookies Policy</span>
 									</a>
-								</li>
+								</li> */}
 
-								<li className=' flex items-center gap-2'>
+								{/* <li className=' flex items-center gap-2'>
 									<FaRegDotCircle className='inline-block  text-icm-green' />
 									<a
 										href='https://pdfhost.io/v/VW2IDh~uS_holding'
@@ -70,7 +70,7 @@ const LegalDocuments = () => {
 									>
 										<span>Complaints Handling Policy</span>
 									</a>
-								</li>
+								</li> */}
 							</ul>
 						</div>
 					</div>

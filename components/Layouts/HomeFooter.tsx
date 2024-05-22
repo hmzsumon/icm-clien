@@ -64,7 +64,7 @@ const HomeFooter = () => {
 						</ul>
 					</div>
 				</div>
-				<hr className='border-t border-gray-700 my-6 w-full' />
+				{/* <hr className='border-t border-gray-700 my-6 w-full' />
 				<div className=' space-y-2'>
 					<p className='text-xs text-[#777777] leading-4 tracking-tight text-justify'>
 						IC Markets money is the trading name of ICM Raw Trading Ltd, which
@@ -78,11 +78,11 @@ const HomeFooter = () => {
 					>
 						Legal Documents
 					</Link>
-				</div>
+				</div> */}
 				<hr className='border-t border-gray-700 mt-6 mb-2 w-full' />
 				<div>
 					<p className='text-xs text-white text-center md:text-left mt-2'>
-						&copy; 2024 ICM Raw Trading Ltd | All rights reserved
+						&copy; 2024 ICM Money | All rights reserved
 					</p>
 				</div>
 			</div>
