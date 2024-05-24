@@ -33,8 +33,8 @@ const TetherUsdt = () => {
 	const handleAmountChange = (e: any) => {
 		const value = e.target.value;
 		setAmount(value);
-		if (value < 20) {
-			setErrorText('Minimum amount is 20 USDT');
+		if (value < 12) {
+			setErrorText('Minimum amount is 12 USDT');
 			return;
 		} else if (value > availableAmount) {
 			setErrorText('Insufficient balance');
@@ -48,7 +48,7 @@ const TetherUsdt = () => {
 
 	// handle submit form
 	const handleSubmit = () => {
-		console.log('submitting form');
+		// console.log('submitting form');
 		const data = {
 			amount: amount,
 			net_amount: receiveAmount,
@@ -119,7 +119,7 @@ const TetherUsdt = () => {
 								</span>
 								<span>
 									Min Amount:
-									<span className='mx-1 text-gray-800 font-bold'>20</span>
+									<span className='mx-1 text-gray-800 font-bold'>12</span>
 									USDT
 								</span>
 							</small>

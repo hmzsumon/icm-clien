@@ -245,7 +245,7 @@ const WithdrawSecurity = ({ openModal, setOpenModal, handleSubmit }: any) => {
 									</p>
 								) : (
 									<Link
-										href='#'
+										href='/settings/forgot-pin'
 										className='text-xs text-cyan-700 hover:underline dark:text-cyan-500 flex  mt-1 justify-end '
 									>
 										<span className=' '>Lost Pass Code?</span>

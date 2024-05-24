@@ -3,28 +3,32 @@ import React from 'react';
 import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
 
-const ChangePin = () => {
+const ForgotPin = () => {
 	return (
 		<div className=' p-4'>
 			<div>
 				<Card className='w-full'>
 					<div className='my-4'>
 						<h1 className=' text-primary font-semibold tracking-tight'>
-							Change Your Pin
+							Forgot Your Pin?
 						</h1>
 						<p className=' text-sm tracking-tight text-primary'>
-							Your pin must be at least 6 characters long.
+							We will send you an email with a security code to reset your pin.
 						</p>
 					</div>
 					<form className='flex flex-col gap-4 '>
-						<div>
+						<div className=' relative'>
 							<TextInput
 								id='pin1'
-								type='password'
-								placeholder='Current Password'
+								type='text'
+								placeholder='Enter security code'
 								required
 								autoComplete='off'
+								className=''
 							/>
+							<button className='bg-icm-green text-xs font-bold px-3 py-3 absolute top-0 right-0 rounded-r-md'>
+								Get Code
+							</button>
 						</div>
 						<div>
 							<TextInput
@@ -53,16 +57,10 @@ const ChangePin = () => {
 							Submit
 						</Button>
 					</form>
-					<Link
-						href='/settings/forgot-pin'
-						className='text-icm-green font-bold hover:underline hover:text-green-600 text-right'
-					>
-						<small>Forgot your pin?</small>
-					</Link>
 				</Card>
 			</div>
 		</div>
 	);
 };
 
-export default ChangePin;
+export default ForgotPin;
