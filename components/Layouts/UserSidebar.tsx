@@ -9,6 +9,7 @@ import { FaFilterCircleDollar, FaHandshakeSimple } from 'react-icons/fa6';
 import { GiRank3, GiTimeTrap } from 'react-icons/gi';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { TiSocialInstagram } from 'react-icons/ti';
+import { IoIosSend } from 'react-icons/io';
 
 const UserSidebar = ({ handleClose }: any) => {
 	return (
@@ -27,6 +28,11 @@ const UserSidebar = ({ handleClose }: any) => {
 					<Link href='/withdraw' onClick={handleClose}>
 						<Sidebar.Item icon={RiShareForward2Fill}>Withdraw</Sidebar.Item>
 					</Link>
+					{/* Send Option */}
+					<Link href='/send' onClick={handleClose}>
+						<Sidebar.Item icon={IoIosSend}>Send USDT</Sidebar.Item>
+					</Link>
+					{/* End Send Option */}
 					{/* Start Rank and reward */}
 					<Link href='/rank-and-reward' onClick={handleClose}>
 						<Sidebar.Item icon={GiRank3}>Rank and Reward</Sidebar.Item>
