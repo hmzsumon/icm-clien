@@ -116,28 +116,14 @@ const SendMoney = () => {
 						</h2>
 					</div>
 					<hr className='my-2 border border-blue-gray-800 ' />
+					<p className=' text-center text-xs font-semibold'>User To User</p>
 					<div className='my-4 space-y-3'>
 						<div>
 							<label
 								htmlFor=''
 								className='block mb-2 ml-1 text-sm font-medium text-blue-gray-300'
 							>
-								Send Mode
-							</label>
-							<input
-								type='text'
-								className='w-full px-2 py-2 border rounded-lg border-blue-gray-800 bg-black_2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
-								placeholder='User ID'
-								readOnly
-							/>
-						</div>
-
-						<div>
-							<label
-								htmlFor=''
-								className='block mb-2 ml-1 text-sm font-medium text-blue-gray-300'
-							>
-								User ID
+								Partner ID
 							</label>
 							<input
 								type='text'
