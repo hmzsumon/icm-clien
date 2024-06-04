@@ -12,9 +12,9 @@ export const depositApi = apiSlice.injectEndpoints({
 			invalidatesTags: ['Deposits'],
 		}),
 
-		// get my deposits
+		// get my deposits or logged in user deposits
 		getMyDeposits: builder.query<any, any>({
-			query: () => '/deposits/me',
+			query: () => '/my-deposits',
 			providesTags: ['Deposits'],
 		}),
 

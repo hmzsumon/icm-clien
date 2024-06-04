@@ -11,6 +11,7 @@ import React from 'react';
 import { CiUnlock } from 'react-icons/ci';
 import { FaRegCreditCard } from 'react-icons/fa';
 import { FcMoneyTransfer } from 'react-icons/fc';
+import { GoHistory } from 'react-icons/go';
 import { IoMdLock } from 'react-icons/io';
 import { IoLogoUsd } from 'react-icons/io5';
 import { RxAvatar } from 'react-icons/rx';
@@ -150,7 +151,16 @@ const Deposit = () => {
 	const { wallet } = data || {};
 	return (
 		<div className=' px-4 py-6'>
-			<h3 className='text-xl text-slate-800 font-semibold my-4'>Deposits</h3>
+			<div className=' flex items-center justify-between'>
+				<h3 className='text-xl text-slate-800 font-semibold my-4'>Deposits</h3>
+				<Link
+					href='/deposit/history'
+					className='flex items-center gap-1 text-sm font-bold text-primary duration-300 hover:text-icm-green'
+				>
+					<GoHistory />
+					History
+				</Link>
+			</div>
 			{!user?.kyc_verified && (
 				<div className='my-4'>
 					<h3 className=' text-slate-800 font-semibold py-3'>Kyc required</h3>
