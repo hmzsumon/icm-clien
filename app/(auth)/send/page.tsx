@@ -11,6 +11,7 @@ import {
 } from '@/redux/features/send/sendApi';
 import { Card } from 'flowbite-react';
 import { useRouter } from 'next/navigation';
+import WithdrawSecurity from '@/components/Withdraw/WithdrawSecurity';
 
 const SendMoney = () => {
 	const router = useRouter();
@@ -28,6 +29,8 @@ const SendMoney = () => {
 	const [open2, setOpen2] = useState(false);
 	const [isResend, setIsResend] = useState<boolean>(false);
 	const handleOpen2 = () => setOpen2(!open2);
+
+	const [openModal, setOpenModal] = useState(false);
 
 	const [findUserByCustomerId, { data, isLoading, isError, error, isSuccess }] =
 		useFindUserByCustomerIdMutation();
@@ -66,6 +69,11 @@ const SendMoney = () => {
 		try {
 			const res = await findUserByCustomerId(userId).unwrap();
 			setRecipient(res?.user);
+			// check user id === recipient id
+			if (res?.user?.partner_id === user?.partner_id) {
+				setRecipientError('You cannot send to yourself');
+				setRecipient(null);
+			}
 		} catch (error) {
 			console.log(error);
 			setRecipientError((error as fetchBaseQueryError).data.message);
@@ -91,7 +99,7 @@ const SendMoney = () => {
 			fee: fee,
 			receive_amount: receiveAmount,
 		};
-		console.log(data);
+		// console.log(data);
 		send(data);
 	};
 
@@ -207,7 +215,7 @@ const SendMoney = () => {
 						<div>
 							{recipient ? (
 								<button
-									onClick={handleSubmit}
+									onClick={() => setOpenModal(true)}
 									className='w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500'
 								>
 									Submit
@@ -227,6 +235,11 @@ const SendMoney = () => {
 					</div>
 				</div>
 			</Card>
+			<WithdrawSecurity
+				openModal={openModal}
+				setOpenModal={setOpenModal}
+				handleSubmit={handleSubmit}
+			/>
 		</div>
 	);
 };
