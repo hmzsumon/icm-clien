@@ -5,16 +5,18 @@ import React from 'react';
 import GridLoader from 'react-spinners/GridLoader';
 import GoBack from '@/components/GoBack';
 import Image from 'next/image';
+import WithdrawHistoryCard from '@/components/Withdraw/HistoryCard';
+import { useGetMyWithdrawRequestsQuery } from '@/redux/features/withdraw/withdrawApi';
 
-const DepositHistory = () => {
-	const { data, isLoading } = useGetMyDepositsQuery(undefined);
-	const deposits = data?.deposits || [];
+const WithdrawHistory = () => {
+	const { data, isLoading } = useGetMyWithdrawRequestsQuery(undefined);
+	const withdraws = data?.withdraws || [];
 
 	return (
 		<div className='p-4'>
 			<div className=' flex items-center gap-1'>
 				<GoBack />
-				<h1 className='my-3 ml-2 font-bold'>Deposit History</h1>
+				<h1 className='my-3 ml-2 font-bold'>Withdraw History</h1>
 			</div>
 			<div>
 				{isLoading ? (
@@ -23,15 +25,15 @@ const DepositHistory = () => {
 					</div>
 				) : (
 					<div>
-						{deposits.length > 0 ? (
-							deposits.map((deposit: any) => (
-								<div key={deposit._id} className='space-y-2'>
-									<HistoryCard transaction={deposit} />
+						{withdraws.length > 0 ? (
+							withdraws.map((withdraw: any) => (
+								<div key={withdraw._id} className='space-y-2'>
+									<WithdrawHistoryCard withdraw={withdraw} />
 								</div>
 							))
 						) : (
 							<div className='flex flex-col justify-center items-center h-64'>
-								<h1 className='text-gray-400'>No deposit history</h1>
+								<h1 className='text-gray-400'>No withdraw history</h1>
 								<Image
 									src='/no-data.gif'
 									alt='empty'
@@ -47,4 +49,4 @@ const DepositHistory = () => {
 	);
 };
 
-export default DepositHistory;
+export default WithdrawHistory;

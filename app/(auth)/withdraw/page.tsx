@@ -12,6 +12,7 @@ import Between from '@/public/assets/images/between.svg';
 import Tether from '@/public/assets/images/tether.svg';
 import { CiUnlock } from 'react-icons/ci';
 import WithdrawSecurity from '@/components/Withdraw/WithdrawSecurity';
+import { GoHistory } from 'react-icons/go';
 
 const withdrawMethods = [
 	{
@@ -85,7 +86,17 @@ const withdrawMethods = [
 const Withdraw = () => {
 	return (
 		<div className=' z-0 p-4'>
-			<h1 className='text-2xl text-gray-800 font-semibold  my-4'>Withdraw</h1>
+			<div className=' flex items-center justify-between'>
+				<h1 className='text-2xl text-gray-800 font-semibold  my-4'>Withdraw</h1>
+				<Link
+					href='/withdraw/history'
+					className='flex items-center gap-1 text-sm font-bold text-primary duration-300 hover:text-icm-green'
+				>
+					<GoHistory />
+					History
+				</Link>
+			</div>
+
 			<div className='bg-white w-full p-5 md:p-10 primary-shadow'>
 				<h3 className='text-[1.25rem] text-slate-800 font-semibold py-3'>
 					All payment methods
