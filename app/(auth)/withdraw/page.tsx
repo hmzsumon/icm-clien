@@ -18,7 +18,7 @@ const withdrawMethods = [
 		id: 7,
 		title: 'USDT (TRC20)',
 		isActive: true,
-		processingTime: 'instant - 30 minutes',
+		processingTime: 'instant - 3 Hours',
 		fee: '5%',
 		additionalFee: '1 USDT',
 		limit: '20 - 20,000 USDT',
