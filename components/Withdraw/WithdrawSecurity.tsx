@@ -12,6 +12,7 @@ import {
 } from '@/redux/features/auth/authApi';
 import { useSelector } from 'react-redux';
 import { MdOutlineDone } from 'react-icons/md';
+import { maskEmail, maskEmail2 } from '@/lib/functions';
 
 const WithdrawSecurity = ({ openModal, setOpenModal, handleSubmit }: any) => {
 	const { user } = useSelector((state: any) => state.auth);
@@ -183,19 +184,23 @@ const WithdrawSecurity = ({ openModal, setOpenModal, handleSubmit }: any) => {
 					<Modal.Body>
 						<div className='space-y-6'>
 							<h3 className='text-xl font-medium text-gray-900 dark:text-white'>
-								Security Verification
+								Email Verification
 							</h3>
+							<small>
+								Enter the 6 digit code sent to your email{' '}
+								{maskEmail(user?.email)}
+							</small>
 							<div>
 								<div className='mb-2 block'>
 									<Label
 										htmlFor='code1'
-										value='Security Code'
+										value='Email Verification Code'
 										color={codeError ? 'failure' : ''}
 									/>
 								</div>
 								<TextInput
 									id='code1'
-									placeholder='Enter your security code'
+									placeholder='Enter 6 digit code'
 									color={codeError ? 'failure' : ''}
 									onChange={handleCodeChange}
 									onBlur={handleCodeBlur}
