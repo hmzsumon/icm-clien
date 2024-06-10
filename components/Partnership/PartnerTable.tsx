@@ -4,12 +4,12 @@ import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 const PartnerTable = ({ data }: any) => {
 	const columns: GridColDef<any>[] = [
 		{
-			field: 'id',
+			field: 'partner_id',
 			headerName: 'Partner ID',
 			width: 100,
 			renderCell: (params: any) => (
 				<div className=''>
-					<p>{params.row.id}</p>
+					<p>{params.row.partner_id}</p>
 				</div>
 			),
 		},
@@ -49,6 +49,7 @@ const PartnerTable = ({ data }: any) => {
 		data.map((record: any) => {
 			return rows.push({
 				id: record.partner_id ? record.partner_id : record._id,
+				partner_id: record.partner_id,
 				name: record.name,
 				email: record.email,
 				packages: record.active_packages,

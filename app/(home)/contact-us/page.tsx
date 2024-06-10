@@ -56,9 +56,9 @@ const ContactUs = () => {
 										Support:{' '}
 										<a
 											className='text-gray-500 font-semibold '
-											href='mailto:support@icmmoney.copm'
+											href='mailto:support@icmmoney.com'
 										>
-											support@icmmoney.copm
+											support@icmmoney.com
 										</a>
 									</span>
 								</li>
@@ -67,9 +67,9 @@ const ContactUs = () => {
 										Accounts:{' '}
 										<a
 											className='text-gray-500 font-semibold '
-											href='mailto:accounts@icmmoney.copm'
+											href='mailto:accounts@icmmoney.com'
 										>
-											accounts@icmmoney.copm
+											accounts@icmmoney.com
 										</a>
 									</span>
 								</li>

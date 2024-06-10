@@ -40,6 +40,9 @@ const Login = () => {
 			if ((error as fetchBaseQueryError).status === 421) {
 				router.push('/verify-email?email=' + email);
 			}
+			if ((error as fetchBaseQueryError).status === 422) {
+				router.push('/suspend');
+			}
 		}
 	}, [isSuccess, isError, error]);
 

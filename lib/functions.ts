@@ -48,11 +48,16 @@ export const maskEmail2 = (email: string): string => {
 	return `${first[0]}${'*'.repeat(first.length - 1)}.${last}@${domain}`;
 };
 
-export const maskEmail = (email: string) => {
-	const atIndex = email.indexOf('@');
+export const maskEmail = (email?: string) => {
+	const defaultEmail = 'default@example.com';
+	const actualEmail =
+		typeof email === 'string' && email.includes('@') ? email : defaultEmail;
+
+	const atIndex = actualEmail.indexOf('@');
 	const maskedPart =
-		email.substring(0, 3) + email.substring(2, atIndex).replace(/./g, '*');
-	const domainPart = email.substring(atIndex);
+		actualEmail.substring(0, 3) +
+		actualEmail.substring(3, atIndex).replace(/./g, '*');
+	const domainPart = actualEmail.substring(atIndex);
 	return maskedPart + domainPart;
 };
 

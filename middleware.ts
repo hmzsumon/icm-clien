@@ -46,5 +46,6 @@ export const config = {
 		'/global-program',
 		'/investment',
 		'/partnership',
+		'/send',
 	],
 };
