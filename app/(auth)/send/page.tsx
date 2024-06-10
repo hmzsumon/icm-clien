@@ -23,12 +23,7 @@ const SendMoney = () => {
 	const [amountError, setAmountError] = React.useState('');
 	const [recipient, setRecipient] = useState<any>(null);
 	const [recipientError, setRecipientError] = React.useState('');
-	const [code, setCode] = useState<string>('');
-	const [codeError, setCodeError] = useState<boolean>(false);
-	const [errorText, setErrorText] = React.useState<string>('');
-	const [open2, setOpen2] = useState(false);
-	const [isResend, setIsResend] = useState<boolean>(false);
-	const handleOpen2 = () => setOpen2(!open2);
+	const [isVerify, setIsVerify] = useState(false);
 
 	const [openModal, setOpenModal] = useState(false);
 
@@ -90,6 +85,11 @@ const SendMoney = () => {
 			error: s_error,
 		},
 	] = useSendMutation();
+
+	// handle verify
+	const handleVerify = () => {
+		setIsVerify(true);
+	};
 
 	// handle submit
 	const handleSubmit = () => {
@@ -214,12 +214,24 @@ const SendMoney = () => {
 
 						<div>
 							{recipient ? (
-								<button
-									onClick={() => setOpenModal(true)}
-									className='w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500'
-								>
-									Submit
-								</button>
+								<div>
+									{isVerify ? (
+										<button
+											onClick={handleSubmit}
+											className='w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed'
+											disabled={s_isLoading}
+										>
+											Proceed to Send
+										</button>
+									) : (
+										<button
+											onClick={() => setOpenModal(true)}
+											className='w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500'
+										>
+											Security Verify
+										</button>
+									)}
+								</div>
 							) : (
 								<button
 									onClick={handleFindUserByCustomerId}
@@ -238,7 +250,7 @@ const SendMoney = () => {
 			<WithdrawSecurity
 				openModal={openModal}
 				setOpenModal={setOpenModal}
-				handleSubmit={handleSubmit}
+				handleSubmit={handleVerify}
 			/>
 		</div>
 	);
