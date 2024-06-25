@@ -1,8 +1,29 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const HomeFooter = () => {
+	const handleDownload = () => {
+		// Trigger download action
+		const link = document.createElement('a');
+		link.href = '/icm-money.apk';
+		link.download = 'icm-money.apk';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
+
+	const handleDownloadPDF = () => {
+		// Trigger download action for PDF
+		const link = document.createElement('a');
+		link.href = '/icm-money.pdf';
+		link.download = 'icm-money.pdf';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
+
 	return (
 		<div className=' pt-10 bg-[#0F171C]  text-white pb-4 w-full z-10  px-4'>
 			<div className=' md:w-11/12 w-full mx-auto'>
@@ -64,21 +85,21 @@ const HomeFooter = () => {
 						</ul>
 					</div>
 				</div>
-				{/* <hr className='border-t border-gray-700 my-6 w-full' />
-				<div className=' space-y-2'>
-					<p className='text-xs text-[#777777] leading-4 tracking-tight text-justify'>
-						IC Markets money is the trading name of ICM Raw Trading Ltd, which
-						is regulated by the Seychelles Financial Services Authority (FSA)
-						with Securities Dealer’s license number SD018.
-					</p>
-
-					<Link
-						href='/legal-documents'
-						className='text-xs font-bold my-3 text-[#777777] hover:text-icm-green'
+				<hr className='border-t border-gray-700 my-6 w-full' />
+				<div className=' grid md:grid-cols-2 gap-4'>
+					<button
+						className='px-4 py-2  text-gray-100 bg-green-500 rounded-lg'
+						onClick={handleDownload}
 					>
-						Legal Documents
-					</Link>
-				</div> */}
+						Download APK For Android
+					</button>
+					<button
+						className='px-4 py-2  text-gray-100 bg-blue-500 rounded-lg'
+						onClick={handleDownloadPDF}
+					>
+						Download PDF
+					</button>
+				</div>
 				<hr className='border-t border-gray-700 mt-6 mb-2 w-full' />
 				<div>
 					<p className='text-xs text-white text-center md:text-left mt-2'>
