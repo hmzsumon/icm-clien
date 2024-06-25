@@ -91,13 +91,13 @@ const HomeFooter = () => {
 						className='px-4 py-2  text-gray-100 bg-green-500 rounded-lg'
 						onClick={handleDownload}
 					>
-						Download APK For Android
+						Download App For Android
 					</button>
 					<button
 						className='px-4 py-2  text-gray-100 bg-blue-500 rounded-lg'
 						onClick={handleDownloadPDF}
 					>
-						Download PDF
+						Download Business Plan
 					</button>
 				</div>
 				<hr className='border-t border-gray-700 mt-6 mb-2 w-full' />
