@@ -33,7 +33,7 @@ const SendMoney = () => {
 	// calculate fee by 5%
 	useEffect(() => {
 		if (Number(amount) >= 10) {
-			const fee = (Number(amount) * 0) / 100;
+			const fee = (Number(amount) * 0.5) / 100;
 			setFee(fee);
 			setReceiveAmount(Number(amount) - fee);
 		}
@@ -161,11 +161,25 @@ const SendMoney = () => {
 								value={amount}
 								onChange={(e) => handleChangeAmount(e)}
 							/>
-							<small>
-								{amountError && (
-									<span className='text-xs text-red-500'>{amountError}</span>
-								)}
-							</small>
+							{/* Show 5% fee */}
+							<div className=' flex flex-col gap-1 mt-1 ml-1'>
+								<small className='text-xs text-green-500'>
+									{fee > 0 ? (
+										<span>
+											5% fee: {fee} USDT, Receive Amount: {receiveAmount} USDT
+										</span>
+									) : (
+										<span>(5% fee will be charged.)</span>
+									)}
+								</small>
+								<small>
+									{amountError && (
+										<span className='text-xs text-red-500 font-bold'>
+											{amountError}
+										</span>
+									)}
+								</small>
+							</div>
 						</div>
 
 						{recipient && (
