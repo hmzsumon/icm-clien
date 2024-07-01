@@ -11,7 +11,7 @@ import { useDepositWithBinanceMutation } from '@/redux/features/deposit/depositA
 const BinancePayment = () => {
 	const [depositWithBinance, { isLoading, isError, isSuccess, error }] =
 		useDepositWithBinanceMutation();
-	const depositAddress = 'TGsQsHmKSQ3xcuMsPoVwQzbnkCxtrJ6sDu';
+	const depositAddress = 'TQF6w2pBThAp8iWRLFoKWxmtLh4cVbgnz2';
 	const [txId, setIxId] = React.useState('');
 
 	const handleConfirm = () => {
@@ -49,7 +49,7 @@ const BinancePayment = () => {
 						</h1>
 						<div className=' md:w-fit mx-auto '>
 							<Image
-								src='/binance_qr.png'
+								src='/binance_qr_z.png'
 								width={200}
 								height={200}
 								alt='Binance'
