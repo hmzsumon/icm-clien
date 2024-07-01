@@ -215,12 +215,12 @@ const SendMoney = () => {
 
 										<li className='flex items-center justify-between list-none '>
 											<span className='font-bold'>Charge:</span>{' '}
-											<span>{fee} USDT</span>
+											<span>{Number(fee).toFixed(2)} USDT</span>
 										</li>
 
 										<li className='flex items-center justify-between list-none '>
 											<span className='font-bold'>Receive Amount:</span>{' '}
-											<span>{receiveAmount} USDT</span>
+											<span>{Number(receiveAmount).toFixed(2)} USDT</span>
 										</li>
 
 										<li className='flex items-center justify-between list-none '>
