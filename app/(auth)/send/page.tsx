@@ -172,7 +172,8 @@ const SendMoney = () => {
 								<small className='text-xs text-green-500'>
 									{fee > 0 ? (
 										<span>
-											5% fee: {fee} USDT, Receive Amount: {receiveAmount} USDT
+											5% fee: {Number(fee).toFixed(2)} USDT, Receive Amount:{' '}
+											{Number(receiveAmount).toFixed(2)} USDT
 										</span>
 									) : (
 										<span>(5% fee will be charged.)</span>
