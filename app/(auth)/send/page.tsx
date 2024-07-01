@@ -33,7 +33,7 @@ const SendMoney = () => {
 	// calculate fee by 5%
 	useEffect(() => {
 		if (Number(amount) >= 10) {
-			const fee = (Number(amount) * 0.5) / 100;
+			const fee = Number(amount) * 0.05; // 5% fee
 			setFee(fee);
 			setReceiveAmount(Number(amount) - fee);
 		}
@@ -62,6 +62,12 @@ const SendMoney = () => {
 	// handle find user by customer id
 	const handleFindUserByCustomerId = async () => {
 		try {
+			// check amount >= 10
+			if (Number(amount) < 10) {
+				setAmountError('Minimum amount is 10 USDT');
+				toast.error('Minimum amount is 10 USDT');
+				return;
+			}
 			const res = await findUserByCustomerId(userId).unwrap();
 			setRecipient(res?.user);
 			// check user id === recipient id
@@ -251,7 +257,10 @@ const SendMoney = () => {
 									onClick={handleFindUserByCustomerId}
 									className='w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed'
 									disabled={
-										!userId || !amount || Number(amount) > user?.m_balance
+										!userId ||
+										!amount ||
+										Number(amount) > user?.m_balance ||
+										amountError !== ''
 									}
 								>
 									Find Recipient
