@@ -21,7 +21,7 @@ const Login = () => {
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
 
-		toast.error('Something went wrong');
+		toast.warn('Something went wrong! My be the network is down');
 		return;
 
 		// if (email.length > 0 && !email.includes('@')) {
