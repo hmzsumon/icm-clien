@@ -20,12 +20,16 @@ const Login = () => {
 	// handle login
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
-		if (email.length > 0 && !email.includes('@')) {
-			setEmailError(true);
-			toast.error('Please enter a valid email address');
-			return;
-		}
-		loginUser({ email, password });
+
+		toast.error('Something went wrong');
+		return;
+
+		// if (email.length > 0 && !email.includes('@')) {
+		// 	setEmailError(true);
+		// 	toast.error('Please enter a valid email address');
+		// 	return;
+		// }
+		// loginUser({ email, password });
 	};
 
 	// useEffect to handle success
