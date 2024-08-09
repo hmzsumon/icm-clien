@@ -53,7 +53,7 @@ const PricingCard = ({ pac }: any) => {
 								></path>
 							</svg>
 							<span className='text-base font-normal leading-tigh700 dark:text-gray-400'>
-								Weekly - {pac?.weekly}
+								Weekly - Five days
 							</span>
 						</li>
 						<li className='flex items-center'>

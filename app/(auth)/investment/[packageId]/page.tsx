@@ -139,7 +139,7 @@ const PackageDetails = ({ params }: any) => {
 								/>
 							</svg>
 							<span className='text-base font-normal leading-tigh700 dark:text-gray-400'>
-								Weekly - {sPackage.weekly}
+								Weekly - Five days
 							</span>
 						</li>
 
