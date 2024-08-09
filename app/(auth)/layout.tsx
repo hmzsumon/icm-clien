@@ -34,7 +34,7 @@ const AuthLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 			<>
 				<Modal show={openModal} onClose={() => setOpenModal(false)}>
 					<Modal.Header>
-						Notice: Update to Profit Distribution Schedule
+						Notice: <br /> Update to Profit Distribution Schedule
 					</Modal.Header>
 					<Modal.Body>
 						<div className='space-y-6'>
