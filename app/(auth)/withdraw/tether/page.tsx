@@ -146,14 +146,24 @@ const TetherUsdt = () => {
 									<span>{receiveAmount.toFixed(2)}</span> USDT
 								</p>
 							</div>
-							<div className='flex items-center'>
+							<div className='flex flex-col items-center'>
 								<Button
 									onClick={() => setOpenModal(true)}
-									className='w-full bg-icm-green text-gray-800 font-bold hover:bg-green-500'
-									disabled={!!errorText || !amount || !address}
+									className='w-full bg-icm-green text-gray-800 font-bold hover:bg-green-500 disabled:opacity-50 disabled:text-gray-800 disabled:cursor-not-allowed'
+									disabled={
+										!!errorText ||
+										!amount ||
+										!address ||
+										!user?.is_package_active
+									}
 								>
 									Withdraw
 								</Button>
+								{!user?.is_package_active && (
+									<small className='text-red-500 font-bold'>
+										Please activate your package to withdraw!
+									</small>
+								)}
 							</div>
 						</div>
 					</div>

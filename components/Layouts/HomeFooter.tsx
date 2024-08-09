@@ -25,7 +25,7 @@ const HomeFooter = () => {
 	};
 
 	return (
-		<div className=' pt-10 bg-[#0F171C]  text-white pb-4 w-full z-10  px-4'>
+		<div className=' pt-10 bg-[#0F171C]  text-white pb-4 w-full z-50  px-4'>
 			<div className=' md:w-11/12 w-full mx-auto'>
 				<div className=' grid md:grid-cols-4 gap-2'>
 					<div>
