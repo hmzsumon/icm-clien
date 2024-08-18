@@ -255,14 +255,14 @@ const MoreAbout = () => {
 							<div className='mb-2 block'>
 								<Label
 									htmlFor='zip'
-									value='Zip'
+									value='Zip/Postal code'
 									color={zipError ? 'failure' : ''}
 								/>
 							</div>
 							<TextInput
 								id='zip'
 								type='text'
-								placeholder='Enter your zip'
+								placeholder='Postal/Zip code'
 								required
 								color={zipError ? 'failure' : ''}
 								value={zip}
