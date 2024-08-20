@@ -31,7 +31,7 @@ const AuthLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 			<HomeFooter />
 
 			{/* Start Modal */}
-			<>
+			{/* <>
 				<Modal show={openModal} onClose={() => setOpenModal(false)}>
 					<Modal.Header>
 						Notice: <br /> Update to Profit Distribution Schedule
@@ -55,7 +55,7 @@ const AuthLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 						</div>
 					</Modal.Body>
 				</Modal>
-			</>
+			</> */}
 			{/* End Modal */}
 		</div>
 	);
