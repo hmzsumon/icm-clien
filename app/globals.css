@@ -12,179 +12,36 @@
 
 /*Start Mihir Css */
 
-.secondary-shadow {
-	box-shadow: 0 4px 24px #bcbec0;
-}
-.primary-shadow {
-	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
-}
-.dropdown-bg {
-	background-color: var(--dropdown-bg);
-}
-.mt-0 {
-	margin-top: 0 !important;
-}
-.top-nav-item:hover {
-	color: var(--primary-color);
-}
-.primary-border {
-	border: 1px solid var(--primary-color);
-}
-.primary-color {
-	color: var(--primary-color);
-}
-.primary-bg {
-	background-color: var(--primary-color);
-}
-.secondary-bg {
-	background-color: var(--secondary-color);
-}
-.text-secondary {
-	color: var(--text-secondary-color);
-}
-.text-primary {
-	color: var(--text-primary-color);
-}
-
-/* Custom Side nav Item */
-.side-nav li a {
-	padding: 15px 10px !important;
-	flex-direction: column;
+/* .main {
+	width: 100vw;
+	min-height: 100vh;
+	position: fixed;
 	display: flex;
-	align-items: center;
-	gap: 5px;
-	color: var(--text-primary-color);
-}
-.side-nav li a svg {
-	display: inherit;
-}
-.side-nav li a.active {
-	background-color: white;
-}
-.side-nav li a:hover {
-	background-color: white;
-}
-.side-nav li a.active svg {
-	color: var(--primary-color);
-}
-.tab:is(input:checked) {
-	border-color: black !important;
-	border-bottom-width: 3px !important;
-}
-.setting-tabs input:hover {
-	border-bottom: 3px solid black !important;
-}
-.analyst-tab .tab:is(input:checked) {
-	border-color: var(--primary-color) !important;
-}
-.invest-tabs .tab:is(input:checked) {
-	color: black;
-}
-.tabs-bordered > .tab {
-	border-bottom-width: 3px !important;
-	border-color: transparent;
-}
-.tab {
-	height: unset !important;
-	padding-bottom: 10px;
-}
-.custom-tooltip {
-	background-color: white !important;
-	color: black !important;
-	padding: 10px !important;
-	width: 180px !important;
-	text-align: center;
-	font-size: 11px !important;
-	line-height: initial !important;
-	box-shadow: 0 2px 6px 0 rgba(168, 166, 166, 0.1) !important;
-}
-.account-suit .custom-tooltip {
-	font-size: 16px !important;
-	width: 300px !important;
-	text-align: left !important;
-	color: rgba(0, 0, 0, 0.83) !important;
-	font-weight: 400 !important;
-	margin-top: 5px !important;
-}
-.account-suit .custom-tooltip::after {
-	content: none !important;
-}
+	justify-content: center;
+	padding: 120px 24px 160px 24px;
+	pointer-events: none;
+} */
 
-.custom-tooltip::after {
-	content: '';
+/* .main:before {
+	background: radial-gradient(circle, rgba(225, 225, 226, 0) 0, #fafafa 100%);
 	position: absolute;
-	width: 0;
-	height: 0;
+	content: '';
+	z-index: 2;
+	width: 100%;
+	height: 100%;
 	top: 0;
-	margin-left: 1em;
-	left: 50%;
-	right: 0;
-	box-sizing: border-box;
-	border: 7px solid black;
-	border-color: transparent transparent white white;
-	transform-origin: 0 0;
-	transform: rotate(135deg);
-	box-shadow: -3px 3px 3px -2px rgba(168, 166, 166, 0.1);
-}
+} */
 
-.verification-card:hover {
-	box-shadow: 0 4px 24px #bcbec0;
-}
-.partner-card {
-	box-shadow: 0 0px 3px #bcbec0;
-}
-.partner-card:hover {
-	box-shadow: 0 4px 24px #bcbec0;
-}
-/* Custom Scroller Styles */
-body .analyst ul::-webkit-scrollbar {
-	width: 5px;
-}
-
-body .analyst ul::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	background: #fafafa;
-}
-
-body .analyst ul::-webkit-scrollbar-thumb {
-	background-color: #e6e6e6;
-}
-
-.banner-area {
-	background-image: url('/assets/images/HeroBG.jpg');
-}
-.cta-button {
-	background-image: url('/assets//images/CTABG.jpg');
-}
-.partner-banner {
-	background-image: url('/assets//images/partner-bg.webp');
-}
-.program-banner {
-	background-image: url('/assets//images/partnedetailbg.jpg');
-}
-/* Responsive Code Here */
-@media screen and (min-width: 576px) {
-	.package_wrapper .swiper-button-next {
-		display: none;
-	}
-	.package_wrapper .swiper-button-prev {
-		display: none;
-	}
-}
-@media screen and (max-width: 576px) {
-	.package_wrapper .swiper-button-next,
-	.package_wrapper .swiper-button-prev {
-		display: unset;
-		position: relative;
-		top: 20px;
-	}
-	.package_wrapper .swiper-button-next {
-		left: 50px;
-	}
-	.package_wrapper .swiper {
-		overflow-x: hidden;
-		padding-bottom: 20px;
-	}
+.main:after {
+	content: '';
+	background-image: url('/assets/images/grid.svg');
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	opacity: 0.4;
+	filter: invert(1);
 }
 
 /*End Mihir Css */
