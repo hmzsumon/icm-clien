@@ -21,12 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className} suppressHydrationWarning={true}>
-				<StoreProvider>
-					<div className='main'>
-						<div />
-					</div>
-					{children}
-				</StoreProvider>
+				<StoreProvider>{children}</StoreProvider>
 				<ToastContainer />
 
 				{/* {process.env.NODE_ENV === 'production' && <FacebookMsg />} */}
