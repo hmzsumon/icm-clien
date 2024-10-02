@@ -18,6 +18,7 @@ const SendMoney = () => {
 	const { user } = useSelector((state: any) => state.auth);
 	const [userId, setUserId] = React.useState('');
 	const [amount, setAmount] = React.useState('');
+	const [total_amount, setTotalAmount] = React.useState(0);
 	const [fee, setFee] = React.useState(0);
 	const [receiveAmount, setReceiveAmount] = React.useState(0);
 	const [amountError, setAmountError] = React.useState('');
@@ -35,7 +36,8 @@ const SendMoney = () => {
 		if (Number(amount) >= 10) {
 			const fee = Number(amount) * 0.05; // 5% fee
 			setFee(fee);
-			setReceiveAmount(Number(amount) - fee);
+			setReceiveAmount(Number(amount));
+			setTotalAmount(Number(amount) + fee);
 		}
 	}, [amount]);
 
@@ -66,6 +68,13 @@ const SendMoney = () => {
 			if (Number(amount) < 10) {
 				setAmountError('Minimum amount is 10 USDT');
 				toast.error('Minimum amount is 10 USDT');
+				return;
+			}
+
+			// check total amount <= user balance
+			if (Number(total_amount) > user?.m_balance) {
+				setAmountError('Amount is greater than your balance');
+				toast.error('Amount is greater than your balance');
 				return;
 			}
 			const res = await findUserByCustomerId(userId).unwrap();
@@ -104,6 +113,7 @@ const SendMoney = () => {
 			amount: Number(amount),
 			fee: fee,
 			receive_amount: receiveAmount,
+			total_amount: total_amount,
 		};
 		// console.log(data);
 		send(data);
@@ -199,6 +209,10 @@ const SendMoney = () => {
 											<span>User Id</span>
 										</li>
 										<li className='flex items-center justify-between list-none '>
+											<span className='font-bold'>Send From:</span>{' '}
+											<span>Main Wallet ( USDT)</span>
+										</li>
+										<li className='flex items-center justify-between list-none '>
 											<span className='font-bold'>To:</span>{' '}
 											<span className='flex flex-col'>
 												{recipient?.customer_id}
@@ -207,10 +221,10 @@ const SendMoney = () => {
 												</span>
 											</span>
 										</li>
-
+										<hr className='my-2 border border-blue-gray-800 ' />
 										<li className='flex items-center justify-between list-none '>
-											<span className='font-bold'>Total amount:</span>{' '}
-											<span>{amount} USDT</span>
+											<span className='font-bold'>Send amount:</span>{' '}
+											<span>{Number(total_amount).toFixed(2)} USDT</span>
 										</li>
 
 										<li className='flex items-center justify-between list-none '>
@@ -222,10 +236,12 @@ const SendMoney = () => {
 											<span className='font-bold'>Receive Amount:</span>{' '}
 											<span>{Number(receiveAmount).toFixed(2)} USDT</span>
 										</li>
-
+										<hr className='my-2 border border-blue-gray-800 ' />
 										<li className='flex items-center justify-between list-none '>
-											<span className='font-bold'>Send From:</span>{' '}
-											<span>Main Wallet ( USDT)</span>
+											<span className='font-bold'>Total amount:</span>{' '}
+											<span className=' font-bold'>
+												{Number(total_amount).toFixed(2)} USDT
+											</span>
 										</li>
 									</div>
 								</div>
