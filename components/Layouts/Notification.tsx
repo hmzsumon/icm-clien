@@ -4,7 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import { IoMdNotifications } from 'react-icons/io';
 import socketIOClient from 'socket.io-client';
 import ioBaseUrl from '@/config/baseUrl';
-import { Button, Drawer, Accordion } from 'flowbite-react';
+import { Button, Drawer, Accordion, Modal } from 'flowbite-react';
 
 import {
 	useGetNotificationsQuery,
@@ -49,6 +49,20 @@ const Notification = () => {
 	const [count, setCount] = useState(0);
 	const [open, setOpen] = useState(false);
 	const [openNotificationId, setOpenNotificationId] = useState(null);
+
+	type NotificationType = {
+		_id: string;
+		title: string;
+		message: string;
+		// Add other properties as needed
+	};
+
+	const [notification, setNotification] = useState<NotificationType | null>(
+		null
+	);
+
+	const [openModal, setOpenModal] = useState(false);
+
 	// set count 9+ if count is greater than 9
 	const notificationCount = count > 99 ? '99+' : count;
 	useEffect(() => {
@@ -69,6 +83,14 @@ const Notification = () => {
 		setOpenNotificationId(
 			notificationId === openNotificationId ? null : notificationId
 		);
+		// setNotification(notification);
+		const notification = notifications.find(
+			(notification: any) => notification._id === notificationId
+		);
+		if (notification) {
+			setNotification(notification);
+			setOpenModal(true);
+		}
 	};
 
 	// socket connection
@@ -180,6 +202,35 @@ const Notification = () => {
 					)}
 				</Drawer.Items>
 			</Drawer>
+
+			<>
+				<Modal
+					dismissible
+					show={openModal}
+					onClose={() => setOpenModal(false)}
+					className=' mt-10'
+				>
+					<Modal.Header>
+						{notification && (notification?.title || 'Notification')}
+					</Modal.Header>
+					<Modal.Body>
+						<div className='space-y-6'>
+							<p className='text-sm leading-relaxed text-gray-500 dark:text-gray-400'>
+								{notification && notification?.message}
+							</p>
+						</div>
+					</Modal.Body>
+					<Modal.Footer className='flex justify-end'>
+						<Button
+							color='gray'
+							onClick={() => setOpenModal(false)}
+							className=' '
+						>
+							Close
+						</Button>
+					</Modal.Footer>
+				</Modal>
+			</>
 		</div>
 	);
 };

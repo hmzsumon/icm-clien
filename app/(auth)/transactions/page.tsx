@@ -3,10 +3,11 @@ import CustomSelect from '@/components/CustomSelect';
 import TransactionCards from '@/components/Transactions/TransactionCards';
 import { useGetTransactionsQuery } from '@/redux/features/transactions/transactionApi';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const options = [
 	{ label: 'All', value: 'All' },
+	{ label: 'Daily Profit', value: 'Profit' },
 	{ label: 'Deposit', value: 'Deposit' },
 	{ label: 'Withdraw', value: 'Withdraw' },
 	{ label: 'Transfer', value: 'Transfer' },
@@ -15,28 +16,30 @@ const options = [
 
 const Transactions = () => {
 	const { data, error, isLoading } = useGetTransactionsQuery(undefined);
-	const { transactions } = data || [];
+	const transactions = data?.transactions || [];
 
-	const [purpose, setPurpose] = useState('');
+	const [purpose, setPurpose] = useState('All'); // Default to 'All'
 	const [filteredTransactions, setFilteredTransactions] =
 		useState(transactions);
 
-	const handleSelectPurpose = (value: any) => {
-		setPurpose(value);
-
-		if (value === 'All') {
+	useEffect(() => {
+		// Filter transactions based on the selected purpose
+		if (purpose === 'All') {
 			setFilteredTransactions(transactions);
-			return;
 		} else {
 			const filtered = transactions.filter(
-				(transaction: any) => transaction.purpose === value
+				(transaction: any) => transaction.purpose === purpose
 			);
 			setFilteredTransactions(filtered);
 		}
+	}, [purpose, transactions]); // Re-run when purpose or transactions change
+
+	const handleSelectPurpose = (value: any) => {
+		setPurpose(value); // Set selected purpose
 	};
 
 	return (
-		<div className=' px-2 py-4'>
+		<div className='px-2 py-4'>
 			<h3 className='text-xl text-slate-800 font-semibold my-2'>
 				Transaction History
 			</h3>
@@ -63,8 +66,8 @@ const Transactions = () => {
 					</p>
 				</div>
 			) : (
-				<div className=' space-y-2'>
-					{transactions?.map((transaction: any) => (
+				<div className='space-y-2'>
+					{filteredTransactions?.map((transaction: any) => (
 						<TransactionCards key={transaction._id} transaction={transaction} />
 					))}
 				</div>
