@@ -52,7 +52,7 @@ const CustomSelect: React.FC<{
 				{/* Render the down arrow icon */}
 			</div>
 			{isOpen && (
-				<div className='absolute z-10 top-full left-0 w-full border min-h-fit max-h-40 border-gray-300 bg-white rounded mt-1 overflow-auto'>
+				<div className='absolute z-10 top-full left-0 w-full border min-h-[200px] max-h-40 border-gray-300 bg-white rounded mt-1 overflow-auto'>
 					<div className='px-3 py-2 cursor-pointer hover:bg-gray-100 border-b border-gray-300'>
 						<span>{title}</span>
 					</div>
