@@ -20,7 +20,7 @@ const withdrawMethods = [
 	{
 		id: 7,
 		title: 'USDT (TRC20)',
-		isActive: false,
+		isActive: true,
 		processingTime: 'instant - 12 Hours',
 		fee: '5%',
 		additionalFee: '1 USDT',
@@ -86,7 +86,7 @@ const withdrawMethods = [
 ];
 
 const Withdraw = () => {
-	const [openModal, setOpenModal] = useState(true);
+	const [openModal, setOpenModal] = useState(false);
 	return (
 		<div className=' z-0 p-4'>
 			<div className=' flex items-center justify-between'>
