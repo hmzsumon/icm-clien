@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { IoMdLock } from 'react-icons/io';
 import { Tooltip } from 'react-tooltip';
 import Binance from '@/public/assets/images/binance.svg';
@@ -13,6 +13,8 @@ import Tether from '@/public/assets/images/tether.svg';
 import { CiUnlock } from 'react-icons/ci';
 import WithdrawSecurity from '@/components/Withdraw/WithdrawSecurity';
 import { GoHistory } from 'react-icons/go';
+import { Button, Modal } from 'flowbite-react';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const withdrawMethods = [
 	{
@@ -84,6 +86,7 @@ const withdrawMethods = [
 ];
 
 const Withdraw = () => {
+	const [openModal, setOpenModal] = useState(true);
 	return (
 		<div className=' z-0 p-4'>
 			<div className=' flex items-center justify-between'>
@@ -194,6 +197,30 @@ const Withdraw = () => {
 					))}
 				</div>
 			</div>
+			<>
+				<Modal
+					show={openModal}
+					size='md'
+					onClose={() => setOpenModal(false)}
+					popup
+				>
+					<Modal.Header />
+					<Modal.Body>
+						<div className='text-center'>
+							<HiOutlineExclamationCircle className='mx-auto mb-4 h-14 w-14 text-orange-500 dark:text-gray-200' />
+							<h3 className='mb-5 text-lg font-normal text-orange-500 dark:text-gray-400'>
+								Withdraw will be temporarily closed due to server issues. Please
+								try again later. We sincerely apologize for this inconvenience.
+							</h3>
+							<div className='flex justify-center gap-4'>
+								<Button color='failure' onClick={() => setOpenModal(false)}>
+									Close
+								</Button>
+							</div>
+						</div>
+					</Modal.Body>
+				</Modal>
+			</>
 		</div>
 	);
 };
