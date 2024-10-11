@@ -20,7 +20,9 @@ const WithdrawHistoryCard = ({ withdraw }: any) => {
 					)}
 					{!is_approved && (
 						<div className=' bg-gray-300 px-2 rounded'>
-							<span className='text-red-500 font-bold'>Pending</span>
+							<span className='text-red-500 font-bold uppercase '>
+								{withdraw?.status}
+							</span>
 						</div>
 					)}
 				</div>
