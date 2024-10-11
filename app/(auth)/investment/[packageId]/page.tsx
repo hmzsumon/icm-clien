@@ -182,6 +182,7 @@ const PackageDetails = ({ params }: any) => {
 						type='button'
 						className='inline-flex w-full justify-center rounded-lg bg-icm-green px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none '
 						onClick={() => handleCreatePackage(sPackage._id)}
+						disabled
 					>
 						{isCreating ? (
 							<PulseLoader color='#fff' size={8} margin={2} />
