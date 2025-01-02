@@ -7,7 +7,11 @@ const Register = () => {
 	return (
 		<div className=''>
 			<div className='mt-0.3'>
-				<RegisterBanner />
+				<RegisterBanner
+					title='ICM Partner Account Application'
+					btn_title='Open Account for Agent'
+					url='/agent-register'
+				/>
 			</div>
 			<div
 				className='flex flex-col items-center justify-center px-2'

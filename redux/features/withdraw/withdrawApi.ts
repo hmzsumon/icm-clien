@@ -17,10 +17,16 @@ export const withdrawApi = apiSlice.injectEndpoints({
 			query: () => `/my-withdraws`,
 			providesTags: ['Withdraws'],
 		}),
+
+		// get all agents
+		getAllAgents: builder.query<any, any>({
+			query: () => `/get-all-agents`,
+		}),
 	}),
 });
 
 export const {
 	useCreateWithdrawRequestMutation,
 	useGetMyWithdrawRequestsQuery,
+	useGetAllAgentsQuery,
 } = withdrawApi;

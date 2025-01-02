@@ -15,8 +15,9 @@ const VerifyEmail = () => {
 	const email = searchParams.get('email');
 	const router = useRouter();
 
-	const [verifyEmail, { isLoading, isSuccess, isError, error }] =
+	const [verifyEmail, { data, isLoading, isSuccess, isError, error }] =
 		useVerifyEmailMutation();
+	const { role } = data || {};
 
 	// call resend email verification api
 	const [
@@ -70,7 +71,11 @@ const VerifyEmail = () => {
 	useEffect(() => {
 		if (isSuccess) {
 			toast.success('Email verified successfully');
-			router.push('/'); // Redirect to login page
+			if (role === 'agent') {
+				router.push('https://icm-agent.vercel.app');
+			} else {
+				router.push('/');
+			}
 		}
 		if (isError) {
 			toast.error((error as fetchBaseQueryError).data?.message);
@@ -80,9 +85,9 @@ const VerifyEmail = () => {
 	return (
 		<div className='my-10 '>
 			<div className=' w-full md:w-6/12 mx-auto px-4'>
-				<h2 className='my-4 text-gray-100 font-bold'>Verify Your Email</h2>
+				<h2 className='my-4 text-gray-800 font-bold'>Verify Your Email</h2>
 				<Card className='w-full bg-black border-none'>
-					<p className='text-xs'>
+					<p className='text-xs text-gray-200 mb-4'>
 						We have sent a verification code to{' '}
 						<span className='font-bold'>{email}</span>
 					</p>

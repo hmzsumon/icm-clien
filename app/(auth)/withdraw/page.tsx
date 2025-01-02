@@ -18,27 +18,29 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const withdrawMethods = [
 	{
-		id: 7,
-		title: 'USDT (TRC20)',
+		id: 1,
+		title: 'ICM Money Agents',
 		isActive: true,
 		processingTime: 'instant - 12 Hours',
 		fee: '5%',
 		additionalFee: '1 USDT',
+		limit: '20 - 20,000 USD',
+		is_recommended: true,
+		link: '/withdraw/agent-withdraw',
+	},
+	{
+		id: 7,
+		title: 'USDT (TRC20)',
+		isActive: true,
+		processingTime: 'instant - 12 Hours',
+		fee: '9%',
+		additionalFee: '1 USDT',
 		limit: '20 - 20,000 USDT',
 		icon: '/assets/images/tether-usdt.svg',
 		link: '/withdraw/tether',
+		is_recommended: false,
 	},
-	{
-		id: 1,
-		title: 'BinancePay',
-		isActive: false,
-		processingTime: 'instant - 12 Hours',
-		fee: '0%',
-		additionalFee: '0 USDT',
-		limit: '20 - 20,000 USD',
-		icon: '/assets/images/binance.svg',
-		link: '/withdraw',
-	},
+
 	{
 		id: 2,
 		title: 'Neteller',
@@ -113,11 +115,13 @@ const Withdraw = () => {
 							>
 								<span className='p-4 border-b flex items-center justify-between'>
 									<span className='flex items-center gap-2'>
-										<img
-											className=' w-10 '
-											src={method.icon}
-											alt={method.title}
-										/>
+										{method.icon && (
+											<img
+												className=' w-10 '
+												src={method.icon}
+												alt={method.title}
+											/>
+										)}
 										<h3 className='text-sm text-black font-medium'>
 											{method.title}
 										</h3>
@@ -139,12 +143,21 @@ const Withdraw = () => {
 														data-tooltip-place='bottom'
 														data-tooltip-class-name='custom-tooltip'
 													>
-														<p className='flex items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-sm text-black'>
-															<span>
-																<CiUnlock />
-															</span>
-															<span>Recommended</span>
-														</p>
+														{method.is_recommended ? (
+															<p className='flex items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-sm text-black'>
+																<span>
+																	<CiUnlock />
+																</span>
+																<span>Recommended</span>
+															</p>
+														) : (
+															<p className='flex items-center gap-1 rounded-xl bg-gray-100 px-2 py-1 text-sm text-black'>
+																<span>
+																	<CiUnlock />
+																</span>
+																<span>Available</span>
+															</p>
+														)}
 													</div>
 												</div>
 											) : (

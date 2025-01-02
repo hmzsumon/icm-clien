@@ -31,7 +31,7 @@ export const authApi = apiSlice.injectEndpoints({
 		}),
 
 		// verify email
-		verifyEmail: builder.mutation<IUser, any>({
+		verifyEmail: builder.mutation<any, any>({
 			query: (body) => ({
 				url: '/verify-email',
 				method: 'POST',
@@ -255,6 +255,15 @@ export const authApi = apiSlice.injectEndpoints({
 				body,
 			}),
 		}),
+
+		// check agent name
+		checkAgentName: builder.mutation<any, any>({
+			query: (body) => ({
+				url: `/check-agent-name`,
+				method: 'POST',
+				body,
+			}),
+		}),
 	}),
 });
 
@@ -284,4 +293,5 @@ export const {
 	useFindDescendantsQuery,
 	useGetDashboardQuery,
 	useSecurityVerify2Mutation,
+	useCheckAgentNameMutation,
 } = authApi;
