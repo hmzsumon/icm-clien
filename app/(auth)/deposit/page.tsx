@@ -161,41 +161,7 @@ const Deposit = () => {
 					History
 				</Link>
 			</div>
-			{!user?.kyc_verified && (
-				<div className='my-4'>
-					<h3 className=' text-slate-800 font-semibold py-3'>Kyc required</h3>
-					{/* Verification */}
-					<Card className=''>
-						<div className='flex justify-between items-center'>
-							<div className='flex items-center gap-3'>
-								<span className='text-2xl p-2  border-4 rounded-full text-black'>
-									<RxAvatar />
-								</span>
-								<div className='space-y-1'>
-									<p className='text-[12px] font-medium text-primary'>
-										Verification status
-									</p>
-									<p className='text-[#C0424D] text-lg font-semibold'>
-										Not verified
-									</p>
-									<p className='text-[12px]'>0/1 steps complete</p>
-								</div>
-							</div>
-							{user?.kyc_step === 4 ? (
-								<button className='rounded py-2 px-4 text-sm font-semibold  bg-orange-400 text-slate-700 duration-300 hover:bg-orange-300'>
-									Under Review
-								</button>
-							) : (
-								<Link href='/verification'>
-									<button className='rounded py-2 px-4 text-sm font-semibold bg-green-500  text-slate-700 duration-300 hover:bg-icm-green'>
-										Complete Now
-									</button>
-								</Link>
-							)}
-						</div>
-					</Card>
-				</div>
-			)}
+
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 				{depositMethods.map((method) => {
 					return (
@@ -263,7 +229,7 @@ const Deposit = () => {
 										<Button
 											gradientMonochrome='success'
 											className='w-full'
-											disabled={!method.isActive || !user?.kyc_verified}
+											disabled={!method.isActive}
 										>
 											Pay Now
 										</Button>
