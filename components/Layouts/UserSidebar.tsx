@@ -57,9 +57,6 @@ const UserSidebar = ({ handleClose }: any) => {
 						<Link href='/generation-program' onClick={handleClose}>
 							<Sidebar.Item>Generation Program</Sidebar.Item>
 						</Link>
-						<Link href='/global-program' onClick={handleClose}>
-							<Sidebar.Item>Global Program</Sidebar.Item>
-						</Link>
 					</Sidebar.Collapse>
 					{/* End Partnership */}
 
