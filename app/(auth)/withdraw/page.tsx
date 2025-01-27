@@ -20,7 +20,7 @@ const withdrawMethods = [
 	{
 		id: 1,
 		title: 'ICM Money Agents',
-		isActive: true,
+		isActive: false,
 		processingTime: 'instant - 12 Hours',
 		fee: '5%',
 		additionalFee: '1 USDT',
