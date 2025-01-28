@@ -154,7 +154,8 @@ const TetherUsdt = () => {
 										!!errorText ||
 										!amount ||
 										!address ||
-										!user?.is_package_active
+										!user?.is_package_active ||
+										user?.is_withdraw_block
 									}
 								>
 									Withdraw
@@ -162,6 +163,12 @@ const TetherUsdt = () => {
 								{!user?.is_package_active && (
 									<small className='text-red-500 font-bold'>
 										Please activate your package to withdraw!
+									</small>
+								)}
+
+								{user?.is_withdraw_block && (
+									<small className='text-red-500 font-bold'>
+										Your withdraw is blocked! Please contact support team.
 									</small>
 								)}
 							</div>
