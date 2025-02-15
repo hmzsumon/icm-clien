@@ -277,13 +277,19 @@ const SendMoney = () => {
 										!userId ||
 										!amount ||
 										Number(amount) > user?.m_balance ||
-										amountError !== ''
+										amountError !== '' ||
+										user?.is_withdraw_block
 									}
 								>
 									Find Recipient
 								</button>
 							)}
 						</div>
+						{user?.is_withdraw_block && (
+							<small className='text-red-500 font-bold'>
+								Your withdraw is blocked! Please contact support team.
+							</small>
+						)}
 					</div>
 				</div>
 			</Card>
